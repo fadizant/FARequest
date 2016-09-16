@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'FARequest_Example' do
+  pod 'FARequest', :path => '../'
+
+  target 'FARequest_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase'
+  end
+end
