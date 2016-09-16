@@ -21,6 +21,7 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		6F32400341C4975B9E75D62A /* Pods_FARequest_Example_FARequest_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1237FB7CFC135A8FE3D1E3 /* Pods_FARequest_Example_FARequest_Tests.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		FC64A33D39F093A76E4991D6 /* Pods_FARequest_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7AE72C73435DA98B605038 /* Pods_FARequest_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -57,11 +58,14 @@
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		6B507FB935C5F275FEDD824A /* Pods-FARequest_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FARequest_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FARequest_Tests/Pods-FARequest_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		6D1237FB7CFC135A8FE3D1E3 /* Pods_FARequest_Example_FARequest_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FARequest_Example_FARequest_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		767E63876C47FD35D7596B8B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		7846B4017E30AB164D62E51C /* Pods-FARequest_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FARequest_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-FARequest_Example/Pods-FARequest_Example.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8D7AE72C73435DA98B605038 /* Pods_FARequest_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FARequest_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BDDB41634F719B1F077D4BD /* Pods-FARequest_Example-FARequest_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FARequest_Example-FARequest_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FARequest_Example-FARequest_Tests/Pods-FARequest_Example-FARequest_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A738B9DEBA62BE756E824848 /* Pods_FARequest_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FARequest_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7646CD9B821F4CDCA70ED48 /* Pods-FARequest_Example-FARequest_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FARequest_Example-FARequest_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FARequest_Example-FARequest_Tests/Pods-FARequest_Example-FARequest_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		BCAF4024B970944DB8ECDA4C /* Pods-FARequest_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FARequest_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FARequest_Example/Pods-FARequest_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E1748AC906397035681714B7 /* FARequest.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FARequest.podspec; path = ../FARequest.podspec; sourceTree = "<group>"; };
 		FCBBAE291F1B461F2F2FDC50 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
 				FC64A33D39F093A76E4991D6 /* Pods_FARequest_Tests.framework in Frameworks */,
+				6F32400341C4975B9E75D62A /* Pods_FARequest_Example_FARequest_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +128,7 @@
 				6003F5AF195388D20070C39A /* XCTest.framework */,
 				A738B9DEBA62BE756E824848 /* Pods_FARequest_Example.framework */,
 				8D7AE72C73435DA98B605038 /* Pods_FARequest_Tests.framework */,
+				6D1237FB7CFC135A8FE3D1E3 /* Pods_FARequest_Example_FARequest_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -189,6 +195,8 @@
 				7846B4017E30AB164D62E51C /* Pods-FARequest_Example.release.xcconfig */,
 				5FB180F4BDDBEAA3488C7B2A /* Pods-FARequest_Tests.debug.xcconfig */,
 				6B507FB935C5F275FEDD824A /* Pods-FARequest_Tests.release.xcconfig */,
+				B7646CD9B821F4CDCA70ED48 /* Pods-FARequest_Example-FARequest_Tests.debug.xcconfig */,
+				9BDDB41634F719B1F077D4BD /* Pods-FARequest_Example-FARequest_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -320,7 +328,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FARequest_Tests/Pods-FARequest_Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FARequest_Example-FARequest_Tests/Pods-FARequest_Example-FARequest_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		66197EB816E9B45BAAAB4204 /* [CP] Check Pods Manifest.lock */ = {
@@ -350,7 +358,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FARequest_Tests/Pods-FARequest_Tests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FARequest_Example-FARequest_Tests/Pods-FARequest_Example-FARequest_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A31B708C68BA52010D913F6D /* [CP] Copy Pods Resources */ = {
@@ -541,7 +549,7 @@
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5FB180F4BDDBEAA3488C7B2A /* Pods-FARequest_Tests.debug.xcconfig */;
+			baseConfigurationReference = B7646CD9B821F4CDCA70ED48 /* Pods-FARequest_Example-FARequest_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -565,7 +573,7 @@
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B507FB935C5F275FEDD824A /* Pods-FARequest_Tests.release.xcconfig */;
+			baseConfigurationReference = 9BDDB41634F719B1F077D4BD /* Pods-FARequest_Example-FARequest_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

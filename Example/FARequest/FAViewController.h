@@ -7,7 +7,8 @@
 //
 
 @import UIKit;
+#import "FARequest.h"
 
-@interface FAViewController : UIViewController
+@interface FAViewController : UIViewController<FARequestDelegate>
 
 @end

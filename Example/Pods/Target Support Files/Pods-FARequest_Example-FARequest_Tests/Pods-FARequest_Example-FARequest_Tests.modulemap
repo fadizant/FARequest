@@ -1,0 +1,6 @@
+framework module Pods_FARequest_Example_FARequest_Tests {
+  umbrella header "Pods-FARequest_Example-FARequest_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

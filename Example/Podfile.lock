@@ -1,0 +1,16 @@
+PODS:
+  - FARequest (0.1.0)
+
+DEPENDENCIES:
+  - FARequest (from `../`)
+
+EXTERNAL SOURCES:
+  FARequest:
+    :path: ../
+
+SPEC CHECKSUMS:
+  FARequest: fc68df581fac968c763609832badb5ce474316b7
+
+PODFILE CHECKSUM: c00f0868bca8abd308420d7fe544baf6eede0a69
+
+COCOAPODS: 1.0.1
