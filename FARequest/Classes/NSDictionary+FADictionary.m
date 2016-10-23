@@ -18,7 +18,7 @@
     NSString *result = @"//FadiSpliterString\n";
     result = [result stringByAppendingString:@"//\n"];
     result = [result stringByAppendingString:[NSString stringWithFormat:@"//Created by FARequest on %@ \n",[[NSDate date] getStringWithFormat:@"dd/MM/yy"]]];
-    result = [result stringByAppendingString:[NSString stringWithFormat:@"//Copyright © %i Fadi Abuzant. All rights reserved.  \n",[[NSDate date] getYear]]];
+    result = [result stringByAppendingString:[NSString stringWithFormat:@"//Copyright © %i Fadi Abuzant. All rights reserved.  \n",(int)[[NSDate date] getYear]]];
     result = [result stringByAppendingString:@"//\n\n"];
     result = [result stringByAppendingString:@"#import <Foundation/Foundation.h> \n"];
     result = [result stringByAppendingString:[NSString stringWithFormat:@"@interface %@ : NSObject \n",Name]];
@@ -177,7 +177,7 @@
                 //.m
                 NSString *implement = @"//\n";
                 implement = [implement stringByAppendingString:[NSString stringWithFormat:@"//Created by FARequest on %@ \n",[[NSDate date] getStringWithFormat:@"dd/MM/yy"]]];
-                implement = [implement stringByAppendingString:[NSString stringWithFormat:@"//Copyright © %i Fadi Abuzant. All rights reserved.  \n",[[NSDate date] getYear]]];
+                implement = [implement stringByAppendingString:[NSString stringWithFormat:@"//Copyright © %i Fadi Abuzant. All rights reserved.  \n",(int)[[NSDate date] getYear]]];
                 implement = [implement stringByAppendingString:@"//\n\n"];
                 
                 implement = [implement stringByAppendingString:[NSString stringWithFormat:@"#import \"%@.h\" \n",className]];

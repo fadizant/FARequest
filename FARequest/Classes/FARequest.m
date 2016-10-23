@@ -382,10 +382,10 @@
             [body appendData:[[NSString stringWithFormat:@"\r\n--%@--",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
             
         }
-        [body appendData:[[NSString stringWithFormat:@"\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"\r\n--%@--",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
         
         //set lenght
-        [urlRequest addValue:[NSString stringWithFormat:@"%d", (int)[body length]] forHTTPHeaderField:@"Content-Length"];
+        [urlRequest addValue:[NSString stringWithFormat:@"%i", (int)[body length]] forHTTPHeaderField:@"Content-Length"];
         
         //sets the request body of the receiver to the specified data.
         [urlRequest setHTTPBody:body];
@@ -753,7 +753,7 @@
             [body appendData:[[NSString stringWithFormat:@"\r\n--%@--",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
             
         }
-        [body appendData:[[NSString stringWithFormat:@"\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"\r\n--%@--",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
         
         //set lenght
         [urlRequest addValue:[NSString stringWithFormat:@"%d", (int)[body length]] forHTTPHeaderField:@"Content-Length"];
