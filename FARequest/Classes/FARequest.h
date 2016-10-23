@@ -11,6 +11,7 @@
 #import "NSArray+FAArray.h"
 #import "NSDate+FADate.h"
 #import "NSDictionary+FADictionary.h"
+#import "Reachability.h"
 
 // Protocol definition starts here
 @protocol FARequestDelegate <NSObject>

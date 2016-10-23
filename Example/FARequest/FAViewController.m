@@ -31,7 +31,26 @@
 ////                                  NSLog(@"%@",obj.description);
 //                              }
 //                          }];
+    //check internet connection
+    reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkChange:) name:kReachabilityChangedNotification object:nil];
+    [reachability startNotifier];
+
+}
+
+- (void) handleNetworkChange:(NSNotification *)notice
+{
     
+    NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
+    
+    if(remoteHostStatus == NotReachable) {NSLog(@"no");}
+    else if (remoteHostStatus == ReachableViaWiFi) {NSLog(@"wifi"); [self send];}
+    else if (remoteHostStatus == ReachableViaWWAN) {NSLog(@"cell"); [self send];}
+}
+
+-(void)send
+{
     [FARequest sendParameterRequestWithUrl:[NSURL URLWithString:@"https://httpbin.org/get?name=fadi&age=29"]
                                  Parameter:@""
                                RequestType:FARequestTypeGET
@@ -54,7 +73,6 @@
                                              selector:@selector(FARequestCompleted:)
                                                  name:@"FARequestCompleted"
                                                object:nil];
-
 }
 
 - (void)didReceiveMemoryWarning

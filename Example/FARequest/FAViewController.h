@@ -10,4 +10,7 @@
 #import "FARequest.h"
 
 @interface FAViewController : UIViewController<FARequestDelegate>
+{
+    Reachability* reachability;
+}
 @end
