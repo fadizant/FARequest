@@ -1,6 +1,5 @@
 //
 //  NSDate+FADate.h
-//  Gloocall
 //
 //  Created by Fadi on 5/4/16.
 //  Copyright © 2016 Apprikot. All rights reserved.

@@ -10,5 +10,4 @@
 #import "FARequest.h"
 
 @interface FAViewController : UIViewController<FARequestDelegate>
-
 @end

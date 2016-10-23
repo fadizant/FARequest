@@ -12,169 +12,282 @@
 
 #pragma mark - Use block requests
 
-#pragma mark shortcut request without timeOut , Encode and images
+#pragma mark shortcut request without timeOut , Encode , images and header
 //Keys and Values block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-     KeysAndValues:(NSMutableDictionary *)Data
-       RequestType:(FARequestType)Type
-  requestCompleted:(requestCompleted)requestCompleted
++(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
+                         KeysAndValues:(NSMutableDictionary *)Data
+                           RequestType:(FARequestType)Type
+                      requestCompleted:(requestCompleted)requestCompleted
 {
-    return [self sendRequest:url
-                     Headers:Headers
-               KeysAndValues:Data
-                       Image:nil
-                 RequestType:Type
-                     timeOut:120
-             EncodeParameter:NO
-            requestCompleted:requestCompleted];
+    return [self sendKeysAndValuesRequestWithUrl:url
+                                         Headers:nil
+                                   KeysAndValues:Data
+                                           Image:nil
+                                     RequestType:Type
+                                         timeOut:120
+                                 EncodeParameter:NO
+                                requestCompleted:requestCompleted];
 }
 
 //JSON block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-              JSON:(NSDictionary *)JSON
-       RequestType:(FARequestType)Type
-  requestCompleted:(requestCompleted)requestCompleted
++(BOOL)sendJSONRequestWithUrl:(NSURL*)url
+                         JSON:(NSDictionary *)JSON
+                  RequestType:(FARequestType)Type
+             requestCompleted:(requestCompleted)requestCompleted
 {
-    [self sendRequest:url
-              Headers:Headers
-                 JSON:JSON
-                Image:nil
-          RequestType:Type
-              timeOut:120
-      EncodeParameter:NO
-     requestCompleted:requestCompleted];
+    return [self sendJSONRequestWithUrl:url
+                                Headers:nil
+                                   JSON:JSON
+                                  Image:nil
+                            RequestType:Type
+                                timeOut:120
+                        EncodeParameter:NO
+                       requestCompleted:requestCompleted];
 }
 
 //Full block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-         Parameter:(NSString *)Param
-       RequestType:(FARequestType)Type
-  requestCompleted:(requestCompleted)requestCompleted
++(BOOL)sendParameterRequestWithUrl:(NSURL*)url
+                         Parameter:(NSString *)Param
+                       RequestType:(FARequestType)Type
+                  requestCompleted:(requestCompleted)requestCompleted
 {
-    [self sendRequest:url
-              Headers:Headers
-            Parameter:Param
-                Image:nil
-          RequestType:Type
-              timeOut:120
-      EncodeParameter:NO
-     requestCompleted:requestCompleted];
+    return [self sendRequestWithUrl:url
+                            Headers:nil
+                          Parameter:Param
+                              Image:nil
+                        RequestType:Type
+                            timeOut:120
+                             object:nil
+                    EncodeParameter:NO
+                   requestCompleted:requestCompleted];
+}
+
+//Full block request With object
++(BOOL)sendParameterRequestWithUrl:(NSURL*)url
+                         Parameter:(NSString *)Param
+                            object:(id)object
+                       RequestType:(FARequestType)Type
+                  requestCompleted:(requestCompleted)requestCompleted
+{
+    return [self sendRequestWithUrl:url
+                            Headers:nil
+                          Parameter:Param
+                              Image:nil
+                        RequestType:Type
+                            timeOut:120
+                             object:object
+                    EncodeParameter:NO
+                   requestCompleted:requestCompleted];
+}
+
+
+#pragma mark shortcut request without timeOut , Encode and images
+//Keys and Values block request
++(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
+                               Headers:(NSDictionary *)Headers
+                         KeysAndValues:(NSMutableDictionary *)Data
+                           RequestType:(FARequestType)Type
+                      requestCompleted:(requestCompleted)requestCompleted
+{
+    return [self sendKeysAndValuesRequestWithUrl:url
+                                         Headers:Headers
+                                   KeysAndValues:Data
+                                           Image:nil
+                                     RequestType:Type
+                                         timeOut:120
+                                 EncodeParameter:NO
+                                requestCompleted:requestCompleted];
+}
+
+//JSON block request
++(BOOL)sendJSONRequestWithUrl:(NSURL*)url
+                      Headers:(NSDictionary *)Headers
+                         JSON:(NSDictionary *)JSON
+                  RequestType:(FARequestType)Type
+             requestCompleted:(requestCompleted)requestCompleted
+{
+    return [self sendJSONRequestWithUrl:url
+                                Headers:Headers
+                                   JSON:JSON
+                                  Image:nil
+                            RequestType:Type
+                                timeOut:120
+                        EncodeParameter:NO
+                       requestCompleted:requestCompleted];
+}
+
+//Full block request
++(BOOL)sendParameterRequestWithUrl:(NSURL*)url
+                           Headers:(NSDictionary *)Headers
+                         Parameter:(NSString *)Param
+                       RequestType:(FARequestType)Type
+                  requestCompleted:(requestCompleted)requestCompleted
+{
+    return [self sendRequestWithUrl:url
+                            Headers:Headers
+                          Parameter:Param
+                              Image:nil
+                        RequestType:Type
+                            timeOut:120
+                             object:nil
+                    EncodeParameter:NO
+                   requestCompleted:requestCompleted];
+}
+
+//Full block request With object
++(BOOL)sendParameterRequestWithUrl:(NSURL*)url
+                           Headers:(NSDictionary *)Headers
+                         Parameter:(NSString *)Param
+                            object:(id)object
+                       RequestType:(FARequestType)Type
+                  requestCompleted:(requestCompleted)requestCompleted
+{
+    return [self sendRequestWithUrl:url
+                            Headers:Headers
+                          Parameter:Param
+                              Image:nil
+                        RequestType:Type
+                            timeOut:120
+                             object:object
+                    EncodeParameter:NO
+                   requestCompleted:requestCompleted];
 }
 
 #pragma mark shortcut request without timeOut and Encode
 //Keys and Values block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-     KeysAndValues:(NSMutableDictionary *)Data
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-  requestCompleted:(requestCompleted)requestCompleted
++(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
+                               Headers:(NSDictionary *)Headers
+                         KeysAndValues:(NSMutableDictionary *)Data
+                                 Image:(NSMutableArray <UIImage *>*)images
+                           RequestType:(FARequestType)Type
+                      requestCompleted:(requestCompleted)requestCompleted
 {
-    return [self sendRequest:url
-                     Headers:Headers
-               KeysAndValues:Data
-                       Image:images
-                 RequestType:Type
-                     timeOut:120
-             EncodeParameter:NO
-            requestCompleted:requestCompleted];
+    return [self sendKeysAndValuesRequestWithUrl:url
+                                         Headers:Headers
+                                   KeysAndValues:Data
+                                           Image:images
+                                     RequestType:Type
+                                         timeOut:120
+                                 EncodeParameter:NO
+                                requestCompleted:requestCompleted];
 }
 
 //JSON block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-              JSON:(NSDictionary *)JSON
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-  requestCompleted:(requestCompleted)requestCompleted
++(BOOL)sendJSONRequestWithUrl:(NSURL*)url
+                      Headers:(NSDictionary *)Headers
+                         JSON:(NSDictionary *)JSON
+                        Image:(NSMutableArray <UIImage *>*)images
+                  RequestType:(FARequestType)Type
+             requestCompleted:(requestCompleted)requestCompleted
 {
-    [self sendRequest:url
-              Headers:Headers
-                 JSON:JSON
-                Image:images
-          RequestType:Type
-              timeOut:120
-      EncodeParameter:NO
-     requestCompleted:requestCompleted];
+    return [self sendJSONRequestWithUrl:url
+                                Headers:Headers
+                                   JSON:JSON
+                                  Image:images
+                            RequestType:Type
+                                timeOut:120
+                        EncodeParameter:NO
+                       requestCompleted:requestCompleted];
 }
 
 //Full block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-         Parameter:(NSString *)Param
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-  requestCompleted:(requestCompleted)requestCompleted
++(BOOL)sendParameterRequestWithUrl:(NSURL*)url
+                           Headers:(NSDictionary *)Headers
+                         Parameter:(NSString *)Param
+                             Image:(NSMutableArray <UIImage *>*)images
+                       RequestType:(FARequestType)Type
+                  requestCompleted:(requestCompleted)requestCompleted
 {
-    [self sendRequest:url
-              Headers:Headers
-            Parameter:Param
-                Image:images
-          RequestType:Type
-              timeOut:120
-      EncodeParameter:NO
-     requestCompleted:requestCompleted];
+    return [self sendRequestWithUrl:url
+                            Headers:Headers
+                          Parameter:Param
+                              Image:images
+                        RequestType:Type
+                            timeOut:120
+                             object:nil
+                    EncodeParameter:NO
+                   requestCompleted:requestCompleted];
+}
+
+//Full block request With object
++(BOOL)sendParameterRequestWithUrl:(NSURL*)url
+                           Headers:(NSDictionary *)Headers
+                         Parameter:(NSString *)Param
+                             Image:(NSMutableArray <UIImage *>*)images
+                            object:(id)object
+                       RequestType:(FARequestType)Type
+                  requestCompleted:(requestCompleted)requestCompleted
+{
+    return [self sendRequestWithUrl:url
+                            Headers:Headers
+                          Parameter:Param
+                              Image:images
+                        RequestType:Type
+                            timeOut:120
+                             object:object
+                    EncodeParameter:NO
+                   requestCompleted:requestCompleted];
 }
 
 #pragma mark full request
 
 //Keys and Values block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-     KeysAndValues:(NSMutableDictionary *)Data
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-           timeOut:(float)timeOut
-   EncodeParameter:(BOOL)Encoding
-  requestCompleted:(requestCompleted)requestCompleted
++(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
+                               Headers:(NSDictionary *)Headers
+                         KeysAndValues:(NSMutableDictionary *)Data
+                                 Image:(NSMutableArray <UIImage *>*)images
+                           RequestType:(FARequestType)Type
+                               timeOut:(float)timeOut
+                       EncodeParameter:(BOOL)Encoding
+                      requestCompleted:(requestCompleted)requestCompleted
 {
     NSString *Parameter ;
     for (NSString* key in Data.allKeys) {
         Parameter = [NSString stringWithFormat:@"%@=%@&",key,[Data objectForKey:key]];
     }
     Parameter = Parameter ? [Parameter substringToIndex:Parameter.length-1] : @"";
-    return [self sendRequest:url
-                     Headers:Headers
-                   Parameter:Parameter
-                       Image:images
-                 RequestType:Type
-                     timeOut:timeOut
-             EncodeParameter:Encoding
-            requestCompleted:requestCompleted];
+    return [self sendRequestWithUrl:url
+                            Headers:Headers
+                          Parameter:Parameter
+                              Image:images
+                        RequestType:Type
+                            timeOut:timeOut
+                             object:nil
+                    EncodeParameter:Encoding
+                   requestCompleted:requestCompleted];
 }
 
 //JSON block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-              JSON:(NSDictionary *)JSON
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-           timeOut:(float)timeOut
-   EncodeParameter:(BOOL)Encoding
-  requestCompleted:(requestCompleted)requestCompleted
++(BOOL)sendJSONRequestWithUrl:(NSURL*)url
+                      Headers:(NSDictionary *)Headers
+                         JSON:(NSDictionary *)JSON
+                        Image:(NSMutableArray <UIImage *>*)images
+                  RequestType:(FARequestType)Type
+                      timeOut:(float)timeOut
+              EncodeParameter:(BOOL)Encoding
+             requestCompleted:(requestCompleted)requestCompleted
 {
-    return [self sendRequest:url
-                     Headers:Headers
-                   Parameter:[self GetJSON:JSON]
-                       Image:images
-                 RequestType:Type
-                     timeOut:timeOut
-             EncodeParameter:Encoding
-            requestCompleted:requestCompleted];
+    return [self sendRequestWithUrl:url
+                            Headers:Headers
+                          Parameter:[self GetJSON:JSON]
+                              Image:images
+                        RequestType:Type
+                            timeOut:timeOut
+                             object:nil
+                    EncodeParameter:Encoding
+                   requestCompleted:requestCompleted];
 }
 
 //Full block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-         Parameter:(NSString *)Param
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-           timeOut:(float)timeOut
-   EncodeParameter:(BOOL)Encoding
-  requestCompleted:(requestCompleted)requestCompleted
++(BOOL)sendRequestWithUrl:(NSURL*)url
+                  Headers:(NSDictionary *)Headers
+                Parameter:(NSString *)Param
+                    Image:(NSMutableArray <UIImage *>*)images
+              RequestType:(FARequestType)Type
+                  timeOut:(float)timeOut
+                   object:(id)object
+          EncodeParameter:(BOOL)Encoding
+         requestCompleted:(requestCompleted)requestCompleted
 {
     //check internet connection before request
     if (![self isNetworkAvailable]) {
@@ -305,7 +418,7 @@
                          NSData *data,
                          NSError *error) {
          NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-         NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
+//         NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
          dispatch_async(dispatch_get_main_queue(), ^{
              
              NSError *errorParsing = nil;
@@ -316,20 +429,72 @@
                                   options:NSJSONReadingAllowFragments
                                   error:&errorParsing];
                  if (jsonObject) {
-                     requestCompleted(jsonObject,(int)[httpResponse statusCode]);
+                     requestCompleted(jsonObject,(int)[httpResponse statusCode] ,object);
+                     
+                     //send Notification center
+                     if (object) {
+                         [[NSNotificationCenter defaultCenter]
+                          postNotificationName:@"FARequestCompleted"
+                          object:self
+                          userInfo:@{@"result":jsonObject,
+                                     @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
+                                     @"object":object}];
+                     } else {
+                         [[NSNotificationCenter defaultCenter]
+                          postNotificationName:@"FARequestCompleted"
+                          object:self
+                          userInfo:@{@"result":jsonObject,
+                                     @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]]}];
+                     }
+                     
+                     
+                     
                  } else {
-                     requestCompleted([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],(int)[httpResponse statusCode]);
+                     requestCompleted([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],(int)[httpResponse statusCode] , object);
+                     
+                     //send Notification center
+                     if (object) {
+                         [[NSNotificationCenter defaultCenter]
+                          postNotificationName:@"FARequestCompleted"
+                          object:self
+                          userInfo:@{@"result":[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],
+                                     @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
+                                     @"object":object}];
+                     } else {
+                         [[NSNotificationCenter defaultCenter]
+                          postNotificationName:@"FARequestCompleted"
+                          object:self
+                          userInfo:@{@"result":[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],
+                                     @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]]}];
+                     }
                  }
              }
              else
-                 requestCompleted(nil,(int)[httpResponse statusCode]);
+             {
+                 requestCompleted(nil,(int)[httpResponse statusCode] , object);
+                 
+                 //send Notification center
+                 if (object) {
+                     [[NSNotificationCenter defaultCenter]
+                      postNotificationName:@"FARequestCompleted"
+                      object:self
+                      userInfo:@{@"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
+                                 @"object":object}];
+                 } else {
+                     [[NSNotificationCenter defaultCenter]
+                      postNotificationName:@"FARequestCompleted"
+                      object:self
+                      userInfo:@{@"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]]}];
+                 }
+                 
+             }
              //hide loading progress bar
              [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
              
          });
      }];
     
-    
+    return YES;
 }
 
 #pragma mark - Use delegat request
@@ -350,150 +515,150 @@
 
 #pragma mark shortcut request without timeOut , Encode and images
 //Keys and Values block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-     KeysAndValues:(NSMutableDictionary *)Data
-       RequestType:(FARequestType)Type
+-(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
+                               Headers:(NSDictionary *)Headers
+                         KeysAndValues:(NSMutableDictionary *)Data
+                           RequestType:(FARequestType)Type
 {
-    return [self sendRequest:url
-                     Headers:Headers
-               KeysAndValues:Data
-                       Image:nil
-                 RequestType:Type
-                     timeOut:120
-             EncodeParameter:NO];
+    return [self sendKeysAndValuesRequestWithUrl:url
+                                         Headers:Headers
+                                   KeysAndValues:Data
+                                           Image:nil
+                                     RequestType:Type
+                                         timeOut:120
+                                 EncodeParameter:NO];
 }
 
 //JSON block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-              JSON:(NSDictionary *)JSON
-       RequestType:(FARequestType)Type
+-(BOOL)sendJSONRequestWithUrl:(NSURL*)url
+                      Headers:(NSDictionary *)Headers
+                         JSON:(NSDictionary *)JSON
+                  RequestType:(FARequestType)Type
 {
-    [self sendRequest:url
-              Headers:Headers
-                 JSON:JSON
-                Image:nil
-          RequestType:Type
-              timeOut:120
-      EncodeParameter:NO];
+    return [self sendJSONRequestWithUrl:url
+                                Headers:Headers
+                                   JSON:JSON
+                                  Image:nil
+                            RequestType:Type
+                                timeOut:120
+                        EncodeParameter:NO];
 }
 
 //Full block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-         Parameter:(NSString *)Param
-       RequestType:(FARequestType)Type
+-(BOOL)sendParameterRequestWithUrl:(NSURL*)url
+                           Headers:(NSDictionary *)Headers
+                         Parameter:(NSString *)Param
+                       RequestType:(FARequestType)Type
 {
-    [self sendRequest:url
-              Headers:Headers
-            Parameter:Param
-                Image:nil
-          RequestType:Type
-              timeOut:120
-      EncodeParameter:NO];
+    return [self sendRequestWithUrl:url
+                            Headers:Headers
+                          Parameter:Param
+                              Image:nil
+                        RequestType:Type
+                            timeOut:120
+                    EncodeParameter:NO];
 }
 
 #pragma mark shortcut request without timeOut and Encode
 //Keys and Values block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-     KeysAndValues:(NSMutableDictionary *)Data
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
+-(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
+                               Headers:(NSDictionary *)Headers
+                         KeysAndValues:(NSMutableDictionary *)Data
+                                 Image:(NSMutableArray <UIImage *>*)images
+                           RequestType:(FARequestType)Type
 {
-    return [self sendRequest:url
-                     Headers:Headers
-               KeysAndValues:Data
-                       Image:images
-                 RequestType:Type
-                     timeOut:120
-             EncodeParameter:NO];
+    return [self sendKeysAndValuesRequestWithUrl:url
+                                         Headers:Headers
+                                   KeysAndValues:Data
+                                           Image:images
+                                     RequestType:Type
+                                         timeOut:120
+                                 EncodeParameter:NO];
 }
 
 //JSON block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-              JSON:(NSDictionary *)JSON
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
+-(BOOL)sendJSONRequestWithUrl:(NSURL*)url
+                      Headers:(NSDictionary *)Headers
+                         JSON:(NSDictionary *)JSON
+                        Image:(NSMutableArray <UIImage *>*)images
+                  RequestType:(FARequestType)Type
 {
-    [self sendRequest:url
-              Headers:Headers
-                 JSON:JSON
-                Image:images
-          RequestType:Type
-              timeOut:120
-      EncodeParameter:NO];
+    return [self sendJSONRequestWithUrl:url
+                                Headers:Headers
+                                   JSON:JSON
+                                  Image:images
+                            RequestType:Type
+                                timeOut:120
+                        EncodeParameter:NO];
 }
 
 //Full block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-         Parameter:(NSString *)Param
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
+-(BOOL)sendParameterRequestWithUrl:(NSURL*)url
+                           Headers:(NSDictionary *)Headers
+                         Parameter:(NSString *)Param
+                             Image:(NSMutableArray <UIImage *>*)images
+                       RequestType:(FARequestType)Type
 {
-    [self sendRequest:url
-              Headers:Headers
-            Parameter:Param
-                Image:images
-          RequestType:Type
-              timeOut:120
-      EncodeParameter:NO];
+    return [self sendRequestWithUrl:url
+                            Headers:Headers
+                          Parameter:Param
+                              Image:images
+                        RequestType:Type
+                            timeOut:120
+                    EncodeParameter:NO];
 }
 
 #pragma mark full request
 
 //Keys and Values block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-     KeysAndValues:(NSMutableDictionary *)Data
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-           timeOut:(float)timeOut
-   EncodeParameter:(BOOL)Encoding
+-(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
+                               Headers:(NSDictionary *)Headers
+                         KeysAndValues:(NSMutableDictionary *)Data
+                                 Image:(NSMutableArray <UIImage *>*)images
+                           RequestType:(FARequestType)Type
+                               timeOut:(float)timeOut
+                       EncodeParameter:(BOOL)Encoding
 {
     NSString *Parameter ;
     for (NSString* key in Data.allKeys) {
         Parameter = [NSString stringWithFormat:@"%@=%@&",key,[Data objectForKey:key]];
     }
     Parameter = Parameter ? [Parameter substringToIndex:Parameter.length-1] : @"";
-    return [self sendRequest:url
-                     Headers:Headers
-                   Parameter:Parameter
-                       Image:images
-                 RequestType:Type
-                     timeOut:timeOut
-             EncodeParameter:Encoding];
+    return [self sendRequestWithUrl:url
+                            Headers:Headers
+                          Parameter:Parameter
+                              Image:images
+                        RequestType:Type
+                            timeOut:timeOut
+                    EncodeParameter:Encoding];
 }
 
 //JSON block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-              JSON:(NSDictionary *)JSON
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-           timeOut:(float)timeOut
-   EncodeParameter:(BOOL)Encoding
+-(BOOL)sendJSONRequestWithUrl:(NSURL*)url
+                      Headers:(NSDictionary *)Headers
+                         JSON:(NSDictionary *)JSON
+                        Image:(NSMutableArray <UIImage *>*)images
+                  RequestType:(FARequestType)Type
+                      timeOut:(float)timeOut
+              EncodeParameter:(BOOL)Encoding
 {
-    return [self sendRequest:url
-                     Headers:Headers
-                   Parameter:[FARequest GetJSON:JSON]
-                       Image:images
-                 RequestType:Type
-                     timeOut:timeOut
-             EncodeParameter:Encoding];
+    return [self sendRequestWithUrl:url
+                            Headers:Headers
+                          Parameter:[FARequest GetJSON:JSON]
+                              Image:images
+                        RequestType:Type
+                            timeOut:timeOut
+                    EncodeParameter:Encoding];
 }
 
 //Full block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-         Parameter:(NSString *)Param
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-           timeOut:(float)timeOut
-   EncodeParameter:(BOOL)Encoding
+-(BOOL)sendRequestWithUrl:(NSURL*)url
+                  Headers:(NSDictionary *)Headers
+                Parameter:(NSString *)Param
+                    Image:(NSMutableArray <UIImage *>*)images
+              RequestType:(FARequestType)Type
+                  timeOut:(float)timeOut
+          EncodeParameter:(BOOL)Encoding
 {
     //check internet connection before request
     if (![FARequest isNetworkAvailable]) {
@@ -624,7 +789,7 @@
                          NSData *data,
                          NSError *error) {
          NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-         NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
+//         NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
          if ((data && [data length] != 0) || error == nil){
              dispatch_async(dispatch_get_main_queue(), ^{
                  [self getResponse:data responseCode:(int)[httpResponse statusCode] URL:url];
@@ -645,7 +810,7 @@
          }
      }];
     
-    
+    return YES;
 }
 
 

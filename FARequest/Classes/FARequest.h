@@ -1,6 +1,5 @@
 //
 //  FARequest.h
-//  SlideBar
 //
 //  Created by Fadi on 10/8/15.
 //  Copyright (c) 2015 BeeCell. All rights reserved.
@@ -20,7 +19,8 @@
 @end
 
 //Block
-typedef void (^requestCompleted)(id JSONResult ,int responseCode);
+typedef void (^requestCompleted)(id JSONResult ,int responseCode , id object);
+
 
 @interface FARequest : NSObject<NSURLConnectionDelegate,UIAlertViewDelegate>
 {
@@ -40,84 +40,129 @@ typedef NS_ENUM(NSInteger, FARequestType) {
 
 #pragma mark - Use block requests
 
-#pragma mark shortcut request without timeOut , Encode and images
+#pragma mark shortcut request without timeOut , Encode , images and header
 //Keys and Values block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-     KeysAndValues:(NSMutableDictionary *)Data
-       RequestType:(FARequestType)Type
-  requestCompleted:(requestCompleted)requestCompleted;
++(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
+                         KeysAndValues:(NSMutableDictionary *)Data
+                           RequestType:(FARequestType)Type
+                      requestCompleted:(requestCompleted)requestCompleted;
 
 //JSON block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-              JSON:(NSDictionary *)JSON
-       RequestType:(FARequestType)Type
-  requestCompleted:(requestCompleted)requestCompleted;
++(BOOL)sendJSONRequestWithUrl:(NSURL*)url
+                         JSON:(NSDictionary *)JSON
+                  RequestType:(FARequestType)Type
+             requestCompleted:(requestCompleted)requestCompleted;
 
 //Full block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-         Parameter:(NSString *)Param
-       RequestType:(FARequestType)Type
-  requestCompleted:(requestCompleted)requestCompleted;
++(BOOL)sendParameterRequestWithUrl:(NSURL*)url
+                         Parameter:(NSString *)Param
+                       RequestType:(FARequestType)Type
+                  requestCompleted:(requestCompleted)requestCompleted;
+
+//Full block request With object
++(BOOL)sendParameterRequestWithUrl:(NSURL*)url
+                         Parameter:(NSString *)Param
+                            object:(id)object
+                       RequestType:(FARequestType)Type
+                  requestCompleted:(requestCompleted)requestCompleted;
+
+
+#pragma mark shortcut request without timeOut , Encode and images
+//Keys and Values block request
++(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
+                               Headers:(NSDictionary *)Headers
+                         KeysAndValues:(NSMutableDictionary *)Data
+                           RequestType:(FARequestType)Type
+                      requestCompleted:(requestCompleted)requestCompleted;
+
+//JSON block request
++(BOOL)sendJSONRequestWithUrl:(NSURL*)url
+                      Headers:(NSDictionary *)Headers
+                         JSON:(NSDictionary *)JSON
+                  RequestType:(FARequestType)Type
+             requestCompleted:(requestCompleted)requestCompleted;
+
+//Full block request
++(BOOL)sendParameterRequestWithUrl:(NSURL*)url
+                           Headers:(NSDictionary *)Headers
+                         Parameter:(NSString *)Param
+                       RequestType:(FARequestType)Type
+                  requestCompleted:(requestCompleted)requestCompleted;
+
+//Full block request With object
++(BOOL)sendParameterRequestWithUrl:(NSURL*)url
+                           Headers:(NSDictionary *)Headers
+                         Parameter:(NSString *)Param
+                            object:(id)object
+                       RequestType:(FARequestType)Type
+                  requestCompleted:(requestCompleted)requestCompleted;
 
 #pragma mark shortcut request without timeOut and Encode
 //Keys and Values block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-     KeysAndValues:(NSMutableDictionary *)Data
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-  requestCompleted:(requestCompleted)requestCompleted;
++(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
+                               Headers:(NSDictionary *)Headers
+                         KeysAndValues:(NSMutableDictionary *)Data
+                                 Image:(NSMutableArray <UIImage *>*)images
+                           RequestType:(FARequestType)Type
+                      requestCompleted:(requestCompleted)requestCompleted;
 
 //JSON block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-              JSON:(NSDictionary *)JSON
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-  requestCompleted:(requestCompleted)requestCompleted;
++(BOOL)sendJSONRequestWithUrl:(NSURL*)url
+                      Headers:(NSDictionary *)Headers
+                         JSON:(NSDictionary *)JSON
+                        Image:(NSMutableArray <UIImage *>*)images
+                  RequestType:(FARequestType)Type
+             requestCompleted:(requestCompleted)requestCompleted;
 
 //Full block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-         Parameter:(NSString *)Param
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-  requestCompleted:(requestCompleted)requestCompleted;
++(BOOL)sendParameterRequestWithUrl:(NSURL*)url
+                           Headers:(NSDictionary *)Headers
+                         Parameter:(NSString *)Param
+                             Image:(NSMutableArray <UIImage *>*)images
+                       RequestType:(FARequestType)Type
+                  requestCompleted:(requestCompleted)requestCompleted;
+
+//Full block request With object
++(BOOL)sendParameterRequestWithUrl:(NSURL*)url
+                           Headers:(NSDictionary *)Headers
+                         Parameter:(NSString *)Param
+                             Image:(NSMutableArray <UIImage *>*)images
+                            object:(id)object
+                       RequestType:(FARequestType)Type
+                  requestCompleted:(requestCompleted)requestCompleted;
 
 #pragma mark full request
 
 //Keys and Values block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-     KeysAndValues:(NSMutableDictionary *)Data
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-           timeOut:(float)timeOut
-   EncodeParameter:(BOOL)Encoding
-  requestCompleted:(requestCompleted)requestCompleted;
++(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
+                               Headers:(NSDictionary *)Headers
+                         KeysAndValues:(NSMutableDictionary *)Data
+                                 Image:(NSMutableArray <UIImage *>*)images
+                           RequestType:(FARequestType)Type
+                               timeOut:(float)timeOut
+                       EncodeParameter:(BOOL)Encoding
+                      requestCompleted:(requestCompleted)requestCompleted;
 
 //JSON block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-              JSON:(NSDictionary *)JSON
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-           timeOut:(float)timeOut
-   EncodeParameter:(BOOL)Encoding
-  requestCompleted:(requestCompleted)requestCompleted;
++(BOOL)sendJSONRequestWithUrl:(NSURL*)url
+                      Headers:(NSDictionary *)Headers
+                         JSON:(NSDictionary *)JSON
+                        Image:(NSMutableArray <UIImage *>*)images
+                  RequestType:(FARequestType)Type
+                      timeOut:(float)timeOut
+              EncodeParameter:(BOOL)Encoding
+             requestCompleted:(requestCompleted)requestCompleted;
 
 //Full block request
-+(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-         Parameter:(NSString *)Param
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-           timeOut:(float)timeOut
-   EncodeParameter:(BOOL)Encoding
-  requestCompleted:(requestCompleted)requestCompleted;
++(BOOL)sendRequestWithUrl:(NSURL*)url
+                  Headers:(NSDictionary *)Headers
+                Parameter:(NSString *)Param
+                    Image:(NSMutableArray <UIImage *>*)images
+              RequestType:(FARequestType)Type
+                  timeOut:(float)timeOut
+                   object:(id)object
+          EncodeParameter:(BOOL)Encoding
+         requestCompleted:(requestCompleted)requestCompleted;
 
 #pragma mark - Use delegat request
 
@@ -129,72 +174,72 @@ typedef NS_ENUM(NSInteger, FARequestType) {
 
 #pragma mark shortcut request without timeOut , Encode and images
 //Keys and Values block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-     KeysAndValues:(NSMutableDictionary *)Data
-       RequestType:(FARequestType)Type;
+-(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
+                               Headers:(NSDictionary *)Headers
+                         KeysAndValues:(NSMutableDictionary *)Data
+                           RequestType:(FARequestType)Type;
 
 //JSON block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-              JSON:(NSDictionary *)JSON
-       RequestType:(FARequestType)Type;
+-(BOOL)sendJSONRequestWithUrl:(NSURL*)url
+                      Headers:(NSDictionary *)Headers
+                         JSON:(NSDictionary *)JSON
+                  RequestType:(FARequestType)Type;
 
 //Full block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-         Parameter:(NSString *)Param
-       RequestType:(FARequestType)Type;
+-(BOOL)sendParameterRequestWithUrl:(NSURL*)url
+                           Headers:(NSDictionary *)Headers
+                         Parameter:(NSString *)Param
+                       RequestType:(FARequestType)Type;
 
 #pragma mark shortcut request without timeOut and Encode
 //Keys and Values block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-     KeysAndValues:(NSMutableDictionary *)Data
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type;
+-(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
+                               Headers:(NSDictionary *)Headers
+                         KeysAndValues:(NSMutableDictionary *)Data
+                                 Image:(NSMutableArray <UIImage *>*)images
+                           RequestType:(FARequestType)Type;
 
 //JSON block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-              JSON:(NSDictionary *)JSON
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type;
+-(BOOL)sendJSONRequestWithUrl:(NSURL*)url
+                      Headers:(NSDictionary *)Headers
+                         JSON:(NSDictionary *)JSON
+                        Image:(NSMutableArray <UIImage *>*)images
+                  RequestType:(FARequestType)Type;
 
 //Full block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-         Parameter:(NSString *)Param
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type;
+-(BOOL)sendParameterRequestWithUrl:(NSURL*)url
+                           Headers:(NSDictionary *)Headers
+                         Parameter:(NSString *)Param
+                             Image:(NSMutableArray <UIImage *>*)images
+                       RequestType:(FARequestType)Type;
 
 #pragma mark full request
 
 //Keys and Values block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-     KeysAndValues:(NSMutableDictionary *)Data
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-           timeOut:(float)timeOut
-   EncodeParameter:(BOOL)Encoding;
+-(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
+                               Headers:(NSDictionary *)Headers
+                         KeysAndValues:(NSMutableDictionary *)Data
+                                 Image:(NSMutableArray <UIImage *>*)images
+                           RequestType:(FARequestType)Type
+                               timeOut:(float)timeOut
+                       EncodeParameter:(BOOL)Encoding;
 
 //JSON block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-              JSON:(NSDictionary *)JSON
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-           timeOut:(float)timeOut
-   EncodeParameter:(BOOL)Encoding;
+-(BOOL)sendJSONRequestWithUrl:(NSURL*)url
+                      Headers:(NSDictionary *)Headers
+                         JSON:(NSDictionary *)JSON
+                        Image:(NSMutableArray <UIImage *>*)images
+                  RequestType:(FARequestType)Type
+                      timeOut:(float)timeOut
+              EncodeParameter:(BOOL)Encoding;
 
 //Full block request
--(BOOL)sendRequest:(NSURL*)url
-           Headers:(NSDictionary *)Headers
-         Parameter:(NSString *)Param
-             Image:(NSMutableArray <UIImage *>*)images
-       RequestType:(FARequestType)Type
-           timeOut:(float)timeOut
-   EncodeParameter:(BOOL)Encoding;
+-(BOOL)sendRequestWithUrl:(NSURL*)url
+                  Headers:(NSDictionary *)Headers
+                Parameter:(NSString *)Param
+                    Image:(NSMutableArray <UIImage *>*)images
+              RequestType:(FARequestType)Type
+                  timeOut:(float)timeOut
+          EncodeParameter:(BOOL)Encoding;
 
 @end
