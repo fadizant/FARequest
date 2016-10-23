@@ -133,17 +133,33 @@
                     if ([newClasses[i] containsString:className]) {
                         NSString *result = newClasses[i];
                         
-                        NSString *imports = [classString substringWithRange:
-                                               NSMakeRange([classString rangeOfString:@"#import <Foundation/Foundation.h> \n"].location,
-                                                           [classString rangeOfString:@"@interface"].location - [classString rangeOfString:@"#import <Foundation/Foundation.h> \n"].location )];
+//                        NSString *imports = [classString substringWithRange:
+//                                               NSMakeRange([classString rangeOfString:@"#import <Foundation/Foundation.h> \n"].location,
+//                                                           [classString rangeOfString:@"@interface"].location - [classString rangeOfString:@"#import <Foundation/Foundation.h> \n"].location )];
+//                        
+//                        result = [result stringByReplacingOccurrencesOfString:@"#import <Foundation/Foundation.h> \n" withString:imports];
+//                        
+//                        NSString *properties = [classString substringWithRange:
+//                                             NSMakeRange([classString rangeOfString:className].location,
+//                                                         [classString rangeOfString:@"@end"].location - [classString rangeOfString:className].location )];
+//                        
+//                        result = [result stringByReplacingOccurrencesOfString:className withString:properties];
                         
-                        result = [result stringByReplacingOccurrencesOfString:@"#import <Foundation/Foundation.h> \n" withString:imports];
-                        
-                        NSString *properties = [classString substringWithRange:
-                                             NSMakeRange([classString rangeOfString:className].location,
-                                                         [classString rangeOfString:@"@end"].location - [classString rangeOfString:className].location )];
-                        
-                        result = [result stringByReplacingOccurrencesOfString:className withString:properties];
+                        for (NSString *line in [[classString componentsSeparatedByString:@"\n"] reverseObjectEnumerator]) {
+                            if (line.length &&
+                                ![result containsString:line] &&
+                                [line hasPrefix:@"#import"]) {
+                                
+                                result = [result stringByReplacingOccurrencesOfString:@"#import <Foundation/Foundation.h> \n" withString:[NSString stringWithFormat:@"#import <Foundation/Foundation.h> \n%@ \n",line]];
+                                
+                            }
+                            else if (line.length &&
+                                     ![result containsString:line] &&
+                                     [line hasPrefix:@"@property"])
+                            {
+                                result = [result stringByReplacingOccurrencesOfString:className withString:[NSString stringWithFormat:@"%@ \n%@ ",className,line]];
+                            }
+                        }
                         
                         newClasses[i] = result;
                         found = YES;

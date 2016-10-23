@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'FARequest'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'init FARequest.'
 
 # This description is used to generate tags and improve search results.
@@ -27,7 +27,6 @@ Pod::Spec.new do |s|
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
 s.ios.deployment_target = '8.0'
-s.requires_arc = true
 
   s.source_files = 'FARequest/Classes/**/*'
   
