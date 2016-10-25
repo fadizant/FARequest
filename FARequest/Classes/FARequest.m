@@ -7,10 +7,58 @@
 //
 
 #import "FARequest.h"
+#import <CommonCrypto/CommonCryptor.h>
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation FARequest
+#pragma mark - internet status
+static Reachability *reachability;
+
++(NetworkStatus) networkStatus
+{
+    if (!reachability) {
+        reachability = [Reachability reachabilityForInternetConnection];
+        [reachability startNotifier];
+    }
+    return [reachability currentReachabilityStatus];
+}
 
 #pragma mark - Use block requests
+
+#pragma mark shortcut request
+
+//Full block request
++(BOOL)sendRequestWithUrl:(NSURL*)url
+              RequestType:(FARequestType)Type
+         requestCompleted:(requestCompleted)requestCompleted
+{
+    return [self sendRequestWithUrl:url
+                            Headers:nil
+                          Parameter:@""
+                              Image:nil
+                        RequestType:Type
+                            timeOut:120
+                             object:nil
+                    EncodeParameter:NO
+                   requestCompleted:requestCompleted];
+}
+
+//Full block request With object
++(BOOL)sendRequestWithUrl:(NSURL*)url
+                   object:(id)object
+              RequestType:(FARequestType)Type
+         requestCompleted:(requestCompleted)requestCompleted
+{
+    return [self sendRequestWithUrl:url
+                            Headers:nil
+                          Parameter:@""
+                              Image:nil
+                        RequestType:Type
+                            timeOut:120
+                             object:object
+                    EncodeParameter:NO
+                   requestCompleted:requestCompleted];
+}
 
 #pragma mark shortcut request without timeOut , Encode , images and header
 //Keys and Values block request
@@ -241,11 +289,13 @@
                        EncodeParameter:(BOOL)Encoding
                       requestCompleted:(requestCompleted)requestCompleted
 {
-    NSString *Parameter ;
-    for (NSString* key in Data.allKeys) {
-        Parameter = [NSString stringWithFormat:@"%@=%@&",key,[Data objectForKey:key]];
+    NSString *Parameter = @"";
+    if (Data) {
+        for (NSString* key in Data.allKeys) {
+            Parameter = [NSString stringWithFormat:@"%@=%@&",key,[Data objectForKey:key]];
+        }
+        Parameter = Parameter ? [Parameter substringToIndex:Parameter.length-1] : @"";
     }
-    Parameter = Parameter ? [Parameter substringToIndex:Parameter.length-1] : @"";
     return [self sendRequestWithUrl:url
                             Headers:Headers
                           Parameter:Parameter
@@ -289,8 +339,50 @@
           EncodeParameter:(BOOL)Encoding
          requestCompleted:(requestCompleted)requestCompleted
 {
+    //read from cache
+    __block BOOL hasCache = NO;
+    __block NSData * cacheResponse;
+    // Use GCD's background queue
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        // Generate the file path
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *request = [self getHashWithString:[NSString stringWithFormat:@"%@%@%@",[url absoluteString],Param,Headers ? [self GetJSON:Headers] : @""]];
+        NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"FACache/%@",request]];
+        
+        if(![[NSFileManager defaultManager] fileExistsAtPath:[NSString stringWithFormat:@"%@/FACache",documentsDirectory]]) {
+            NSError * error = nil;
+            [[NSFileManager defaultManager] createDirectoryAtPath:[NSString stringWithFormat:@"%@/FACache",documentsDirectory]
+                                      withIntermediateDirectories:YES
+                                                       attributes:nil
+                                                            error:&error];
+            if (error != nil) {
+                NSLog(@"error creating directory: %@", error);
+                //..
+            }
+        }
+        if([[NSFileManager defaultManager] fileExistsAtPath:dataPath]) {
+            hasCache = YES;
+            cacheResponse = [NSData dataWithContentsOfFile:dataPath]; //[[NSFileManager defaultManager] contentsAtPath:dataPath];
+            if (EncryptionKey && ![EncryptionKey isEqualToString:@""]) {
+                cacheResponse = [self DecryptAES:EncryptionKey value:cacheResponse];
+                //                [cacheResponse decryptWithKey:EncryptionKey];
+            }
+            if (cacheResponse) {
+                //parsing the JSON response
+                id jsonObject = [NSJSONSerialization
+                                 JSONObjectWithData:cacheResponse
+                                 options:NSJSONReadingAllowFragments
+                                 error:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    requestCompleted(jsonObject,200 ,object,NO);
+                });
+            }
+        }
+    });
+    
     //check internet connection before request
-    if (![self isNetworkAvailable]) {
+    if ([FARequest networkStatus] == NotReachable) {
         return NO;
     }
     
@@ -418,7 +510,7 @@
                          NSData *data,
                          NSError *error) {
          NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-//         NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
+         //         NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
          dispatch_async(dispatch_get_main_queue(), ^{
              
              NSError *errorParsing = nil;
@@ -428,50 +520,75 @@
                                   JSONObjectWithData:data
                                   options:NSJSONReadingAllowFragments
                                   error:&errorParsing];
-                 if (jsonObject) {
-                     requestCompleted(jsonObject,(int)[httpResponse statusCode] ,object);
-                     
-                     //send Notification center
-                     if (object) {
-                         [[NSNotificationCenter defaultCenter]
-                          postNotificationName:@"FARequestCompleted"
-                          object:self
-                          userInfo:@{@"result":jsonObject,
-                                     @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                     @"object":object}];
-                     } else {
-                         [[NSNotificationCenter defaultCenter]
-                          postNotificationName:@"FARequestCompleted"
-                          object:self
-                          userInfo:@{@"result":jsonObject,
-                                     @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]]}];
+                 //check if there is cache
+                 BOOL sendBlock=YES;
+                 NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                 if (hasCache && cacheResponse) {
+                     NSString *cacheResponseString = [[NSString alloc] initWithData:cacheResponse encoding:NSUTF8StringEncoding];
+                     if ([responseString isEqualToString:cacheResponseString]) {
+                         sendBlock=NO;
                      }
-                     
-                     
-                     
-                 } else {
-                     requestCompleted([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],(int)[httpResponse statusCode] , object);
-                     
-                     //send Notification center
-                     if (object) {
-                         [[NSNotificationCenter defaultCenter]
-                          postNotificationName:@"FARequestCompleted"
-                          object:self
-                          userInfo:@{@"result":[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],
-                                     @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                     @"object":object}];
+                     else
+                     {
+                         [self cachThisRequest:[NSString stringWithFormat:@"%@%@%@",[url absoluteString],Param,Headers ? [self GetJSON:Headers] : @""] Data:responseString];
+                     }
+                 }
+                 else if (Type == FARequestTypeGET)
+                 {
+                     [self cachThisRequest:[NSString stringWithFormat:@"%@%@%@",[url absoluteString],Param,Headers ? [self GetJSON:Headers] : @""] Data:responseString];
+                 }
+                 
+                 if(sendBlock)
+                 {
+                     if (jsonObject) {
+                         requestCompleted(jsonObject,(int)[httpResponse statusCode] ,object , hasCache);
+                         
+                         //send Notification center
+                         if (object) {
+                             [[NSNotificationCenter defaultCenter]
+                              postNotificationName:@"FARequestCompleted"
+                              object:self
+                              userInfo:@{@"result":jsonObject,
+                                         @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
+                                         @"object":object,
+                                         @"hasCach":[NSNumber numberWithBool:hasCache]}];
+                         } else {
+                             [[NSNotificationCenter defaultCenter]
+                              postNotificationName:@"FARequestCompleted"
+                              object:self
+                              userInfo:@{@"result":jsonObject,
+                                         @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
+                                         @"hasCach":[NSNumber numberWithBool:hasCache]}];
+                         }
+                         
+                         
+                         
                      } else {
-                         [[NSNotificationCenter defaultCenter]
-                          postNotificationName:@"FARequestCompleted"
-                          object:self
-                          userInfo:@{@"result":[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],
-                                     @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]]}];
+                         requestCompleted([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],(int)[httpResponse statusCode] , object , hasCache);
+                         
+                         //send Notification center
+                         if (object) {
+                             [[NSNotificationCenter defaultCenter]
+                              postNotificationName:@"FARequestCompleted"
+                              object:self
+                              userInfo:@{@"result":[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],
+                                         @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
+                                         @"object":object,
+                                         @"hasCach":[NSNumber numberWithBool:hasCache]}];
+                         } else {
+                             [[NSNotificationCenter defaultCenter]
+                              postNotificationName:@"FARequestCompleted"
+                              object:self
+                              userInfo:@{@"result":[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],
+                                         @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
+                                         @"hasCach":[NSNumber numberWithBool:hasCache]}];
+                         }
                      }
                  }
              }
              else
              {
-                 requestCompleted(nil,(int)[httpResponse statusCode] , object);
+                 requestCompleted(nil,(int)[httpResponse statusCode] , object , hasCache);
                  
                  //send Notification center
                  if (object) {
@@ -479,12 +596,14 @@
                       postNotificationName:@"FARequestCompleted"
                       object:self
                       userInfo:@{@"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                 @"object":object}];
+                                 @"object":object,
+                                 @"hasCach":[NSNumber numberWithBool:hasCache]}];
                  } else {
                      [[NSNotificationCenter defaultCenter]
                       postNotificationName:@"FARequestCompleted"
                       object:self
-                      userInfo:@{@"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]]}];
+                      userInfo:@{@"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
+                                 @"hasCach":[NSNumber numberWithBool:hasCache]}];
                  }
                  
              }
@@ -512,6 +631,19 @@
 }
 
 #pragma mark requests
+#pragma mark shortcut request
+//Full block request
+-(BOOL)sendRequestWithUrl:(NSURL*)url
+              RequestType:(FARequestType)Type
+{
+    return [self sendRequestWithUrl:url
+                            Headers:nil
+                          Parameter:@""
+                              Image:nil
+                        RequestType:Type
+                            timeOut:120
+                    EncodeParameter:NO];
+}
 
 #pragma mark shortcut request without timeOut , Encode and images
 //Keys and Values block request
@@ -789,7 +921,7 @@
                          NSData *data,
                          NSError *error) {
          NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-//         NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
+         //         NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
          if ((data && [data length] != 0) || error == nil){
              dispatch_async(dispatch_get_main_queue(), ^{
                  [self getResponse:data responseCode:(int)[httpResponse statusCode] URL:url];
@@ -887,6 +1019,131 @@
     && (flags & kSCNetworkReachabilityFlagsReachable);
     
     return canReach;
+}
+
+#pragma mark - caching
++(void)cachThisRequest:(NSString*)request Data:(NSString*)data
+{
+    // Use GCD's background queue
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        // Generate the file path
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"FACache/%@",[self getHashWithString:request]]];
+        
+        
+        if(![[NSFileManager defaultManager] fileExistsAtPath:[NSString stringWithFormat:@"%@/FACache",documentsDirectory]]) {
+            NSError * error = nil;
+            [[NSFileManager defaultManager] createDirectoryAtPath:[NSString stringWithFormat:@"%@/FACache",documentsDirectory]
+                                      withIntermediateDirectories:YES
+                                                       attributes:nil
+                                                            error:&error];
+            if (error != nil) {
+                NSLog(@"error creating directory: %@", error);
+                //..
+            }
+        }
+        
+        // Save it into file system
+        if (EncryptionKey && ![EncryptionKey isEqualToString:@""])
+        {
+            NSData* encryption = [self encryptWithKey:EncryptionKey value:data ];
+            [encryption writeToFile:dataPath atomically:YES];
+        }
+        else
+        {
+            [data writeToFile:dataPath atomically:YES];
+        }
+    });
+}
++(NSString *)getHashWithString:(NSString *)str {
+    const char *cStr = [str UTF8String];
+    unsigned char result[CC_SHA1_DIGEST_LENGTH];
+    CC_SHA1(cStr, strlen(cStr), result);
+    NSString *s = [NSString  stringWithFormat:
+                   @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+                   result[0], result[1], result[2], result[3], result[4],
+                   result[5], result[6], result[7],
+                   result[8], result[9], result[10], result[11], result[12],
+                   result[13], result[14], result[15],
+                   result[16], result[17], result[18], result[19]
+                   ];
+    
+    return s;
+}
+#pragma mark - encryption
+static NSString *EncryptionKey;
++(void) setEncryptionKey:(NSString*)key{EncryptionKey = key;}
+
++ (NSData*) encryptWithKey: (NSString *) key value:(NSString*)value
+{
+    NSData *encrypted = [value dataUsingEncoding:NSUTF8StringEncoding];
+    
+    // 'key' should be 32 bytes for AES256, will be null-padded otherwise
+    char keyPtr[kCCKeySizeAES256+1]; // room for terminator (unused)
+    bzero(keyPtr, sizeof(keyPtr)); // fill with zeroes (for padding)
+    
+    // fetch key data
+    [key getCString:keyPtr maxLength:sizeof(keyPtr) encoding:NSUTF8StringEncoding];
+    
+    NSUInteger dataLength = [encrypted length];
+    
+    //See the doc: For block ciphers, the output size will always be less than or
+    //equal to the input size plus the size of one block.
+    //That's why we need to add the size of one block here
+    size_t bufferSize = dataLength + kCCBlockSizeAES128;
+    void *buffer = malloc(bufferSize);
+    
+    size_t numBytesEncrypted = 0;
+    CCCryptorStatus cryptStatus = CCCrypt(kCCEncrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
+                                          keyPtr, kCCKeySizeAES256,
+                                          NULL /* initialization vector (optional) */,
+                                          [encrypted bytes], dataLength, /* input */
+                                          buffer, bufferSize, /* output */
+                                          &numBytesEncrypted);
+    if (cryptStatus == kCCSuccess) {
+        //the returned NSData takes ownership of the buffer and will free it on deallocation
+        return [NSData dataWithBytesNoCopy:buffer length:numBytesEncrypted];
+    }
+    
+    free(buffer); //free the buffer;
+    return nil;
+}
+
++ (NSData*)DecryptAES: (NSString*)key value:(NSData*)value
+{
+    
+    // 'key' should be 32 bytes for AES256, will be null-padded otherwise
+    char keyPtr[kCCKeySizeAES256+1]; // room for terminator (unused)
+    bzero(keyPtr, sizeof(keyPtr)); // fill with zeroes (for padding)
+    
+    // fetch key data
+    [key getCString:keyPtr maxLength:sizeof(keyPtr) encoding:NSUTF8StringEncoding];
+    
+    NSUInteger dataLength = [value length];
+    
+    //See the doc: For block ciphers, the output size will always be less than or
+    //equal to the input size plus the size of one block.
+    //That's why we need to add the size of one block here
+    size_t bufferSize = dataLength + kCCBlockSizeAES128;
+    void *buffer = malloc(bufferSize);
+    
+    size_t numBytesDecrypted = 0;
+    CCCryptorStatus cryptStatus = CCCrypt(kCCDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
+                                          keyPtr, kCCKeySizeAES256,
+                                          NULL /* initialization vector (optional) */,
+                                          [value bytes], dataLength, /* input */
+                                          buffer, bufferSize, /* output */
+                                          &numBytesDecrypted);
+    
+    if (cryptStatus == kCCSuccess) {
+        //the returned NSData takes ownership of the buffer and will free it on deallocation
+        return [NSData dataWithBytesNoCopy:buffer length:numBytesDecrypted];
+    }
+    
+    free(buffer); //free the buffer;
+    return nil;
+    
 }
 
 @end

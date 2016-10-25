@@ -31,37 +31,51 @@
 ////                                  NSLog(@"%@",obj.description);
 //                              }
 //                          }];
+    
     //check internet connection
-    reachability = [Reachability reachabilityForInternetConnection];
-    NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
+//    reachability = [Reachability reachabilityForInternetConnection];
+//    NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkChange:) name:kReachabilityChangedNotification object:nil];
+//    [reachability startNotifier];
+    
+    [FARequest setEncryptionKey:@"myEncryptionKey"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkChange:) name:kReachabilityChangedNotification object:nil];
-    [reachability startNotifier];
+    if([FARequest networkStatus] != NotReachable)
+        [self send];
 
 }
 
 - (void) handleNetworkChange:(NSNotification *)notice
 {
-    
-    NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
-    
-    if(remoteHostStatus == NotReachable) {NSLog(@"no");}
-    else if (remoteHostStatus == ReachableViaWiFi) {NSLog(@"wifi"); [self send];}
-    else if (remoteHostStatus == ReachableViaWWAN) {NSLog(@"cell"); [self send];}
+    if (notice.name == kReachabilityChangedNotification) {
+        switch ([FARequest networkStatus]) {
+            case NotReachable:
+            {NSLog(@"no");}
+                break;
+            case ReachableViaWiFi:
+            {NSLog(@"wifi"); [self send];}
+                break;
+            case ReachableViaWWAN:
+            {NSLog(@"cell"); [self send];}
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 -(void)send
 {
-    [FARequest sendParameterRequestWithUrl:[NSURL URLWithString:@"https://httpbin.org/get?name=fadi&age=29"]
-                                 Parameter:@""
-                               RequestType:FARequestTypeGET
-                          requestCompleted:^(id JSONResult, int responseCode , id object) {
-                              if (responseCode == 200) {
-                                  NSLog(@"%@",[JSONResult generatClassWithName:@"httpbin"]);
-                                  
-                                  NSLog(@"Block respons Name = %@",[[JSONResult objectForKey:@"args"] objectForKey:@"name"]);
-                                  NSLog(@"Block respons age = %@",[[JSONResult objectForKey:@"args"] objectForKey:@"age"]);
-                              }
-                          }];
+    [FARequest sendRequestWithUrl:[NSURL URLWithString:@"https://httpbin.org/get?name=fadiabuzant&age=29"]
+                      RequestType:FARequestTypeGET
+                 requestCompleted:^(id JSONResult, int responseCode , id object ,BOOL hasCache) {
+                     if (responseCode == 200) {
+                         NSLog(@"%@",[JSONResult generatClassWithName:@"httpbin"]);
+                         
+                         NSLog(@"Block respons Name = %@",[[JSONResult objectForKey:@"args"] objectForKey:@"name"]);
+                         NSLog(@"Block respons age = %@",[[JSONResult objectForKey:@"args"] objectForKey:@"age"]);
+                     }
+                 }];
     
     FARequest *request = [[FARequest alloc]initWithParent:self Tag:0];
     [request sendParameterRequestWithUrl:[NSURL URLWithString:@"https://httpbin.org/get?name=fadi&age=29"]

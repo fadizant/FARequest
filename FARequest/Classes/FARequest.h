@@ -20,8 +20,7 @@
 @end
 
 //Block
-typedef void (^requestCompleted)(id JSONResult ,int responseCode , id object);
-
+typedef void (^requestCompleted)(id JSONResult ,int responseCode , id object , BOOL hasCache);
 
 @interface FARequest : NSObject<NSURLConnectionDelegate,UIAlertViewDelegate>
 {
@@ -39,7 +38,27 @@ typedef NS_ENUM(NSInteger, FARequestType) {
 @property (nonatomic,strong) id delegate;
 @property int tag;
 
+#pragma mark - internet status
+
++(NetworkStatus) networkStatus;
+
+#pragma mark - Encryption
+
++(void) setEncryptionKey:(NSString*)key;
+
 #pragma mark - Use block requests
+#pragma mark shortcut request
+
+//Full block request
++(BOOL)sendRequestWithUrl:(NSURL*)url
+              RequestType:(FARequestType)Type
+         requestCompleted:(requestCompleted)requestCompleted;
+
+//Full block request With object
++(BOOL)sendRequestWithUrl:(NSURL*)url
+                   object:(id)object
+              RequestType:(FARequestType)Type
+         requestCompleted:(requestCompleted)requestCompleted;
 
 #pragma mark shortcut request without timeOut , Encode , images and header
 //Keys and Values block request
@@ -172,6 +191,11 @@ typedef NS_ENUM(NSInteger, FARequestType) {
 - (instancetype)initWithParent:(UIViewController *)view Tag:(int)tag;
 
 #pragma mark requests
+
+#pragma mark shortcut request
+//Full block request
+-(BOOL)sendRequestWithUrl:(NSURL*)url
+              RequestType:(FARequestType)Type;
 
 #pragma mark shortcut request without timeOut , Encode and images
 //Keys and Values block request
