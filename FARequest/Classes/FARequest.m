@@ -292,7 +292,7 @@ static Reachability *reachability;
     NSString *Parameter = @"";
     if (Data) {
         for (NSString* key in Data.allKeys) {
-            Parameter = [NSString stringWithFormat:@"%@=%@&",key,[Data objectForKey:key]];
+            Parameter = [Parameter stringByAppendingString:[NSString stringWithFormat:@"%@=%@&",key,[Data objectForKey:key]]];
         }
         Parameter = Parameter ? [Parameter substringToIndex:Parameter.length-1] : @"";
     }
