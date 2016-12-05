@@ -20,7 +20,7 @@
 @end
 
 //Block
-typedef void (^requestCompleted)(id JSONResult ,int responseCode , id object , BOOL hasCache);
+typedef void (^requestCompleted)(id JSONResult ,int responseCode , id object , BOOL fromCache);
 
 @interface FARequest : NSObject<NSURLConnectionDelegate,UIAlertViewDelegate>
 {
@@ -45,6 +45,11 @@ typedef NS_ENUM(NSInteger, FARequestType) {
 #pragma mark - Encryption
 
 +(void) setEncryptionKey:(NSString*)key;
+
+
+#pragma mark - Authorization
++(void)setUsername:(NSString*)value;
++(void)setPassword:(NSString*)value;
 
 #pragma mark - Use block requests
 #pragma mark shortcut request

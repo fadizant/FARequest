@@ -24,7 +24,7 @@
 //    [FARequest sendParameterRequestWithUrl:[NSURL URLWithString:@"https://api.github.com/repos/hadley/ggplot2/commits"]
 //                                 Parameter:@""
 //                               RequestType:FARequestTypeGET
-//                          requestCompleted:^(id JSONResult, int responseCode , id object) {
+//                          requestCompleted:^(id JSONResult, int responseCode , id object ,BOOL fromCache) {
 //                              if (responseCode == 200) {
 ////                                  [JSONResult createClassesFile:[JSONResult generatClassWithName:@"github"]];
 ////                                  NSMutableArray <github*> *obj = [JSONResult fillWithClass:[github class] Error:nil];
@@ -68,7 +68,7 @@
 {
     [FARequest sendRequestWithUrl:[NSURL URLWithString:@"https://httpbin.org/get?name=fadiabuzant&age=29"]
                       RequestType:FARequestTypeGET
-                 requestCompleted:^(id JSONResult, int responseCode , id object ,BOOL hasCache) {
+                 requestCompleted:^(id JSONResult, int responseCode , id object ,BOOL fromCache) {
                      if (responseCode == 200) {
                          NSLog(@"%@",[JSONResult generatClassWithName:@"httpbin"]);
                          

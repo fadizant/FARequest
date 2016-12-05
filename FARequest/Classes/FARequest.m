@@ -23,6 +23,16 @@ static Reachability *reachability;
     return [reachability currentReachabilityStatus];
 }
 
+#pragma mark - Authorization
+static NSString *username;
+static NSString *password;
+
++(void)setUsername:(NSString*)value{username=value;}
++(NSString*)username{return username;}
+
++(void)setPassword:(NSString*)value{password=value;}
++(NSString*)password{return password;}
+
 #pragma mark - Use block requests
 
 #pragma mark shortcut request
@@ -340,7 +350,7 @@ static Reachability *reachability;
          requestCompleted:(requestCompleted)requestCompleted
 {
     //read from cache
-    __block BOOL hasCache = NO;
+    //__block BOOL hasCache = NO;
     __block NSData * cacheResponse;
     // Use GCD's background queue
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
@@ -362,7 +372,7 @@ static Reachability *reachability;
             }
         }
         if([[NSFileManager defaultManager] fileExistsAtPath:dataPath]) {
-            hasCache = YES;
+            //            hasCache = YES;
             cacheResponse = [NSData dataWithContentsOfFile:dataPath]; //[[NSFileManager defaultManager] contentsAtPath:dataPath];
             if (EncryptionKey && ![EncryptionKey isEqualToString:@""]) {
                 cacheResponse = [self DecryptAES:EncryptionKey value:cacheResponse];
@@ -375,7 +385,7 @@ static Reachability *reachability;
                                  options:NSJSONReadingAllowFragments
                                  error:nil];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    requestCompleted(jsonObject,200 ,object,NO);
+                    requestCompleted(jsonObject,200 ,object,YES);
                 });
             }
         }
@@ -426,6 +436,14 @@ static Reachability *reachability;
             break;
         default:
             break;
+    }
+    
+    //Authorization
+    if (username && ![username isEqualToString:@""]) {
+        NSString *authStr = [NSString stringWithFormat:@"%@:%@", username, password];
+        NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
+        NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed]];
+        [urlRequest setValue:authValue forHTTPHeaderField:@"Authorization"];
     }
     
     //set headers
@@ -523,7 +541,7 @@ static Reachability *reachability;
                  //check if there is cache
                  BOOL sendBlock=YES;
                  NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                 if (hasCache && cacheResponse) {
+                 if (cacheResponse) {
                      NSString *cacheResponseString = [[NSString alloc] initWithData:cacheResponse encoding:NSUTF8StringEncoding];
                      if ([responseString isEqualToString:cacheResponseString]) {
                          sendBlock=NO;
@@ -541,7 +559,7 @@ static Reachability *reachability;
                  if(sendBlock)
                  {
                      if (jsonObject) {
-                         requestCompleted(jsonObject,(int)[httpResponse statusCode] ,object , hasCache);
+                         requestCompleted(jsonObject,(int)[httpResponse statusCode] ,object , NO);
                          
                          //send Notification center
                          if (object) {
@@ -551,20 +569,20 @@ static Reachability *reachability;
                               userInfo:@{@"result":jsonObject,
                                          @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
                                          @"object":object,
-                                         @"hasCach":[NSNumber numberWithBool:hasCache]}];
+                                         @"hasCach":[NSNumber numberWithBool:NO]}];
                          } else {
                              [[NSNotificationCenter defaultCenter]
                               postNotificationName:@"FARequestCompleted"
                               object:self
                               userInfo:@{@"result":jsonObject,
                                          @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                         @"hasCach":[NSNumber numberWithBool:hasCache]}];
+                                         @"hasCach":[NSNumber numberWithBool:NO]}];
                          }
                          
                          
                          
                      } else {
-                         requestCompleted([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],(int)[httpResponse statusCode] , object , hasCache);
+                         requestCompleted([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],(int)[httpResponse statusCode] , object , NO);
                          
                          //send Notification center
                          if (object) {
@@ -574,21 +592,21 @@ static Reachability *reachability;
                               userInfo:@{@"result":[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],
                                          @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
                                          @"object":object,
-                                         @"hasCach":[NSNumber numberWithBool:hasCache]}];
+                                         @"hasCach":[NSNumber numberWithBool:NO]}];
                          } else {
                              [[NSNotificationCenter defaultCenter]
                               postNotificationName:@"FARequestCompleted"
                               object:self
                               userInfo:@{@"result":[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],
                                          @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                         @"hasCach":[NSNumber numberWithBool:hasCache]}];
+                                         @"hasCach":[NSNumber numberWithBool:NO]}];
                          }
                      }
                  }
              }
              else
              {
-                 requestCompleted(nil,(int)[httpResponse statusCode] , object , hasCache);
+                 requestCompleted(nil,(int)[httpResponse statusCode] , object , NO);
                  
                  //send Notification center
                  if (object) {
@@ -597,13 +615,13 @@ static Reachability *reachability;
                       object:self
                       userInfo:@{@"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
                                  @"object":object,
-                                 @"hasCach":[NSNumber numberWithBool:hasCache]}];
+                                 @"hasCach":[NSNumber numberWithBool:NO]}];
                  } else {
                      [[NSNotificationCenter defaultCenter]
                       postNotificationName:@"FARequestCompleted"
                       object:self
                       userInfo:@{@"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                 @"hasCach":[NSNumber numberWithBool:hasCache]}];
+                                 @"hasCach":[NSNumber numberWithBool:NO]}];
                  }
                  
              }

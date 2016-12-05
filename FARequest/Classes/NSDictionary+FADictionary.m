@@ -133,17 +133,17 @@
                     if ([newClasses[i] containsString:className]) {
                         NSString *result = newClasses[i];
                         
-//                        NSString *imports = [classString substringWithRange:
-//                                               NSMakeRange([classString rangeOfString:@"#import <Foundation/Foundation.h> \n"].location,
-//                                                           [classString rangeOfString:@"@interface"].location - [classString rangeOfString:@"#import <Foundation/Foundation.h> \n"].location )];
-//                        
-//                        result = [result stringByReplacingOccurrencesOfString:@"#import <Foundation/Foundation.h> \n" withString:imports];
-//                        
-//                        NSString *properties = [classString substringWithRange:
-//                                             NSMakeRange([classString rangeOfString:className].location,
-//                                                         [classString rangeOfString:@"@end"].location - [classString rangeOfString:className].location )];
-//                        
-//                        result = [result stringByReplacingOccurrencesOfString:className withString:properties];
+                        //                        NSString *imports = [classString substringWithRange:
+                        //                                               NSMakeRange([classString rangeOfString:@"#import <Foundation/Foundation.h> \n"].location,
+                        //                                                           [classString rangeOfString:@"@interface"].location - [classString rangeOfString:@"#import <Foundation/Foundation.h> \n"].location )];
+                        //
+                        //                        result = [result stringByReplacingOccurrencesOfString:@"#import <Foundation/Foundation.h> \n" withString:imports];
+                        //
+                        //                        NSString *properties = [classString substringWithRange:
+                        //                                             NSMakeRange([classString rangeOfString:className].location,
+                        //                                                         [classString rangeOfString:@"@end"].location - [classString rangeOfString:className].location )];
+                        //
+                        //                        result = [result stringByReplacingOccurrencesOfString:className withString:properties];
                         
                         for (NSString *line in [[classString componentsSeparatedByString:@"\n"] reverseObjectEnumerator]) {
                             if (line.length &&
@@ -177,7 +177,7 @@
         }
     }
     
-//    for (NSString *classString in [data componentsSeparatedByString:@"//FadiSpliterString\n"]) {
+    //    for (NSString *classString in [data componentsSeparatedByString:@"//FadiSpliterString\n"]) {
     for (NSString *classString in newClasses) {
         if (classString.length) {
             @try {
@@ -308,11 +308,15 @@
                     }
                     
                 }
+                else if ([arg isKindOfClass:[NSArray class]] || [arg isKindOfClass:[NSMutableArray class]])
+                {
+                    [((NSMutableDictionary*)self) setObject:[arg dictionaryArray:&*error] forKey:name];
+                }
                 else if ([arg isKindOfClass:[NSString class]] ||
                          [arg isKindOfClass:[NSDate class]] ||
                          [arg isKindOfClass:[NSData class]] ||
-                         [arg isKindOfClass:[NSArray class]] ||
-                         [arg isKindOfClass:[NSDictionary class]])
+                         [arg isKindOfClass:[NSDictionary class]] ||
+                         [arg isKindOfClass:[NSMutableDictionary class]])
                     [((NSMutableDictionary*)self) setObject:arg forKey:name];
                 else
                 {
