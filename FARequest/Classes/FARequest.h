@@ -12,6 +12,7 @@
 #import "NSDate+FADate.h"
 #import "NSDictionary+FADictionary.h"
 #import "Reachability.h"
+#import "FADownloader.h"
 
 // Protocol definition starts here
 @protocol FARequestDelegate <NSObject>
@@ -22,7 +23,7 @@
 //Block
 typedef void (^requestCompleted)(id JSONResult ,int responseCode , id object , BOOL fromCache);
 
-@interface FARequest : NSObject<NSURLConnectionDelegate,UIAlertViewDelegate>
+@interface FARequest : NSObject<NSURLConnectionDelegate,UIAlertViewDelegate,NSURLSessionDelegate>
 {
     // Delegate to respond back
     id <FARequestDelegate> _delegate;
@@ -56,6 +57,17 @@ typedef NS_ENUM(NSInteger, FARequestType) {
 
 //Full block request
 +(BOOL)sendRequestWithUrl:(NSURL*)url
+         requestCompleted:(requestCompleted)requestCompleted;
+
+//Full block request With object
++(BOOL)sendRequestWithUrl:(NSURL*)url
+                   object:(id)object
+         requestCompleted:(requestCompleted)requestCompleted;
+
+#pragma mark shortcut request with type
+
+//Full block request
++(BOOL)sendRequestWithUrl:(NSURL*)url
               RequestType:(FARequestType)Type
          requestCompleted:(requestCompleted)requestCompleted;
 
@@ -65,11 +77,33 @@ typedef NS_ENUM(NSInteger, FARequestType) {
               RequestType:(FARequestType)Type
          requestCompleted:(requestCompleted)requestCompleted;
 
+#pragma mark shortcut request with cache
+
+//Full block request
++(BOOL)sendRequestWithUrl:(NSURL*)url
+              RequestType:(FARequestType)Type
+                 useCache:(BOOL)useCashe
+         requestCompleted:(requestCompleted)requestCompleted;
+
+//Full block request With object
++(BOOL)sendRequestWithUrl:(NSURL*)url
+                   object:(id)object
+              RequestType:(FARequestType)Type
+                 useCache:(BOOL)useCashe
+         requestCompleted:(requestCompleted)requestCompleted;
+
 #pragma mark shortcut request without timeOut , Encode , images and header
 //Keys and Values block request
 +(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
                          KeysAndValues:(NSMutableDictionary *)Data
                            RequestType:(FARequestType)Type
+                      requestCompleted:(requestCompleted)requestCompleted;
+
+//Keys and Values block request with cache
++(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
+                         KeysAndValues:(NSMutableDictionary *)Data
+                           RequestType:(FARequestType)Type
+                              useCache:(BOOL)useCashe
                       requestCompleted:(requestCompleted)requestCompleted;
 
 //JSON block request
@@ -78,10 +112,18 @@ typedef NS_ENUM(NSInteger, FARequestType) {
                   RequestType:(FARequestType)Type
              requestCompleted:(requestCompleted)requestCompleted;
 
+//JSON block request with cache
++(BOOL)sendJSONRequestWithUrl:(NSURL*)url
+                         JSON:(NSDictionary *)JSON
+                  RequestType:(FARequestType)Type
+                     useCache:(BOOL)useCashe
+             requestCompleted:(requestCompleted)requestCompleted;
+
 //Full block request
 +(BOOL)sendParameterRequestWithUrl:(NSURL*)url
                          Parameter:(NSString *)Param
                        RequestType:(FARequestType)Type
+                          useCache:(BOOL)useCashe
                   requestCompleted:(requestCompleted)requestCompleted;
 
 //Full block request With object
@@ -89,6 +131,7 @@ typedef NS_ENUM(NSInteger, FARequestType) {
                          Parameter:(NSString *)Param
                             object:(id)object
                        RequestType:(FARequestType)Type
+                          useCache:(BOOL)useCashe
                   requestCompleted:(requestCompleted)requestCompleted;
 
 
@@ -98,6 +141,7 @@ typedef NS_ENUM(NSInteger, FARequestType) {
                                Headers:(NSDictionary *)Headers
                          KeysAndValues:(NSMutableDictionary *)Data
                            RequestType:(FARequestType)Type
+                              useCache:(BOOL)useCashe
                       requestCompleted:(requestCompleted)requestCompleted;
 
 //JSON block request
@@ -105,6 +149,7 @@ typedef NS_ENUM(NSInteger, FARequestType) {
                       Headers:(NSDictionary *)Headers
                          JSON:(NSDictionary *)JSON
                   RequestType:(FARequestType)Type
+                     useCache:(BOOL)useCashe
              requestCompleted:(requestCompleted)requestCompleted;
 
 //Full block request
@@ -112,6 +157,7 @@ typedef NS_ENUM(NSInteger, FARequestType) {
                            Headers:(NSDictionary *)Headers
                          Parameter:(NSString *)Param
                        RequestType:(FARequestType)Type
+                          useCache:(BOOL)useCashe
                   requestCompleted:(requestCompleted)requestCompleted;
 
 //Full block request With object
@@ -120,6 +166,7 @@ typedef NS_ENUM(NSInteger, FARequestType) {
                          Parameter:(NSString *)Param
                             object:(id)object
                        RequestType:(FARequestType)Type
+                          useCache:(BOOL)useCashe
                   requestCompleted:(requestCompleted)requestCompleted;
 
 #pragma mark shortcut request without timeOut and Encode
@@ -129,6 +176,7 @@ typedef NS_ENUM(NSInteger, FARequestType) {
                          KeysAndValues:(NSMutableDictionary *)Data
                                  Image:(NSMutableArray <UIImage *>*)images
                            RequestType:(FARequestType)Type
+                              useCache:(BOOL)useCashe
                       requestCompleted:(requestCompleted)requestCompleted;
 
 //JSON block request
@@ -137,6 +185,7 @@ typedef NS_ENUM(NSInteger, FARequestType) {
                          JSON:(NSDictionary *)JSON
                         Image:(NSMutableArray <UIImage *>*)images
                   RequestType:(FARequestType)Type
+                     useCache:(BOOL)useCashe
              requestCompleted:(requestCompleted)requestCompleted;
 
 //Full block request
@@ -145,6 +194,7 @@ typedef NS_ENUM(NSInteger, FARequestType) {
                          Parameter:(NSString *)Param
                              Image:(NSMutableArray <UIImage *>*)images
                        RequestType:(FARequestType)Type
+                          useCache:(BOOL)useCashe
                   requestCompleted:(requestCompleted)requestCompleted;
 
 //Full block request With object
@@ -154,6 +204,7 @@ typedef NS_ENUM(NSInteger, FARequestType) {
                              Image:(NSMutableArray <UIImage *>*)images
                             object:(id)object
                        RequestType:(FARequestType)Type
+                          useCache:(BOOL)useCashe
                   requestCompleted:(requestCompleted)requestCompleted;
 
 #pragma mark full request
@@ -166,6 +217,7 @@ typedef NS_ENUM(NSInteger, FARequestType) {
                            RequestType:(FARequestType)Type
                                timeOut:(float)timeOut
                        EncodeParameter:(BOOL)Encoding
+                              useCache:(BOOL)useCashe
                       requestCompleted:(requestCompleted)requestCompleted;
 
 //JSON block request
@@ -176,6 +228,7 @@ typedef NS_ENUM(NSInteger, FARequestType) {
                   RequestType:(FARequestType)Type
                       timeOut:(float)timeOut
               EncodeParameter:(BOOL)Encoding
+                     useCache:(BOOL)useCashe
              requestCompleted:(requestCompleted)requestCompleted;
 
 //Full block request
@@ -187,6 +240,7 @@ typedef NS_ENUM(NSInteger, FARequestType) {
                   timeOut:(float)timeOut
                    object:(id)object
           EncodeParameter:(BOOL)Encoding
+                 useCache:(BOOL)useCashe
          requestCompleted:(requestCompleted)requestCompleted;
 
 #pragma mark - Use delegat request
@@ -272,4 +326,6 @@ typedef NS_ENUM(NSInteger, FARequestType) {
                   timeOut:(float)timeOut
           EncodeParameter:(BOOL)Encoding;
 
+#pragma mark - caching
++(BOOL)isCached:(NSURL*)url Headers:(NSDictionary*)Headers;
 @end

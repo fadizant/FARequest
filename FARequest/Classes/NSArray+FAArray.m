@@ -235,4 +235,28 @@
 }
 
 
+//fix duplicate items
+-(NSMutableArray*)addArrayWithoutDuplicateByProparty:(NSString*)propartyName Array:(NSMutableArray*)array{
+    NSMutableArray *mutableArray = [[NSMutableArray alloc]initWithArray:self];
+    for (id object in array) {
+        @try {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"%@ == %%@",propartyName] , [object valueForKey:propartyName]];
+            NSArray *filteredArray = [mutableArray filteredArrayUsingPredicate:predicate];
+            if (filteredArray.count) {
+                //update array item if found
+                [mutableArray replaceObjectAtIndex:[self indexOfObject:filteredArray.firstObject] withObject:object];
+            } else {
+                //add item if not exist
+                [mutableArray addObject:object];
+            }
+        } @catch (NSException *exception) {
+            [mutableArray addObject:object];
+        } @finally {
+            
+        }
+        
+    }
+    return mutableArray;
+}
+
 @end

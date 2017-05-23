@@ -1,759 +1,1976 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		050D5243D7F332006249FF187537DAE1 /* FARequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 04D2A4D5CFD60B3A109483242DD0238D /* FARequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		147574A53F222C072D6AFA93B4D11A8C /* FARequest-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3562CA293E1C9162D218813BC3B0BBEB /* FARequest-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		34E1A93C3C0B86CBC3AC3A0124559B29 /* UILabel+FALabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A286DD076D463F7FC9B4055BA80521C6 /* UILabel+FALabel.m */; };
-		3AC58C4CE8F09B77B784BFA03B3C1359 /* Pods-FARequest_Example-FARequest_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EA10AEB99B0539ACF8207EF9A1909D4 /* Pods-FARequest_Example-FARequest_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3E0B423A4FE43534D9B5B90634FF1A38 /* Pods-FARequest_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EC855C249341C6AFC997F8E7A51E2937 /* Pods-FARequest_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4D4911FF362D4C19ED42BB4E106F20E4 /* NSArray+FAArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 59E9AD308F6E667A19A9DEF09460E1D9 /* NSArray+FAArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		585D04A78DF1B15B842AA438537F5DF1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C97A94A21A4CAD5F46ED2321A7530B60 /* Reachability.m */; };
-		60AEE2228F5E8F858DD7D63F61376D2A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		6C19D5A2BDB49933A7AC6E69E83D2061 /* NSDictionary+FADictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B38D9F4D736190506DC64FC8609BFFE /* NSDictionary+FADictionary.m */; };
-		7600C2077DC34C7CC092B150ACF59F96 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		7FEB670ADF59CC579C42946D21F73A07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		81C00D6A56E1B7FB92BCF1F7B4F5954B /* NSArray+FAArray.m in Sources */ = {isa = PBXBuildFile; fileRef = F8E0A0383D3DD8D611CF4059902DC3FD /* NSArray+FAArray.m */; };
-		8262F03B3DA8AFDC0BDE75760A6D679E /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = A50B3D01396FB12EEB56A217D8E91907 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		84501BEB3951536E8950DE1CB2B2831E /* Pods-FARequest_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0BE62B6AC66AEC7597E49C2010DEBE /* Pods-FARequest_Example-dummy.m */; };
-		969F35470141DF18B4D1C0C64FD12084 /* NSDate+FADate.h in Headers */ = {isa = PBXBuildFile; fileRef = 686735579227A35DEADD8AAC5B021003 /* NSDate+FADate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A80C93C1F53E9F8C679EB43E612030FD /* UILabel+FALabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C126D9D02875DD326ED2A754E053A0C /* UILabel+FALabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D74531C3987CD24A3B87E844EC65B28C /* NSDate+FADate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2653C27ECC81EF99EDFB3BD0D40848 /* NSDate+FADate.m */; };
-		E1742F6B7085A05CC5CD0535E147A137 /* FARequest-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED3FC2E6941598295415BACC5E20F7 /* FARequest-dummy.m */; };
-		E592863800A76BC23120B93BAA8B8308 /* Pods-FARequest_Example-FARequest_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8D5428C17CEF366073B13563010ABB /* Pods-FARequest_Example-FARequest_Tests-dummy.m */; };
-		E7D513CC6F85126FAC59775CD033EDF6 /* NSDictionary+FADictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 3830DB19FFB5DFE3D237011424CBA4E5 /* NSDictionary+FADictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FFB3D96350731271D6218582FF7B6BB6 /* FARequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AC616F6A5BF7BE79A12064F3869441E2 /* FARequest.m */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		41789F0DE8DBE73C546559A23829959B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 58FDB0F74D752D931E5A4368FA25F81A;
-			remoteInfo = FARequest;
-		};
-		EE171462B404AE38391AC21B7417C95C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 58FDB0F74D752D931E5A4368FA25F81A;
-			remoteInfo = FARequest;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		04D2A4D5CFD60B3A109483242DD0238D /* FARequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FARequest.h; sourceTree = "<group>"; };
-		11293A5D7C5478995C37314FAA21497C /* Pods-FARequest_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FARequest_Example-frameworks.sh"; sourceTree = "<group>"; };
-		232EC061E4D30E79C3E17E01C4E8792D /* Pods_FARequest_Example_FARequest_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FARequest_Example_FARequest_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		28ED3FC2E6941598295415BACC5E20F7 /* FARequest-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FARequest-dummy.m"; sourceTree = "<group>"; };
-		2EA10AEB99B0539ACF8207EF9A1909D4 /* Pods-FARequest_Example-FARequest_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FARequest_Example-FARequest_Tests-umbrella.h"; sourceTree = "<group>"; };
-		2F7213EC86A94C0F45863D61B4C2B2E3 /* Pods-FARequest_Example-FARequest_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FARequest_Example-FARequest_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		3562CA293E1C9162D218813BC3B0BBEB /* FARequest-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FARequest-umbrella.h"; sourceTree = "<group>"; };
-		3830DB19FFB5DFE3D237011424CBA4E5 /* NSDictionary+FADictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+FADictionary.h"; sourceTree = "<group>"; };
-		3C126D9D02875DD326ED2A754E053A0C /* UILabel+FALabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UILabel+FALabel.h"; sourceTree = "<group>"; };
-		3E0BE62B6AC66AEC7597E49C2010DEBE /* Pods-FARequest_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FARequest_Example-dummy.m"; sourceTree = "<group>"; };
-		40EFC843D25F92C067C4DDB0F76B63EA /* Pods-FARequest_Example-FARequest_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FARequest_Example-FARequest_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4A445504AA29C47911954C55C0002A7E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4E003E07599ADD53CEAFE95DE1EAAAB1 /* Pods-FARequest_Example-FARequest_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FARequest_Example-FARequest_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		5725B4A102C167E0443ABDF9AFAE854F /* FARequest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FARequest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		59E9AD308F6E667A19A9DEF09460E1D9 /* NSArray+FAArray.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSArray+FAArray.h"; sourceTree = "<group>"; };
-		686735579227A35DEADD8AAC5B021003 /* NSDate+FADate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSDate+FADate.h"; sourceTree = "<group>"; };
-		7B38D9F4D736190506DC64FC8609BFFE /* NSDictionary+FADictionary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+FADictionary.m"; sourceTree = "<group>"; };
-		875F9E00C8F6FDC4182F04DF2F4CD048 /* Pods-FARequest_Example-FARequest_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FARequest_Example-FARequest_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		87C032BEDD6103B5E02AEFAF255651B5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		88AAE28768911FF070DFDED2C93910FD /* Pods-FARequest_Example-FARequest_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FARequest_Example-FARequest_Tests-resources.sh"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A2389A815E0767BDECD7975DA6053460 /* FARequest.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FARequest.modulemap; sourceTree = "<group>"; };
-		A286DD076D463F7FC9B4055BA80521C6 /* UILabel+FALabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UILabel+FALabel.m"; sourceTree = "<group>"; };
-		A50B3D01396FB12EEB56A217D8E91907 /* Reachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		A875881DC39E360358529696C6D289C9 /* Pods-FARequest_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FARequest_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		AC616F6A5BF7BE79A12064F3869441E2 /* FARequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FARequest.m; sourceTree = "<group>"; };
-		AF5D40036FE3BCCCBE40760CA2FD3674 /* Pods-FARequest_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-FARequest_Example.modulemap"; sourceTree = "<group>"; };
-		B391F7CE3F4BF60C073F2DEA02856446 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BACE40616A226039F2A4F43980B5854B /* FARequest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FARequest.xcconfig; sourceTree = "<group>"; };
-		C97A94A21A4CAD5F46ED2321A7530B60 /* Reachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D66A196BE8A2730A790EFD78570A6DD1 /* Pods-FARequest_Example-FARequest_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-FARequest_Example-FARequest_Tests.modulemap"; sourceTree = "<group>"; };
-		D85B5038879926E5E2E1CBE789B61ABF /* Pods-FARequest_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FARequest_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		D87D504B13E0AD822AF71F587FDB43EA /* Pods_FARequest_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FARequest_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D953271523EAAA59D99B197745562FDA /* Pods-FARequest_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FARequest_Example.release.xcconfig"; sourceTree = "<group>"; };
-		DB94DD93BB818223637AED2624BEAEE6 /* Pods-FARequest_Example-FARequest_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FARequest_Example-FARequest_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		EB04CAA3996F30FF33482AD1209329B4 /* Pods-FARequest_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FARequest_Example-resources.sh"; sourceTree = "<group>"; };
-		EC855C249341C6AFC997F8E7A51E2937 /* Pods-FARequest_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FARequest_Example-umbrella.h"; sourceTree = "<group>"; };
-		EC8D5428C17CEF366073B13563010ABB /* Pods-FARequest_Example-FARequest_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FARequest_Example-FARequest_Tests-dummy.m"; sourceTree = "<group>"; };
-		ED2653C27ECC81EF99EDFB3BD0D40848 /* NSDate+FADate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FADate.m"; sourceTree = "<group>"; };
-		EDB495AECB9789BE83777AAD1F3824FB /* Pods-FARequest_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FARequest_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		F592DBE949F04256AED78372072EFD4A /* FARequest-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FARequest-prefix.pch"; sourceTree = "<group>"; };
-		F8E0A0383D3DD8D611CF4059902DC3FD /* NSArray+FAArray.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FAArray.m"; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		69CCB986018C2F8CB03D20FB2708FC5C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7FEB670ADF59CC579C42946D21F73A07 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6B7963BFDD22DEE1A5FB53352F8F2657 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7600C2077DC34C7CC092B150ACF59F96 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8397872AE3197C99C12B67F69107ACC6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				60AEE2228F5E8F858DD7D63F61376D2A /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		16DCB1F0756E2000A28472DEBB6B174E /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				87B8F2456D4395812CB3829F4B371B23 /* FARequest */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		385EE2C56CEE04196006F23C52874B02 /* Pods-FARequest_Example-FARequest_Tests */ = {
-			isa = PBXGroup;
-			children = (
-				87C032BEDD6103B5E02AEFAF255651B5 /* Info.plist */,
-				D66A196BE8A2730A790EFD78570A6DD1 /* Pods-FARequest_Example-FARequest_Tests.modulemap */,
-				40EFC843D25F92C067C4DDB0F76B63EA /* Pods-FARequest_Example-FARequest_Tests-acknowledgements.markdown */,
-				DB94DD93BB818223637AED2624BEAEE6 /* Pods-FARequest_Example-FARequest_Tests-acknowledgements.plist */,
-				EC8D5428C17CEF366073B13563010ABB /* Pods-FARequest_Example-FARequest_Tests-dummy.m */,
-				875F9E00C8F6FDC4182F04DF2F4CD048 /* Pods-FARequest_Example-FARequest_Tests-frameworks.sh */,
-				88AAE28768911FF070DFDED2C93910FD /* Pods-FARequest_Example-FARequest_Tests-resources.sh */,
-				2EA10AEB99B0539ACF8207EF9A1909D4 /* Pods-FARequest_Example-FARequest_Tests-umbrella.h */,
-				2F7213EC86A94C0F45863D61B4C2B2E3 /* Pods-FARequest_Example-FARequest_Tests.debug.xcconfig */,
-				4E003E07599ADD53CEAFE95DE1EAAAB1 /* Pods-FARequest_Example-FARequest_Tests.release.xcconfig */,
-			);
-			name = "Pods-FARequest_Example-FARequest_Tests";
-			path = "Target Support Files/Pods-FARequest_Example-FARequest_Tests";
-			sourceTree = "<group>";
-		};
-		46978C66BE291748A6C45433433F16EC /* FARequest */ = {
-			isa = PBXGroup;
-			children = (
-				B68F82BB327A7B0B0219BE052CB65609 /* Classes */,
-			);
-			path = FARequest;
-			sourceTree = "<group>";
-		};
-		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		79905694F4AF81D731E6AD838A9AAB3A /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				A2389A815E0767BDECD7975DA6053460 /* FARequest.modulemap */,
-				BACE40616A226039F2A4F43980B5854B /* FARequest.xcconfig */,
-				28ED3FC2E6941598295415BACC5E20F7 /* FARequest-dummy.m */,
-				F592DBE949F04256AED78372072EFD4A /* FARequest-prefix.pch */,
-				3562CA293E1C9162D218813BC3B0BBEB /* FARequest-umbrella.h */,
-				B391F7CE3F4BF60C073F2DEA02856446 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/FARequest";
-			sourceTree = "<group>";
-		};
-		7DB346D0F39D3F0E887471402A8071AB = {
-			isa = PBXGroup;
-			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				16DCB1F0756E2000A28472DEBB6B174E /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				CCBD8B906F4351857FE5A907FA24CB52 /* Products */,
-				B9D54F7D5B2D166557105FA01CF1334C /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		87B8F2456D4395812CB3829F4B371B23 /* FARequest */ = {
-			isa = PBXGroup;
-			children = (
-				46978C66BE291748A6C45433433F16EC /* FARequest */,
-				79905694F4AF81D731E6AD838A9AAB3A /* Support Files */,
-			);
-			name = FARequest;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		ADE65D9CE7D8050B6F53369D777A237F /* Pods-FARequest_Example */ = {
-			isa = PBXGroup;
-			children = (
-				4A445504AA29C47911954C55C0002A7E /* Info.plist */,
-				AF5D40036FE3BCCCBE40760CA2FD3674 /* Pods-FARequest_Example.modulemap */,
-				A875881DC39E360358529696C6D289C9 /* Pods-FARequest_Example-acknowledgements.markdown */,
-				EDB495AECB9789BE83777AAD1F3824FB /* Pods-FARequest_Example-acknowledgements.plist */,
-				3E0BE62B6AC66AEC7597E49C2010DEBE /* Pods-FARequest_Example-dummy.m */,
-				11293A5D7C5478995C37314FAA21497C /* Pods-FARequest_Example-frameworks.sh */,
-				EB04CAA3996F30FF33482AD1209329B4 /* Pods-FARequest_Example-resources.sh */,
-				EC855C249341C6AFC997F8E7A51E2937 /* Pods-FARequest_Example-umbrella.h */,
-				D85B5038879926E5E2E1CBE789B61ABF /* Pods-FARequest_Example.debug.xcconfig */,
-				D953271523EAAA59D99B197745562FDA /* Pods-FARequest_Example.release.xcconfig */,
-			);
-			name = "Pods-FARequest_Example";
-			path = "Target Support Files/Pods-FARequest_Example";
-			sourceTree = "<group>";
-		};
-		B68F82BB327A7B0B0219BE052CB65609 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				04D2A4D5CFD60B3A109483242DD0238D /* FARequest.h */,
-				AC616F6A5BF7BE79A12064F3869441E2 /* FARequest.m */,
-				59E9AD308F6E667A19A9DEF09460E1D9 /* NSArray+FAArray.h */,
-				F8E0A0383D3DD8D611CF4059902DC3FD /* NSArray+FAArray.m */,
-				686735579227A35DEADD8AAC5B021003 /* NSDate+FADate.h */,
-				ED2653C27ECC81EF99EDFB3BD0D40848 /* NSDate+FADate.m */,
-				3830DB19FFB5DFE3D237011424CBA4E5 /* NSDictionary+FADictionary.h */,
-				7B38D9F4D736190506DC64FC8609BFFE /* NSDictionary+FADictionary.m */,
-				A50B3D01396FB12EEB56A217D8E91907 /* Reachability.h */,
-				C97A94A21A4CAD5F46ED2321A7530B60 /* Reachability.m */,
-				3C126D9D02875DD326ED2A754E053A0C /* UILabel+FALabel.h */,
-				A286DD076D463F7FC9B4055BA80521C6 /* UILabel+FALabel.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		B9D54F7D5B2D166557105FA01CF1334C /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				ADE65D9CE7D8050B6F53369D777A237F /* Pods-FARequest_Example */,
-				385EE2C56CEE04196006F23C52874B02 /* Pods-FARequest_Example-FARequest_Tests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CCBD8B906F4351857FE5A907FA24CB52 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5725B4A102C167E0443ABDF9AFAE854F /* FARequest.framework */,
-				D87D504B13E0AD822AF71F587FDB43EA /* Pods_FARequest_Example.framework */,
-				232EC061E4D30E79C3E17E01C4E8792D /* Pods_FARequest_Example_FARequest_Tests.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		1223D338987813040DE7403D9E4151CA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3E0B423A4FE43534D9B5B90634FF1A38 /* Pods-FARequest_Example-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5301B5D54DB8A53AFD47DAD1B89C8DFC /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				147574A53F222C072D6AFA93B4D11A8C /* FARequest-umbrella.h in Headers */,
-				050D5243D7F332006249FF187537DAE1 /* FARequest.h in Headers */,
-				4D4911FF362D4C19ED42BB4E106F20E4 /* NSArray+FAArray.h in Headers */,
-				969F35470141DF18B4D1C0C64FD12084 /* NSDate+FADate.h in Headers */,
-				E7D513CC6F85126FAC59775CD033EDF6 /* NSDictionary+FADictionary.h in Headers */,
-				8262F03B3DA8AFDC0BDE75760A6D679E /* Reachability.h in Headers */,
-				A80C93C1F53E9F8C679EB43E612030FD /* UILabel+FALabel.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C1AAD67AF21236E4054E878414C07844 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3AC58C4CE8F09B77B784BFA03B3C1359 /* Pods-FARequest_Example-FARequest_Tests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
-/* Begin PBXNativeTarget section */
-		58FDB0F74D752D931E5A4368FA25F81A /* FARequest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 454E7FDFD963CFF4F5DBF7F8BFBB5E81 /* Build configuration list for PBXNativeTarget "FARequest" */;
-			buildPhases = (
-				67A147A5B6F4CD236303AF74E7BD68F6 /* Sources */,
-				69CCB986018C2F8CB03D20FB2708FC5C /* Frameworks */,
-				5301B5D54DB8A53AFD47DAD1B89C8DFC /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = FARequest;
-			productName = FARequest;
-			productReference = 5725B4A102C167E0443ABDF9AFAE854F /* FARequest.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		BD482446C81C9100846FFB510D6B29A1 /* Pods-FARequest_Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C695203C2C60B6DD716D21205458313F /* Build configuration list for PBXNativeTarget "Pods-FARequest_Example" */;
-			buildPhases = (
-				2E7A2CDD7A2054C1213CB3F0612298CD /* Sources */,
-				8397872AE3197C99C12B67F69107ACC6 /* Frameworks */,
-				1223D338987813040DE7403D9E4151CA /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				32FE8C62A71D25B47293223D44B8C9BB /* PBXTargetDependency */,
-			);
-			name = "Pods-FARequest_Example";
-			productName = "Pods-FARequest_Example";
-			productReference = D87D504B13E0AD822AF71F587FDB43EA /* Pods_FARequest_Example.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		C866CFBD80CBBC62F7CC165A9D0E59E2 /* Pods-FARequest_Example-FARequest_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0BE8A936393E47305961FBF1A8A7A227 /* Build configuration list for PBXNativeTarget "Pods-FARequest_Example-FARequest_Tests" */;
-			buildPhases = (
-				89C9922C035A9F29D1ABC3A1D7C36578 /* Sources */,
-				6B7963BFDD22DEE1A5FB53352F8F2657 /* Frameworks */,
-				C1AAD67AF21236E4054E878414C07844 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CFC78325F05F12BC0714F8E5D915340A /* PBXTargetDependency */,
-			);
-			name = "Pods-FARequest_Example-FARequest_Tests";
-			productName = "Pods-FARequest_Example-FARequest_Tests";
-			productReference = 232EC061E4D30E79C3E17E01C4E8792D /* Pods_FARequest_Example_FARequest_Tests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0700;
-			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = CCBD8B906F4351857FE5A907FA24CB52 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				58FDB0F74D752D931E5A4368FA25F81A /* FARequest */,
-				BD482446C81C9100846FFB510D6B29A1 /* Pods-FARequest_Example */,
-				C866CFBD80CBBC62F7CC165A9D0E59E2 /* Pods-FARequest_Example-FARequest_Tests */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXSourcesBuildPhase section */
-		2E7A2CDD7A2054C1213CB3F0612298CD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				84501BEB3951536E8950DE1CB2B2831E /* Pods-FARequest_Example-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		67A147A5B6F4CD236303AF74E7BD68F6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E1742F6B7085A05CC5CD0535E147A137 /* FARequest-dummy.m in Sources */,
-				FFB3D96350731271D6218582FF7B6BB6 /* FARequest.m in Sources */,
-				81C00D6A56E1B7FB92BCF1F7B4F5954B /* NSArray+FAArray.m in Sources */,
-				D74531C3987CD24A3B87E844EC65B28C /* NSDate+FADate.m in Sources */,
-				6C19D5A2BDB49933A7AC6E69E83D2061 /* NSDictionary+FADictionary.m in Sources */,
-				585D04A78DF1B15B842AA438537F5DF1 /* Reachability.m in Sources */,
-				34E1A93C3C0B86CBC3AC3A0124559B29 /* UILabel+FALabel.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		89C9922C035A9F29D1ABC3A1D7C36578 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E592863800A76BC23120B93BAA8B8308 /* Pods-FARequest_Example-FARequest_Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		32FE8C62A71D25B47293223D44B8C9BB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FARequest;
-			target = 58FDB0F74D752D931E5A4368FA25F81A /* FARequest */;
-			targetProxy = 41789F0DE8DBE73C546559A23829959B /* PBXContainerItemProxy */;
-		};
-		CFC78325F05F12BC0714F8E5D915340A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FARequest;
-			target = 58FDB0F74D752D931E5A4368FA25F81A /* FARequest */;
-			targetProxy = EE171462B404AE38391AC21B7417C95C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin XCBuildConfiguration section */
-		1992559688AF31988BD23906076A1892 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BACE40616A226039F2A4F43980B5854B /* FARequest.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FARequest/FARequest-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FARequest/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FARequest/FARequest.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = FARequest;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		8DED8AD26D381A6ACFF202E5217EC498 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		9A24E0A9897E01FDD27F7387BFAC004B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D953271523EAAA59D99B197745562FDA /* Pods-FARequest_Example.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-FARequest_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FARequest_Example/Pods-FARequest_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FARequest_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		9E1E4E48AF2EAB23169E611BF694090A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_DEBUG=1",
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Debug;
-		};
-		B499B48C79AF55B75A64BED3D5906D8A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E003E07599ADD53CEAFE95DE1EAAAB1 /* Pods-FARequest_Example-FARequest_Tests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-FARequest_Example-FARequest_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FARequest_Example-FARequest_Tests/Pods-FARequest_Example-FARequest_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FARequest_Example_FARequest_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		D050BE6AFDF71BA9054128696E622F37 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F7213EC86A94C0F45863D61B4C2B2E3 /* Pods-FARequest_Example-FARequest_Tests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-FARequest_Example-FARequest_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FARequest_Example-FARequest_Tests/Pods-FARequest_Example-FARequest_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FARequest_Example_FARequest_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		DD2803963107E5594B0F24B35C4CDDA6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BACE40616A226039F2A4F43980B5854B /* FARequest.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FARequest/FARequest-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FARequest/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FARequest/FARequest.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = FARequest;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		E783BB695D7E04151C1220CE9D077876 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D85B5038879926E5E2E1CBE789B61ABF /* Pods-FARequest_Example.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-FARequest_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FARequest_Example/Pods-FARequest_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FARequest_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		0BE8A936393E47305961FBF1A8A7A227 /* Build configuration list for PBXNativeTarget "Pods-FARequest_Example-FARequest_Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D050BE6AFDF71BA9054128696E622F37 /* Debug */,
-				B499B48C79AF55B75A64BED3D5906D8A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9E1E4E48AF2EAB23169E611BF694090A /* Debug */,
-				8DED8AD26D381A6ACFF202E5217EC498 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		454E7FDFD963CFF4F5DBF7F8BFBB5E81 /* Build configuration list for PBXNativeTarget "FARequest" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DD2803963107E5594B0F24B35C4CDDA6 /* Debug */,
-				1992559688AF31988BD23906076A1892 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C695203C2C60B6DD716D21205458313F /* Build configuration list for PBXNativeTarget "Pods-FARequest_Example" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E783BB695D7E04151C1220CE9D077876 /* Debug */,
-				9A24E0A9897E01FDD27F7387BFAC004B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>0BE8A936393E47305961FBF1A8A7A227</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>D050BE6AFDF71BA9054128696E622F37</string>
+				<string>B499B48C79AF55B75A64BED3D5906D8A</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>11293A5D7C5478995C37314FAA21497C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example-frameworks.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1223D338987813040DE7403D9E4151CA</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>3E0B423A4FE43534D9B5B90634FF1A38</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>13E428F7AAB569CF5E3406DDBA809241</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>NSArray+FAArray.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>168ADE0F1390C3C4CA43BD87C49A3762</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>NSDate+FADate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>16DCB1F0756E2000A28472DEBB6B174E</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>87B8F2456D4395812CB3829F4B371B23</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Development Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>19BDC7748D8C463C865CC45FB391AA3A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E55718F6479A62125302E5A02AC70BFB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>1CE07EE372DE93883C47491D76890E1D</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>3975831231C72E58A6CDD34F8226E87E</string>
+			<key>buildPhases</key>
+			<array>
+				<string>C423F7B19E999AE8960D697A82AACBA9</string>
+				<string>F4A721A32AD0F7CA3A4CDF9544F52A0F</string>
+				<string>D5F328E0687BE07C4AB69962CBB97D93</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>FARequest</string>
+			<key>productName</key>
+			<string>FARequest</string>
+			<key>productReference</key>
+			<string>5725B4A102C167E0443ABDF9AFAE854F</string>
+			<key>productType</key>
+			<string>com.apple.product-type.framework</string>
+		</dict>
+		<key>232EC061E4D30E79C3E17E01C4E8792D</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Pods_FARequest_Example_FARequest_Tests.framework</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example-FARequest_Tests.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>24A5A59E4231C6FC345215FC064F6FA0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5C6BDFF537B8481F986178FB91F11988</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>28ED3FC2E6941598295415BACC5E20F7</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FARequest-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>292F4B72B01E9CC80CDB28D03CFBE93A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>39DFA5E7672E40FD5D1155BF88F874CB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>2D8E8EC45A3A1A1D94AE762CB5028504</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>9E1E4E48AF2EAB23169E611BF694090A</string>
+				<string>8DED8AD26D381A6ACFF202E5217EC498</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>2E7A2CDD7A2054C1213CB3F0612298CD</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>84501BEB3951536E8950DE1CB2B2831E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>2EA10AEB99B0539ACF8207EF9A1909D4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example-FARequest_Tests-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2F7213EC86A94C0F45863D61B4C2B2E3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example-FARequest_Tests.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>32FE8C62A71D25B47293223D44B8C9BB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>FARequest</string>
+			<key>target</key>
+			<string>1CE07EE372DE93883C47491D76890E1D</string>
+			<key>targetProxy</key>
+			<string>41789F0DE8DBE73C546559A23829959B</string>
+		</dict>
+		<key>3562CA293E1C9162D218813BC3B0BBEB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FARequest-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>385EE2C56CEE04196006F23C52874B02</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>87C032BEDD6103B5E02AEFAF255651B5</string>
+				<string>D66A196BE8A2730A790EFD78570A6DD1</string>
+				<string>40EFC843D25F92C067C4DDB0F76B63EA</string>
+				<string>DB94DD93BB818223637AED2624BEAEE6</string>
+				<string>EC8D5428C17CEF366073B13563010ABB</string>
+				<string>875F9E00C8F6FDC4182F04DF2F4CD048</string>
+				<string>88AAE28768911FF070DFDED2C93910FD</string>
+				<string>2EA10AEB99B0539ACF8207EF9A1909D4</string>
+				<string>2F7213EC86A94C0F45863D61B4C2B2E3</string>
+				<string>4E003E07599ADD53CEAFE95DE1EAAAB1</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods-FARequest_Example-FARequest_Tests</string>
+			<key>path</key>
+			<string>Target Support Files/Pods-FARequest_Example-FARequest_Tests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3975831231C72E58A6CDD34F8226E87E</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>7CEEAED8B8EF3757BBC71411E6E10BBA</string>
+				<string>DFB1B934716EA66C28B6BD0F5C9E5028</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>39DFA5E7672E40FD5D1155BF88F874CB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>NSDictionary+FADictionary.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3AC58C4CE8F09B77B784BFA03B3C1359</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2EA10AEB99B0539ACF8207EF9A1909D4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>3E0B423A4FE43534D9B5B90634FF1A38</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EC855C249341C6AFC997F8E7A51E2937</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>3E0BE62B6AC66AEC7597E49C2010DEBE</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>40E449D0E5907B8D6CF7196FFD9669F9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>73010FF26FEB1B7AEA88EFAE2AA9DA9B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>40EFC843D25F92C067C4DDB0F76B63EA</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example-FARequest_Tests-acknowledgements.markdown</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>41789F0DE8DBE73C546559A23829959B</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>1CE07EE372DE93883C47491D76890E1D</string>
+			<key>remoteInfo</key>
+			<string>FARequest</string>
+		</dict>
+		<key>4A445504AA29C47911954C55C0002A7E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4E003E07599ADD53CEAFE95DE1EAAAB1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example-FARequest_Tests.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>56746D1FF087F1FA2469FF3D103FC6AE</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>NSDate+FADate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5725B4A102C167E0443ABDF9AFAE854F</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>FARequest.framework</string>
+			<key>path</key>
+			<string>FARequest.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>57D75845EDBA6A772276E67F82DDDA5E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>28ED3FC2E6941598295415BACC5E20F7</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>5C6BDFF537B8481F986178FB91F11988</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FARequest.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5ED09C75A82B8FAA43BA7D51BDECCD7C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F81EEA63196D23B6DE55A880063BC29B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>5FBDAEACB3B671AE3B2D1F094CB83BEE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>56746D1FF087F1FA2469FF3D103FC6AE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>60AEE2228F5E8F858DD7D63F61376D2A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CBB3DE36805AF21409EC968A9691732F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>619F4E1587214F59A18EA8BDC06AAA89</key>
+		<dict>
+			<key>fileRef</key>
+			<string>76D15669E16CC8EF8E2FB47D0A26686D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>64B1A11C2A872CDF46FF4C21A3907EC8</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C2D27DAF7C56AE8F863E2513C71682F4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>6B7963BFDD22DEE1A5FB53352F8F2657</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>7600C2077DC34C7CC092B150ACF59F96</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>6DB5051A79EC436CC26EE8A18B49EE8C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D83E44502FADD2DD0E6C4C99627A58D0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>71EB55AB4D22922F797A739963127E30</key>
+		<dict>
+			<key>fileRef</key>
+			<string>13E428F7AAB569CF5E3406DDBA809241</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>73010FF26FEB1B7AEA88EFAE2AA9DA9B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>NSDictionary+FADictionary.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7531C8F8DE19F1AA3C8A7AC97A91DC29</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CBB3DE36805AF21409EC968A9691732F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>iOS</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7600C2077DC34C7CC092B150ACF59F96</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CBB3DE36805AF21409EC968A9691732F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>76D15669E16CC8EF8E2FB47D0A26686D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>UILabel+FALabel.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79905694F4AF81D731E6AD838A9AAB3A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>A2389A815E0767BDECD7975DA6053460</string>
+				<string>BACE40616A226039F2A4F43980B5854B</string>
+				<string>28ED3FC2E6941598295415BACC5E20F7</string>
+				<string>F592DBE949F04256AED78372072EFD4A</string>
+				<string>3562CA293E1C9162D218813BC3B0BBEB</string>
+				<string>B391F7CE3F4BF60C073F2DEA02856446</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>Example/Pods/Target Support Files/FARequest</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7C9E0632D278ED75304FF66BE162C8E7</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9610A0686CC245DD3B1533A65DF8D36D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>FARequest</string>
+			<key>path</key>
+			<string>FARequest</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7CEEAED8B8EF3757BBC71411E6E10BBA</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>BACE40616A226039F2A4F43980B5854B</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=appletvos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=watchos*]</key>
+				<string></string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/FARequest/FARequest-prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/FARequest/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/FARequest/FARequest.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>PRODUCT_NAME</key>
+				<string>FARequest</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>7DB346D0F39D3F0E887471402A8071AB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>93A4A3777CF96A4AAC1D13BA6DCCEA73</string>
+				<string>16DCB1F0756E2000A28472DEBB6B174E</string>
+				<string>BC3CA7F9E30CC8F7E2DD044DD34432FC</string>
+				<string>CCBD8B906F4351857FE5A907FA24CB52</string>
+				<string>B9D54F7D5B2D166557105FA01CF1334C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8158B036382E2C5BA8C56C63D895CDA9</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Reachability.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8397872AE3197C99C12B67F69107ACC6</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>60AEE2228F5E8F858DD7D63F61376D2A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>84501BEB3951536E8950DE1CB2B2831E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3E0BE62B6AC66AEC7597E49C2010DEBE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>875F9E00C8F6FDC4182F04DF2F4CD048</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example-FARequest_Tests-frameworks.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>87B8F2456D4395812CB3829F4B371B23</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>7C9E0632D278ED75304FF66BE162C8E7</string>
+				<string>79905694F4AF81D731E6AD838A9AAB3A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>FARequest</string>
+			<key>path</key>
+			<string>../..</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>87C032BEDD6103B5E02AEFAF255651B5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>88AAE28768911FF070DFDED2C93910FD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example-FARequest_Tests-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>89C9922C035A9F29D1ABC3A1D7C36578</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>E592863800A76BC23120B93BAA8B8308</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8DED8AD26D381A6ACFF202E5217EC498</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGNING_REQUIRED</key>
+				<string>NO</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>POD_CONFIGURATION_RELEASE=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>PROVISIONING_PROFILE_SPECIFIER</key>
+				<string>NO_SIGNING/</string>
+				<key>STRIP_INSTALLED_PRODUCT</key>
+				<string>NO</string>
+				<key>SYMROOT</key>
+				<string>${SRCROOT}/../build</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>902345CE7BE949C66089422F308B6A8C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AF74AC6C43E5E890321F2971841B9B0F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>933ED1162DCA0479876EF8D9DE8C2CB4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CBB3DE36805AF21409EC968A9691732F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>93A4A3777CF96A4AAC1D13BA6DCCEA73</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>text.script.ruby</string>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>Podfile</string>
+			<key>path</key>
+			<string>../Podfile</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+			<key>xcLanguageSpecificationIdentifier</key>
+			<string>xcode.lang.ruby</string>
+		</dict>
+		<key>9610A0686CC245DD3B1533A65DF8D36D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>C2D27DAF7C56AE8F863E2513C71682F4</string>
+				<string>D83E44502FADD2DD0E6C4C99627A58D0</string>
+				<string>5C6BDFF537B8481F986178FB91F11988</string>
+				<string>AF74AC6C43E5E890321F2971841B9B0F</string>
+				<string>13E428F7AAB569CF5E3406DDBA809241</string>
+				<string>F81EEA63196D23B6DE55A880063BC29B</string>
+				<string>56746D1FF087F1FA2469FF3D103FC6AE</string>
+				<string>168ADE0F1390C3C4CA43BD87C49A3762</string>
+				<string>39DFA5E7672E40FD5D1155BF88F874CB</string>
+				<string>73010FF26FEB1B7AEA88EFAE2AA9DA9B</string>
+				<string>E55718F6479A62125302E5A02AC70BFB</string>
+				<string>8158B036382E2C5BA8C56C63D895CDA9</string>
+				<string>D0927635AB818B23D6E22685154F324D</string>
+				<string>76D15669E16CC8EF8E2FB47D0A26686D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Classes</string>
+			<key>path</key>
+			<string>Classes</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A24E0A9897E01FDD27F7387BFAC004B</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>D953271523EAAA59D99B197745562FDA</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=appletvos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=watchos*]</key>
+				<string></string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Pods-FARequest_Example/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Pods-FARequest_Example/Pods-FARequest_Example.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>Pods_FARequest_Example</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>9E1E4E48AF2EAB23169E611BF694090A</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGNING_REQUIRED</key>
+				<string>NO</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>ENABLE_TESTABILITY</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>POD_CONFIGURATION_DEBUG=1</string>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>PROVISIONING_PROFILE_SPECIFIER</key>
+				<string>NO_SIGNING/</string>
+				<key>STRIP_INSTALLED_PRODUCT</key>
+				<string>NO</string>
+				<key>SYMROOT</key>
+				<string>${SRCROOT}/../build</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>A2389A815E0767BDECD7975DA6053460</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>FARequest.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A875881DC39E360358529696C6D289C9</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example-acknowledgements.markdown</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ADE65D9CE7D8050B6F53369D777A237F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>4A445504AA29C47911954C55C0002A7E</string>
+				<string>AF5D40036FE3BCCCBE40760CA2FD3674</string>
+				<string>A875881DC39E360358529696C6D289C9</string>
+				<string>EDB495AECB9789BE83777AAD1F3824FB</string>
+				<string>3E0BE62B6AC66AEC7597E49C2010DEBE</string>
+				<string>11293A5D7C5478995C37314FAA21497C</string>
+				<string>EB04CAA3996F30FF33482AD1209329B4</string>
+				<string>EC855C249341C6AFC997F8E7A51E2937</string>
+				<string>D85B5038879926E5E2E1CBE789B61ABF</string>
+				<string>D953271523EAAA59D99B197745562FDA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods-FARequest_Example</string>
+			<key>path</key>
+			<string>Target Support Files/Pods-FARequest_Example</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AF5D40036FE3BCCCBE40760CA2FD3674</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AF74AC6C43E5E890321F2971841B9B0F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FARequest.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B391F7CE3F4BF60C073F2DEA02856446</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B499B48C79AF55B75A64BED3D5906D8A</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>4E003E07599ADD53CEAFE95DE1EAAAB1</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=appletvos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=watchos*]</key>
+				<string></string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Pods-FARequest_Example-FARequest_Tests/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Pods-FARequest_Example-FARequest_Tests/Pods-FARequest_Example-FARequest_Tests.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>Pods_FARequest_Example_FARequest_Tests</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>B9D54F7D5B2D166557105FA01CF1334C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>ADE65D9CE7D8050B6F53369D777A237F</string>
+				<string>385EE2C56CEE04196006F23C52874B02</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Targets Support Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BACE40616A226039F2A4F43980B5854B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>FARequest.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BC3CA7F9E30CC8F7E2DD044DD34432FC</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>7531C8F8DE19F1AA3C8A7AC97A91DC29</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BD482446C81C9100846FFB510D6B29A1</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>C695203C2C60B6DD716D21205458313F</string>
+			<key>buildPhases</key>
+			<array>
+				<string>2E7A2CDD7A2054C1213CB3F0612298CD</string>
+				<string>8397872AE3197C99C12B67F69107ACC6</string>
+				<string>1223D338987813040DE7403D9E4151CA</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>32FE8C62A71D25B47293223D44B8C9BB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-FARequest_Example</string>
+			<key>productName</key>
+			<string>Pods-FARequest_Example</string>
+			<key>productReference</key>
+			<string>D87D504B13E0AD822AF71F587FDB43EA</string>
+			<key>productType</key>
+			<string>com.apple.product-type.framework</string>
+		</dict>
+		<key>C1AAD67AF21236E4054E878414C07844</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>3AC58C4CE8F09B77B784BFA03B3C1359</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>C2D27DAF7C56AE8F863E2513C71682F4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FADownloader.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C423F7B19E999AE8960D697A82AACBA9</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6DB5051A79EC436CC26EE8A18B49EE8C</string>
+				<string>57D75845EDBA6A772276E67F82DDDA5E</string>
+				<string>902345CE7BE949C66089422F308B6A8C</string>
+				<string>5ED09C75A82B8FAA43BA7D51BDECCD7C</string>
+				<string>D45AC05AF7AD0D50BBF28CCB78DB4686</string>
+				<string>40E449D0E5907B8D6CF7196FFD9669F9</string>
+				<string>FFA69801BA171180A67D9D1C577849AF</string>
+				<string>619F4E1587214F59A18EA8BDC06AAA89</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>C695203C2C60B6DD716D21205458313F</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>E783BB695D7E04151C1220CE9D077876</string>
+				<string>9A24E0A9897E01FDD27F7387BFAC004B</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>C866CFBD80CBBC62F7CC165A9D0E59E2</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>0BE8A936393E47305961FBF1A8A7A227</string>
+			<key>buildPhases</key>
+			<array>
+				<string>89C9922C035A9F29D1ABC3A1D7C36578</string>
+				<string>6B7963BFDD22DEE1A5FB53352F8F2657</string>
+				<string>C1AAD67AF21236E4054E878414C07844</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>CFC78325F05F12BC0714F8E5D915340A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-FARequest_Example-FARequest_Tests</string>
+			<key>productName</key>
+			<string>Pods-FARequest_Example-FARequest_Tests</string>
+			<key>productReference</key>
+			<string>232EC061E4D30E79C3E17E01C4E8792D</string>
+			<key>productType</key>
+			<string>com.apple.product-type.framework</string>
+		</dict>
+		<key>CBB3DE36805AF21409EC968A9691732F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>CCBD8B906F4351857FE5A907FA24CB52</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>5725B4A102C167E0443ABDF9AFAE854F</string>
+				<string>D87D504B13E0AD822AF71F587FDB43EA</string>
+				<string>232EC061E4D30E79C3E17E01C4E8792D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CFC78325F05F12BC0714F8E5D915340A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>FARequest</string>
+			<key>target</key>
+			<string>1CE07EE372DE93883C47491D76890E1D</string>
+			<key>targetProxy</key>
+			<string>EE171462B404AE38391AC21B7417C95C</string>
+		</dict>
+		<key>D050BE6AFDF71BA9054128696E622F37</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>2F7213EC86A94C0F45863D61B4C2B2E3</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=appletvos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=watchos*]</key>
+				<string></string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Pods-FARequest_Example-FARequest_Tests/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Pods-FARequest_Example-FARequest_Tests/Pods-FARequest_Example-FARequest_Tests.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>Pods_FARequest_Example_FARequest_Tests</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>D0927635AB818B23D6E22685154F324D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>UILabel+FALabel.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D41D8CD98F00B204E9800998ECF8427E</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastSwiftUpdateCheck</key>
+				<string>0730</string>
+				<key>LastUpgradeCheck</key>
+				<string>0700</string>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>2D8E8EC45A3A1A1D94AE762CB5028504</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+			</array>
+			<key>mainGroup</key>
+			<string>7DB346D0F39D3F0E887471402A8071AB</string>
+			<key>productRefGroup</key>
+			<string>CCBD8B906F4351857FE5A907FA24CB52</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>1CE07EE372DE93883C47491D76890E1D</string>
+				<string>BD482446C81C9100846FFB510D6B29A1</string>
+				<string>C866CFBD80CBBC62F7CC165A9D0E59E2</string>
+			</array>
+		</dict>
+		<key>D45AC05AF7AD0D50BBF28CCB78DB4686</key>
+		<dict>
+			<key>fileRef</key>
+			<string>168ADE0F1390C3C4CA43BD87C49A3762</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D5F328E0687BE07C4AB69962CBB97D93</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>64B1A11C2A872CDF46FF4C21A3907EC8</string>
+				<string>F124D921646583B9CCFB339183F5DAA1</string>
+				<string>24A5A59E4231C6FC345215FC064F6FA0</string>
+				<string>71EB55AB4D22922F797A739963127E30</string>
+				<string>5FBDAEACB3B671AE3B2D1F094CB83BEE</string>
+				<string>292F4B72B01E9CC80CDB28D03CFBE93A</string>
+				<string>19BDC7748D8C463C865CC45FB391AA3A</string>
+				<string>FCE99480A04B59AA2575E71A8B7FC9A4</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>D66A196BE8A2730A790EFD78570A6DD1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example-FARequest_Tests.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D83E44502FADD2DD0E6C4C99627A58D0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FADownloader.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D85B5038879926E5E2E1CBE789B61ABF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D87D504B13E0AD822AF71F587FDB43EA</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Pods_FARequest_Example.framework</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>D953271523EAAA59D99B197745562FDA</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DB94DD93BB818223637AED2624BEAEE6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example-FARequest_Tests-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DFB1B934716EA66C28B6BD0F5C9E5028</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>BACE40616A226039F2A4F43980B5854B</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=appletvos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=watchos*]</key>
+				<string></string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/FARequest/FARequest-prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/FARequest/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/FARequest/FARequest.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>PRODUCT_NAME</key>
+				<string>FARequest</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>E55718F6479A62125302E5A02AC70BFB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Reachability.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E592863800A76BC23120B93BAA8B8308</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EC8D5428C17CEF366073B13563010ABB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E783BB695D7E04151C1220CE9D077876</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>D85B5038879926E5E2E1CBE789B61ABF</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=appletvos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string></string>
+				<key>CODE_SIGN_IDENTITY[sdk=watchos*]</key>
+				<string></string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Pods-FARequest_Example/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Pods-FARequest_Example/Pods-FARequest_Example.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>Pods_FARequest_Example</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>EB04CAA3996F30FF33482AD1209329B4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EC855C249341C6AFC997F8E7A51E2937</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EC8D5428C17CEF366073B13563010ABB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example-FARequest_Tests-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDB495AECB9789BE83777AAD1F3824FB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-FARequest_Example-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EE171462B404AE38391AC21B7417C95C</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>1CE07EE372DE93883C47491D76890E1D</string>
+			<key>remoteInfo</key>
+			<string>FARequest</string>
+		</dict>
+		<key>F124D921646583B9CCFB339183F5DAA1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3562CA293E1C9162D218813BC3B0BBEB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>F4A721A32AD0F7CA3A4CDF9544F52A0F</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>933ED1162DCA0479876EF8D9DE8C2CB4</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>F592DBE949F04256AED78372072EFD4A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FARequest-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F81EEA63196D23B6DE55A880063BC29B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>NSArray+FAArray.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FCE99480A04B59AA2575E71A8B7FC9A4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0927635AB818B23D6E22685154F324D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>FFA69801BA171180A67D9D1C577849AF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8158B036382E2C5BA8C56C63D895CDA9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>D41D8CD98F00B204E9800998ECF8427E</string>
+</dict>
+</plist>

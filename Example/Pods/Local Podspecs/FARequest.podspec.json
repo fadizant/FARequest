@@ -1,7 +1,7 @@
 {
   "name": "FARequest",
-  "version": "0.1.2",
-  "summary": "init FARequest.",
+  "version": "0.1.7",
+  "summary": "Cache, FADownloader, Array Without Duplicate and fix upload image",
   "homepage": "https://github.com/fadizant/FARequest",
   "license": {
     "type": "MIT",
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/fadizant/FARequest.git",
-    "tag": "0.1.2"
+    "tag": "0.1.7"
   },
   "platforms": {
     "ios": "8.0"

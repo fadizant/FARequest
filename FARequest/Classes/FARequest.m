@@ -39,7 +39,83 @@ static NSString *password;
 
 //Full block request
 +(BOOL)sendRequestWithUrl:(NSURL*)url
+         requestCompleted:(requestCompleted)requestCompleted
+{
+    
+    return [self sendRequestWithUrl:url
+                            Headers:nil
+                          Parameter:@""
+                              Image:nil
+                        RequestType:FARequestTypeGET
+                            timeOut:120
+                             object:nil
+                    EncodeParameter:NO
+                           useCache:YES
+                   requestCompleted:requestCompleted];
+}
+
+//Full block request With object
++(BOOL)sendRequestWithUrl:(NSURL*)url
+                   object:(id)object
+         requestCompleted:(requestCompleted)requestCompleted
+{
+    
+    return [self sendRequestWithUrl:url
+                            Headers:nil
+                          Parameter:@""
+                              Image:nil
+                        RequestType:FARequestTypeGET
+                            timeOut:120
+                             object:object
+                    EncodeParameter:NO
+                           useCache:YES
+                   requestCompleted:requestCompleted];
+}
+
+#pragma mark shortcut request with type
+
+//Full block request
++(BOOL)sendRequestWithUrl:(NSURL*)url
               RequestType:(FARequestType)Type
+         requestCompleted:(requestCompleted)requestCompleted
+{
+    
+    return [self sendRequestWithUrl:url
+                            Headers:nil
+                          Parameter:@""
+                              Image:nil
+                        RequestType:Type
+                            timeOut:120
+                             object:nil
+                    EncodeParameter:NO
+                           useCache:YES
+                   requestCompleted:requestCompleted];
+}
+
+//Full block request With object
++(BOOL)sendRequestWithUrl:(NSURL*)url
+                   object:(id)object
+              RequestType:(FARequestType)Type
+         requestCompleted:(requestCompleted)requestCompleted{
+    
+    return [self sendRequestWithUrl:url
+                            Headers:nil
+                          Parameter:@""
+                              Image:nil
+                        RequestType:Type
+                            timeOut:120
+                             object:object
+                    EncodeParameter:NO
+                           useCache:YES
+                   requestCompleted:requestCompleted];
+}
+
+#pragma mark shortcut request with cache
+
+//Full block request
++(BOOL)sendRequestWithUrl:(NSURL*)url
+              RequestType:(FARequestType)Type
+                 useCache:(BOOL)useCashe
          requestCompleted:(requestCompleted)requestCompleted
 {
     return [self sendRequestWithUrl:url
@@ -50,6 +126,7 @@ static NSString *password;
                             timeOut:120
                              object:nil
                     EncodeParameter:NO
+                           useCache:useCashe
                    requestCompleted:requestCompleted];
 }
 
@@ -57,6 +134,7 @@ static NSString *password;
 +(BOOL)sendRequestWithUrl:(NSURL*)url
                    object:(id)object
               RequestType:(FARequestType)Type
+                 useCache:(BOOL)useCashe
          requestCompleted:(requestCompleted)requestCompleted
 {
     return [self sendRequestWithUrl:url
@@ -67,6 +145,7 @@ static NSString *password;
                             timeOut:120
                              object:object
                     EncodeParameter:NO
+                           useCache:useCashe
                    requestCompleted:requestCompleted];
 }
 
@@ -84,6 +163,25 @@ static NSString *password;
                                      RequestType:Type
                                          timeOut:120
                                  EncodeParameter:NO
+                                        useCache:NO
+                                requestCompleted:requestCompleted];
+}
+
+//Keys and Values block request with cache
++(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
+                         KeysAndValues:(NSMutableDictionary *)Data
+                           RequestType:(FARequestType)Type
+                              useCache:(BOOL)useCashe
+                      requestCompleted:(requestCompleted)requestCompleted
+{
+    return [self sendKeysAndValuesRequestWithUrl:url
+                                         Headers:nil
+                                   KeysAndValues:Data
+                                           Image:nil
+                                     RequestType:Type
+                                         timeOut:120
+                                 EncodeParameter:NO
+                                        useCache:useCashe
                                 requestCompleted:requestCompleted];
 }
 
@@ -100,6 +198,25 @@ static NSString *password;
                             RequestType:Type
                                 timeOut:120
                         EncodeParameter:NO
+                               useCache:NO
+                       requestCompleted:requestCompleted];
+}
+
+//JSON block request with cache
++(BOOL)sendJSONRequestWithUrl:(NSURL*)url
+                         JSON:(NSDictionary *)JSON
+                  RequestType:(FARequestType)Type
+                     useCache:(BOOL)useCashe
+             requestCompleted:(requestCompleted)requestCompleted
+{
+    return [self sendJSONRequestWithUrl:url
+                                Headers:nil
+                                   JSON:JSON
+                                  Image:nil
+                            RequestType:Type
+                                timeOut:120
+                        EncodeParameter:NO
+                               useCache:useCashe
                        requestCompleted:requestCompleted];
 }
 
@@ -107,6 +224,7 @@ static NSString *password;
 +(BOOL)sendParameterRequestWithUrl:(NSURL*)url
                          Parameter:(NSString *)Param
                        RequestType:(FARequestType)Type
+                          useCache:(BOOL)useCashe
                   requestCompleted:(requestCompleted)requestCompleted
 {
     return [self sendRequestWithUrl:url
@@ -117,6 +235,7 @@ static NSString *password;
                             timeOut:120
                              object:nil
                     EncodeParameter:NO
+                           useCache:useCashe
                    requestCompleted:requestCompleted];
 }
 
@@ -125,6 +244,7 @@ static NSString *password;
                          Parameter:(NSString *)Param
                             object:(id)object
                        RequestType:(FARequestType)Type
+                          useCache:(BOOL)useCashe
                   requestCompleted:(requestCompleted)requestCompleted
 {
     return [self sendRequestWithUrl:url
@@ -135,6 +255,7 @@ static NSString *password;
                             timeOut:120
                              object:object
                     EncodeParameter:NO
+                           useCache:useCashe
                    requestCompleted:requestCompleted];
 }
 
@@ -145,6 +266,7 @@ static NSString *password;
                                Headers:(NSDictionary *)Headers
                          KeysAndValues:(NSMutableDictionary *)Data
                            RequestType:(FARequestType)Type
+                              useCache:(BOOL)useCashe
                       requestCompleted:(requestCompleted)requestCompleted
 {
     return [self sendKeysAndValuesRequestWithUrl:url
@@ -154,6 +276,7 @@ static NSString *password;
                                      RequestType:Type
                                          timeOut:120
                                  EncodeParameter:NO
+                                        useCache:useCashe
                                 requestCompleted:requestCompleted];
 }
 
@@ -162,6 +285,7 @@ static NSString *password;
                       Headers:(NSDictionary *)Headers
                          JSON:(NSDictionary *)JSON
                   RequestType:(FARequestType)Type
+                     useCache:(BOOL)useCashe
              requestCompleted:(requestCompleted)requestCompleted
 {
     return [self sendJSONRequestWithUrl:url
@@ -171,6 +295,7 @@ static NSString *password;
                             RequestType:Type
                                 timeOut:120
                         EncodeParameter:NO
+                               useCache:useCashe
                        requestCompleted:requestCompleted];
 }
 
@@ -179,6 +304,7 @@ static NSString *password;
                            Headers:(NSDictionary *)Headers
                          Parameter:(NSString *)Param
                        RequestType:(FARequestType)Type
+                          useCache:(BOOL)useCashe
                   requestCompleted:(requestCompleted)requestCompleted
 {
     return [self sendRequestWithUrl:url
@@ -189,6 +315,7 @@ static NSString *password;
                             timeOut:120
                              object:nil
                     EncodeParameter:NO
+                           useCache:useCashe
                    requestCompleted:requestCompleted];
 }
 
@@ -198,6 +325,7 @@ static NSString *password;
                          Parameter:(NSString *)Param
                             object:(id)object
                        RequestType:(FARequestType)Type
+                          useCache:(BOOL)useCashe
                   requestCompleted:(requestCompleted)requestCompleted
 {
     return [self sendRequestWithUrl:url
@@ -208,6 +336,7 @@ static NSString *password;
                             timeOut:120
                              object:object
                     EncodeParameter:NO
+                           useCache:useCashe
                    requestCompleted:requestCompleted];
 }
 
@@ -218,6 +347,7 @@ static NSString *password;
                          KeysAndValues:(NSMutableDictionary *)Data
                                  Image:(NSMutableArray <UIImage *>*)images
                            RequestType:(FARequestType)Type
+                              useCache:(BOOL)useCashe
                       requestCompleted:(requestCompleted)requestCompleted
 {
     return [self sendKeysAndValuesRequestWithUrl:url
@@ -227,6 +357,7 @@ static NSString *password;
                                      RequestType:Type
                                          timeOut:120
                                  EncodeParameter:NO
+                                        useCache:useCashe
                                 requestCompleted:requestCompleted];
 }
 
@@ -236,6 +367,7 @@ static NSString *password;
                          JSON:(NSDictionary *)JSON
                         Image:(NSMutableArray <UIImage *>*)images
                   RequestType:(FARequestType)Type
+                     useCache:(BOOL)useCashe
              requestCompleted:(requestCompleted)requestCompleted
 {
     return [self sendJSONRequestWithUrl:url
@@ -245,6 +377,7 @@ static NSString *password;
                             RequestType:Type
                                 timeOut:120
                         EncodeParameter:NO
+                               useCache:useCashe
                        requestCompleted:requestCompleted];
 }
 
@@ -254,6 +387,7 @@ static NSString *password;
                          Parameter:(NSString *)Param
                              Image:(NSMutableArray <UIImage *>*)images
                        RequestType:(FARequestType)Type
+                          useCache:(BOOL)useCashe
                   requestCompleted:(requestCompleted)requestCompleted
 {
     return [self sendRequestWithUrl:url
@@ -264,6 +398,7 @@ static NSString *password;
                             timeOut:120
                              object:nil
                     EncodeParameter:NO
+                           useCache:useCashe
                    requestCompleted:requestCompleted];
 }
 
@@ -274,6 +409,7 @@ static NSString *password;
                              Image:(NSMutableArray <UIImage *>*)images
                             object:(id)object
                        RequestType:(FARequestType)Type
+                          useCache:(BOOL)useCashe
                   requestCompleted:(requestCompleted)requestCompleted
 {
     return [self sendRequestWithUrl:url
@@ -284,6 +420,7 @@ static NSString *password;
                             timeOut:120
                              object:object
                     EncodeParameter:NO
+                           useCache:useCashe
                    requestCompleted:requestCompleted];
 }
 
@@ -297,6 +434,7 @@ static NSString *password;
                            RequestType:(FARequestType)Type
                                timeOut:(float)timeOut
                        EncodeParameter:(BOOL)Encoding
+                              useCache:(BOOL)useCashe
                       requestCompleted:(requestCompleted)requestCompleted
 {
     NSString *Parameter = @"";
@@ -314,6 +452,7 @@ static NSString *password;
                             timeOut:timeOut
                              object:nil
                     EncodeParameter:Encoding
+                           useCache:useCashe
                    requestCompleted:requestCompleted];
 }
 
@@ -325,6 +464,7 @@ static NSString *password;
                   RequestType:(FARequestType)Type
                       timeOut:(float)timeOut
               EncodeParameter:(BOOL)Encoding
+                     useCache:(BOOL)useCashe
              requestCompleted:(requestCompleted)requestCompleted
 {
     return [self sendRequestWithUrl:url
@@ -335,6 +475,7 @@ static NSString *password;
                             timeOut:timeOut
                              object:nil
                     EncodeParameter:Encoding
+                           useCache:useCashe
                    requestCompleted:requestCompleted];
 }
 
@@ -347,11 +488,13 @@ static NSString *password;
                   timeOut:(float)timeOut
                    object:(id)object
           EncodeParameter:(BOOL)Encoding
+                 useCache:(BOOL)useCashe
          requestCompleted:(requestCompleted)requestCompleted
 {
     //read from cache
     //__block BOOL hasCache = NO;
     __block NSData * cacheResponse;
+    if (useCashe) {
     // Use GCD's background queue
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         // Generate the file path
@@ -390,6 +533,8 @@ static NSString *password;
             }
         }
     });
+        
+    }
     
     //check internet connection before request
     if ([FARequest networkStatus] == NotReachable) {
@@ -460,45 +605,80 @@ static NSString *password;
     
     //check if there is images to send or not
     if (images) {
-        // Init the URLRequest
-        NSString *boundary = @"---------------------------14737809831466499882746641449";
-        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
-        [urlRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
+        // Build the request body
+        NSString *boundary = @"SportuondoFormBoundary";
+        NSMutableData *body = [NSMutableData data];
         
-        body = [NSMutableData data];
-        
-        //chaeck if there is param
-        if (Param && ![Param isEqualToString:@""]) {
-            //Encode
-            if(Encoding)
-                Param = [self URLEncodeStringFromString:Param];
-            
-            if (![Param hasSuffix:@"&"]) {
-                Param = [Param stringByAppendingString:@"&"];
+        //fill params
+        NSArray *params = [Param componentsSeparatedByString:@"&"];
+        for (NSString* item in params) {
+            NSArray *keyValue = [item componentsSeparatedByString:@"="];
+            if (keyValue.count >= 2) {
+                // Body part for "key" parameter. This is a string.
+                [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", keyValue[0]] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"%@\r\n", keyValue[1]] dataUsingEncoding:NSUTF8StringEncoding]];
             }
-            
-            [body appendData:[Param dataUsingEncoding:NSUTF8StringEncoding]];
         }
         
-        
+        //fill images
         for (UIImage *image in images) {
+            // Body part for the attachament. This is an image.
             NSData *imageData = UIImageJPEGRepresentation(image, 1);
             
-            NSString *filename = @"filename";
-            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[[NSString stringWithString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"file\"; file=\"%@.jpg\"\r\n", filename]] dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[NSData dataWithData:imageData]];
-            [body appendData:[[NSString stringWithFormat:@"\r\n--%@--",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-            
+            if (imageData) {
+                [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@.jpg\"\r\n",
+                                   object ? object : @"image",
+                                   object ? object : @"image"] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:imageData];
+                [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+            }
         }
-        [body appendData:[[NSString stringWithFormat:@"\r\n--%@--",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
         
-        //set lenght
-        [urlRequest addValue:[NSString stringWithFormat:@"%i", (int)[body length]] forHTTPHeaderField:@"Content-Length"];
+        [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
         
-        //sets the request body of the receiver to the specified data.
-        [urlRequest setHTTPBody:body];
+        
+        //        // Init the URLRequest
+        //        NSString *boundary = @"---------------------------14737809831466499882746641449";
+        //        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+        //        [urlRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
+        //
+        //        body = [NSMutableData data];
+        //
+        //        //chaeck if there is param
+        //        if (Param && ![Param isEqualToString:@""]) {
+        //            //Encode
+        //            if(Encoding)
+        //                Param = [self URLEncodeStringFromString:Param];
+        //
+        //            if (![Param hasSuffix:@"&"]) {
+        //                Param = [Param stringByAppendingString:@"&"];
+        //            }
+        //
+        //            [body appendData:[Param dataUsingEncoding:NSUTF8StringEncoding]];
+        //        }
+        //
+        //
+        //        for (UIImage *image in images) {
+        //            NSData *imageData = UIImageJPEGRepresentation(image, 1);
+        //
+        //            NSString *filename = @"filename";
+        //            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        //            [body appendData:[[NSString stringWithString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"file\"; file=\"%@.jpg\"\r\n", filename]] dataUsingEncoding:NSUTF8StringEncoding]];
+        //            [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        //            [body appendData:[NSData dataWithData:imageData]];
+        //            [body appendData:[[NSString stringWithFormat:@"\r\n--%@--",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        //
+        //        }
+        //        [body appendData:[[NSString stringWithFormat:@"\r\n--%@--",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        //
+        //        //set lenght
+        //        [urlRequest addValue:[NSString stringWithFormat:@"%i", (int)[body length]] forHTTPHeaderField:@"Content-Length"];
+        //
+        //        //sets the request body of the receiver to the specified data.
+        //        [urlRequest setHTTPBody:body];
     } else {
         
         //Encode
@@ -517,120 +697,128 @@ static NSString *password;
     }
     
     
-    //allocate a new operation queue
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    //Loads the data for a URL request and executes a handler block on an
-    //operation queue when the request completes or fails.
-    [NSURLConnection
-     sendAsynchronousRequest:urlRequest
-     queue:queue
-     completionHandler:^(NSURLResponse *response,
-                         NSData *data,
-                         NSError *error) {
-         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-         //         NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
-         dispatch_async(dispatch_get_main_queue(), ^{
-             
-             NSError *errorParsing = nil;
-             if (data) {
-                 //parsing the JSON response
-                 id jsonObject = [NSJSONSerialization
-                                  JSONObjectWithData:data
-                                  options:NSJSONReadingAllowFragments
-                                  error:&errorParsing];
-                 //check if there is cache
-                 BOOL sendBlock=YES;
-                 NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                 if (cacheResponse) {
-                     NSString *cacheResponseString = [[NSString alloc] initWithData:cacheResponse encoding:NSUTF8StringEncoding];
-                     if ([responseString isEqualToString:cacheResponseString]) {
-                         sendBlock=NO;
-                     }
-                     else
-                     {
-                         [self cachThisRequest:[NSString stringWithFormat:@"%@%@%@",[url absoluteString],Param,Headers ? [self GetJSON:Headers] : @""] Data:responseString];
-                     }
-                 }
-                 else if (Type == FARequestTypeGET)
-                 {
-                     [self cachThisRequest:[NSString stringWithFormat:@"%@%@%@",[url absoluteString],Param,Headers ? [self GetJSON:Headers] : @""] Data:responseString];
-                 }
-                 
-                 if(sendBlock)
-                 {
-                     if (jsonObject) {
-                         requestCompleted(jsonObject,(int)[httpResponse statusCode] ,object , NO);
-                         
-                         //send Notification center
-                         if (object) {
-                             [[NSNotificationCenter defaultCenter]
-                              postNotificationName:@"FARequestCompleted"
-                              object:self
-                              userInfo:@{@"result":jsonObject,
-                                         @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                         @"object":object,
-                                         @"hasCach":[NSNumber numberWithBool:NO]}];
-                         } else {
-                             [[NSNotificationCenter defaultCenter]
-                              postNotificationName:@"FARequestCompleted"
-                              object:self
-                              userInfo:@{@"result":jsonObject,
-                                         @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                         @"hasCach":[NSNumber numberWithBool:NO]}];
-                         }
-                         
-                         
-                         
-                     } else {
-                         requestCompleted([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],(int)[httpResponse statusCode] , object , NO);
-                         
-                         //send Notification center
-                         if (object) {
-                             [[NSNotificationCenter defaultCenter]
-                              postNotificationName:@"FARequestCompleted"
-                              object:self
-                              userInfo:@{@"result":[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],
-                                         @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                         @"object":object,
-                                         @"hasCach":[NSNumber numberWithBool:NO]}];
-                         } else {
-                             [[NSNotificationCenter defaultCenter]
-                              postNotificationName:@"FARequestCompleted"
-                              object:self
-                              userInfo:@{@"result":[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],
-                                         @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                         @"hasCach":[NSNumber numberWithBool:NO]}];
-                         }
-                     }
-                 }
-             }
-             else
-             {
-                 requestCompleted(nil,(int)[httpResponse statusCode] , object , NO);
-                 
-                 //send Notification center
-                 if (object) {
-                     [[NSNotificationCenter defaultCenter]
-                      postNotificationName:@"FARequestCompleted"
-                      object:self
-                      userInfo:@{@"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                 @"object":object,
-                                 @"hasCach":[NSNumber numberWithBool:NO]}];
-                 } else {
-                     [[NSNotificationCenter defaultCenter]
-                      postNotificationName:@"FARequestCompleted"
-                      object:self
-                      userInfo:@{@"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                 @"hasCach":[NSNumber numberWithBool:NO]}];
-                 }
-                 
-             }
-             //hide loading progress bar
-             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-             
-         });
-     }];
+    NSURLSession *session = [NSURLSession sharedSession];
     
+    if (Headers) {
+        // Setup the session
+        NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        sessionConfiguration.HTTPAdditionalHeaders = Headers;
+        
+        // Create the session
+        // We can use the delegate to track upload progress
+        session = [NSURLSession sessionWithConfiguration:sessionConfiguration delegate:FARequest.self delegateQueue:nil];
+    }
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:urlRequest
+                                            completionHandler:
+                                  ^(NSData *data, NSURLResponse *response, NSError *error) {
+                                      NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                      //         NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
+                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                          
+                                          NSError *errorParsing = nil;
+                                          if (data) {
+                                              //parsing the JSON response
+                                              id jsonObject = [NSJSONSerialization
+                                                               JSONObjectWithData:data
+                                                               options:NSJSONReadingAllowFragments
+                                                               error:&errorParsing];
+                                              //check if there is cache
+                                              BOOL sendBlock=YES;
+                                              NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                                              if (cacheResponse) {
+                                                  NSString *cacheResponseString = [[NSString alloc] initWithData:cacheResponse encoding:NSUTF8StringEncoding];
+                                                  if ([responseString isEqualToString:cacheResponseString]) {
+                                                      sendBlock=NO;
+                                                  }
+                                                  else
+                                                  {
+                                                      //if cache date not same of response one 
+                                                      [self cachThisRequest:[NSString stringWithFormat:@"%@%@%@",[url absoluteString],Param,Headers ? [self GetJSON:Headers] : @""] Data:responseString];
+                                                  }
+                                              }
+                                              else if (Type == FARequestTypeGET)
+                                              {
+                                                  // cache data for GET request only
+                                                  [self cachThisRequest:[NSString stringWithFormat:@"%@%@%@",[url absoluteString],Param,Headers ? [self GetJSON:Headers] : @""] Data:responseString];
+                                              }
+                                              
+                                              if(sendBlock)
+                                              {
+                                                  if (jsonObject) {
+                                                      requestCompleted(jsonObject,(int)[httpResponse statusCode] ,object , NO);
+                                                      
+                                                      //send Notification center
+                                                      if (object) {
+                                                          [[NSNotificationCenter defaultCenter]
+                                                           postNotificationName:@"FARequestCompleted"
+                                                           object:self
+                                                           userInfo:@{@"result":jsonObject,
+                                                                      @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
+                                                                      @"object":object,
+                                                                      @"hasCach":[NSNumber numberWithBool:NO]}];
+                                                      } else {
+                                                          [[NSNotificationCenter defaultCenter]
+                                                           postNotificationName:@"FARequestCompleted"
+                                                           object:self
+                                                           userInfo:@{@"result":jsonObject,
+                                                                      @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
+                                                                      @"hasCach":[NSNumber numberWithBool:NO]}];
+                                                      }
+                                                      
+                                                      
+                                                      
+                                                  } else {
+                                                      requestCompleted([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],(int)[httpResponse statusCode] , object , NO);
+                                                      
+                                                      //send Notification center
+                                                      if (object) {
+                                                          [[NSNotificationCenter defaultCenter]
+                                                           postNotificationName:@"FARequestCompleted"
+                                                           object:self
+                                                           userInfo:@{@"result":[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],
+                                                                      @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
+                                                                      @"object":object,
+                                                                      @"hasCach":[NSNumber numberWithBool:NO]}];
+                                                      } else {
+                                                          [[NSNotificationCenter defaultCenter]
+                                                           postNotificationName:@"FARequestCompleted"
+                                                           object:self
+                                                           userInfo:@{@"result":[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],
+                                                                      @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
+                                                                      @"hasCach":[NSNumber numberWithBool:NO]}];
+                                                      }
+                                                  }
+                                              }
+                                          }
+                                          else
+                                          {
+                                              requestCompleted(nil,(int)[httpResponse statusCode] , object , NO);
+                                              
+                                              //send Notification center
+                                              if (object) {
+                                                  [[NSNotificationCenter defaultCenter]
+                                                   postNotificationName:@"FARequestCompleted"
+                                                   object:self
+                                                   userInfo:@{@"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
+                                                              @"object":object,
+                                                              @"hasCach":[NSNumber numberWithBool:NO]}];
+                                              } else {
+                                                  [[NSNotificationCenter defaultCenter]
+                                                   postNotificationName:@"FARequestCompleted"
+                                                   object:self
+                                                   userInfo:@{@"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
+                                                              @"hasCach":[NSNumber numberWithBool:NO]}];
+                                              }
+                                              
+                                          }
+                                          //hide loading progress bar
+                                          [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                                          
+                                      });
+                                  }];
+    
+    [task resume];
     return YES;
 }
 
@@ -965,10 +1153,6 @@ static NSString *password;
 
 
 #pragma mark Response
-
-
-
-
 -(void)getResponse:(NSData *)Data responseCode:(int)responseCode URL:(NSURL*)url
 {
     //Show Respons Result in Log
@@ -1040,6 +1224,27 @@ static NSString *password;
 }
 
 #pragma mark - caching
++(BOOL)isCached:(NSURL*)url Headers:(NSDictionary*)Headers
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *request = [self getHashWithString:[NSString stringWithFormat:@"%@%@",[url absoluteString],Headers ? [self GetJSON:Headers] : @""]];
+    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"FACache/%@",request]];
+    
+    if(![[NSFileManager defaultManager] fileExistsAtPath:[NSString stringWithFormat:@"%@/FACache",documentsDirectory]]) {
+        NSError * error = nil;
+        [[NSFileManager defaultManager] createDirectoryAtPath:[NSString stringWithFormat:@"%@/FACache",documentsDirectory]
+                                  withIntermediateDirectories:YES
+                                                   attributes:nil
+                                                        error:&error];
+        if (error != nil) {
+            NSLog(@"error creating directory: %@", error);
+            //..
+        }
+    }
+    return [[NSFileManager defaultManager] fileExistsAtPath:dataPath];
+}
+
 +(void)cachThisRequest:(NSString*)request Data:(NSString*)data
 {
     // Use GCD's background queue

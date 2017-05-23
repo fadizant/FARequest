@@ -12,4 +12,7 @@
 -(void)createClassesFile:(NSString*)data;
 -(NSMutableArray*)dictionaryArray:(NSError**)error;
 -(NSMutableArray*)fillWithClass:(Class)class Error:(NSError**)error;
+
+//fix duplicate items
+-(NSMutableArray*)addArrayWithoutDuplicateByProparty:(NSString*)propartyName Array:(NSMutableArray*)array;
 @end

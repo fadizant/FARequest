@@ -2,6 +2,7 @@
 #import <UIKit/UIKit.h>
 #endif
 
+#import "FADownloader.h"
 #import "FARequest.h"
 #import "NSArray+FAArray.h"
 #import "NSDate+FADate.h"

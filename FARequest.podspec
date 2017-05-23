@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'FARequest'
-  s.version          = '0.1.6'
-  s.summary          = 'Authorization.'
+  s.version          = '0.1.7'
+  s.summary          = 'Cache, FADownloader, Array Without Duplicate and fix upload image'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?

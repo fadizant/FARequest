@@ -1,5 +1,5 @@
 PODS:
-  - FARequest (0.1.2)
+  - FARequest (0.1.7)
 
 DEPENDENCIES:
   - FARequest (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  FARequest: 5b4c6a110db1f1abf2739749c6fe265152832fc7
+  FARequest: 3ddd72696f8292460e59615ab165cd0080be0a21
 
 PODFILE CHECKSUM: c00f0868bca8abd308420d7fe544baf6eede0a69
 
