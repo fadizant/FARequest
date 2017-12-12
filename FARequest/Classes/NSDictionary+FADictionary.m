@@ -416,14 +416,29 @@
                 if ([value isKindOfClass:[NSArray class]] ||
                     [value isKindOfClass:[NSMutableArray class]]
                     ) {
-                    //                    NSMutableArray *contant = [object valueForKey:propertyName];
-                    //                    Class classType = contant.elemantClass;
                     
-                    if (!NSClassFromString(propertySetter))
+                    if (NSClassFromString(propertySetter))
                     {
+                        NSMutableArray *contant = [[NSMutableArray alloc]init];
+                        contant = [value fillWithClass:[NSClassFromString(propertySetter) class] Error:&*error];
+                        [object setValue:contant forKey:propertyName];
+                    }else if (NSClassFromString(propertyName)){
+                        NSMutableArray *contant = [[NSMutableArray alloc]init];
+                        contant = [value fillWithClass:[NSClassFromString(propertyName) class] Error:&*error];
+                        [object setValue:contant forKey:propertyName];
+                    }else {
                         NSLog(@"Please add elemant class name in setter in NSMutableArray properte to know what class to parse this array");
                         continue;
                     }
+                    
+                    //                    NSMutableArray *contant = [object valueForKey:propertyName];
+                    //                    Class classType = contant.elemantClass;
+                    
+//                    if (!NSClassFromString(propertySetter))
+//                    {
+//                        NSLog(@"Please add elemant class name in setter in NSMutableArray properte to know what class to parse this array");
+//                        continue;
+//                    }
                     
                     //                    NSMutableArray *contant = [[NSMutableArray alloc]init];
                     //                    id element = [[NSClassFromString(propertySetter) alloc]init];
@@ -435,9 +450,9 @@
                     //                    }
                     
                     
-                    NSMutableArray *contant = [[NSMutableArray alloc]init];
-                    contant = [value fillWithClass:[NSClassFromString(propertySetter) class] Error:&*error];
-                    [object setValue:contant forKey:propertyName];
+//                    NSMutableArray *contant = [[NSMutableArray alloc]init];
+//                    contant = [value fillWithClass:[NSClassFromString(propertySetter) class] Error:&*error];
+//                    [object setValue:contant forKey:propertyName];
                     
                 }
                 else if ([value isKindOfClass:[NSNumber class]]) {
