@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'FARequest'
-  s.version          = '0.1.8'
-  s.summary          = 'Cache, FADownloader, Array Without Duplicate and fix upload image'
+  s.version          = '1.0.0'
+  s.summary          = 'change FARequest structure - add uploader + downloader + queue + status handler + default configration and stop support delegat for now (coming soon) '
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -36,5 +36,5 @@ s.ios.deployment_target = '8.0'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  # s.dependency 'FAJsonParser'
 end

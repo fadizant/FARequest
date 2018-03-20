@@ -1,7 +1,7 @@
 {
   "name": "FARequest",
-  "version": "0.1.7",
-  "summary": "Cache, FADownloader, Array Without Duplicate and fix upload image",
+  "version": "0.2.0",
+  "summary": "change FARequest structure - add uploader + downloader + queue + status handler + default configration and stop support delegat for now (coming soon)",
   "homepage": "https://github.com/fadizant/FARequest",
   "license": {
     "type": "MIT",
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/fadizant/FARequest.git",
-    "tag": "0.1.7"
+    "tag": "0.2.0"
   },
   "platforms": {
     "ios": "8.0"

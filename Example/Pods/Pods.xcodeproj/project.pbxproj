@@ -7,245 +7,195 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19BDC7748D8C463C865CC45FB391AA3A /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = E55718F6479A62125302E5A02AC70BFB /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		24A5A59E4231C6FC345215FC064F6FA0 /* FARequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6BDFF537B8481F986178FB91F11988 /* FARequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		292F4B72B01E9CC80CDB28D03CFBE93A /* NSDictionary+FADictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 39DFA5E7672E40FD5D1155BF88F874CB /* NSDictionary+FADictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3AC58C4CE8F09B77B784BFA03B3C1359 /* Pods-FARequest_Example-FARequest_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EA10AEB99B0539ACF8207EF9A1909D4 /* Pods-FARequest_Example-FARequest_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3E0B423A4FE43534D9B5B90634FF1A38 /* Pods-FARequest_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EC855C249341C6AFC997F8E7A51E2937 /* Pods-FARequest_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		40E449D0E5907B8D6CF7196FFD9669F9 /* NSDictionary+FADictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 73010FF26FEB1B7AEA88EFAE2AA9DA9B /* NSDictionary+FADictionary.m */; };
-		57D75845EDBA6A772276E67F82DDDA5E /* FARequest-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED3FC2E6941598295415BACC5E20F7 /* FARequest-dummy.m */; };
-		5ED09C75A82B8FAA43BA7D51BDECCD7C /* NSArray+FAArray.m in Sources */ = {isa = PBXBuildFile; fileRef = F81EEA63196D23B6DE55A880063BC29B /* NSArray+FAArray.m */; };
-		5FBDAEACB3B671AE3B2D1F094CB83BEE /* NSDate+FADate.h in Headers */ = {isa = PBXBuildFile; fileRef = 56746D1FF087F1FA2469FF3D103FC6AE /* NSDate+FADate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		60AEE2228F5E8F858DD7D63F61376D2A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		619F4E1587214F59A18EA8BDC06AAA89 /* UILabel+FALabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D15669E16CC8EF8E2FB47D0A26686D /* UILabel+FALabel.m */; };
-		64B1A11C2A872CDF46FF4C21A3907EC8 /* FADownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = C2D27DAF7C56AE8F863E2513C71682F4 /* FADownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6DB5051A79EC436CC26EE8A18B49EE8C /* FADownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D83E44502FADD2DD0E6C4C99627A58D0 /* FADownloader.m */; };
-		71EB55AB4D22922F797A739963127E30 /* NSArray+FAArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 13E428F7AAB569CF5E3406DDBA809241 /* NSArray+FAArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7600C2077DC34C7CC092B150ACF59F96 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		84501BEB3951536E8950DE1CB2B2831E /* Pods-FARequest_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0BE62B6AC66AEC7597E49C2010DEBE /* Pods-FARequest_Example-dummy.m */; };
-		902345CE7BE949C66089422F308B6A8C /* FARequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AF74AC6C43E5E890321F2971841B9B0F /* FARequest.m */; };
-		933ED1162DCA0479876EF8D9DE8C2CB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		D45AC05AF7AD0D50BBF28CCB78DB4686 /* NSDate+FADate.m in Sources */ = {isa = PBXBuildFile; fileRef = 168ADE0F1390C3C4CA43BD87C49A3762 /* NSDate+FADate.m */; };
-		E592863800A76BC23120B93BAA8B8308 /* Pods-FARequest_Example-FARequest_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8D5428C17CEF366073B13563010ABB /* Pods-FARequest_Example-FARequest_Tests-dummy.m */; };
-		F124D921646583B9CCFB339183F5DAA1 /* FARequest-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3562CA293E1C9162D218813BC3B0BBEB /* FARequest-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FCE99480A04B59AA2575E71A8B7FC9A4 /* UILabel+FALabel.h in Headers */ = {isa = PBXBuildFile; fileRef = D0927635AB818B23D6E22685154F324D /* UILabel+FALabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FFA69801BA171180A67D9D1C577849AF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8158B036382E2C5BA8C56C63D895CDA9 /* Reachability.m */; };
+		015BEB157FC4189578DA3219178C389B /* FARequestAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = E58BFA66517D36057AEEB4133A07E4DD /* FARequestAuthorization.m */; };
+		0253D31E72E43C7C8D191B4278624250 /* FAQueueRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D7F8C472AC69D4717B0483F8B86D428 /* FAQueueRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0923BF70C7BF3BAA8A201D3C2DFF225E /* FARequestConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = A95B1F1CE66E352F72F1EAD9E6263F4A /* FARequestConfiguration.m */; };
+		132C7DC0A8C76229666E13419D59FD69 /* FAReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D04180AC8A028E873E374DFD4CA85F /* FAReachability.m */; };
+		2C5D1D3727CE662CBE0B49EC30B7B365 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		3D9A58605BA5B72330009CB9E58FAEEF /* FARequestHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C49C241028A7E808F79F8DFC5CDC8AB /* FARequestHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F32C5FFEF93D6B846BA78C8FEC39A5B /* FAQueueRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA524CFEC485AE4A9126058DEA73A3BC /* FAQueueRequest.m */; };
+		40C14F57306D17E31789343B5A04433E /* FAResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8092CE0EE4B8BF943E9A9E2AA581394B /* FAResponse.m */; };
+		4CE81EDF8450359C90757E8869C8100E /* NSURLSession+FARequestSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E0E3893CCE390915EBD84F2C0D768 /* NSURLSession+FARequestSession.m */; };
+		4CFEFD839A9896BE6A30FE9F0A00CBE3 /* FARequestMediaFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DB7B435309201136EEBFF6589E96F41 /* FARequestMediaFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		521EF992A9D2227464C8C7922C81B12E /* FAResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E3BBD604F5F62FAC4F9A9DD249F0E647 /* FAResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6D6C9261394EF0AE846933EA7B5DFD30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		746B6303E8D1D7F4349772E321BA6009 /* FAReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BB43FAFC1CF60F9AEF080609904C /* FAReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B2374CD45F04096A098312DA47E9F6 /* FADownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BD9F05B03D869DD6ECC5EA933F778A /* FADownloader.m */; };
+		8B1BD05742D377D404DC8B1B252D4BA6 /* FARequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1BA4212A4C6A1598C1A8A46E0073CB /* FARequestHelper.m */; };
+		8D6F215FD5A3175E3D4D1E10897199A7 /* FARequest-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 512F16831934E4F86431D66150AF656B /* FARequest-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E73058398B860C4AE7C87EA54B159C4 /* FARequestAuthorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 01AEF2F43618157392337C6E5DE0D080 /* FARequestAuthorization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B55F2785F04601F280B0628D322C055F /* Pods-FARequest_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5118C356875C8266F00B893879CB889B /* Pods-FARequest_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B86366700C907C45853BA9D7D5626C66 /* FARequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 85BDDE24C064952E7F556257547941C9 /* FARequestObject.m */; };
+		B8886514B61122227D617BC1BC0AE0B6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		B88DE974D273CBED2A4584C665608641 /* FARequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C4568791A3931AD525867563432B80EF /* FARequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C33906C05E7E79D0283B23C0BA7E93D7 /* Pods-FARequest_Example-FARequest_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B312DD652492FB431DBC7130A61B335 /* Pods-FARequest_Example-FARequest_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CDC64183A5A4AE1B138B16CEB101A546 /* NSURLSession+FARequestSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 37D6B2F3B29BE11A8170D63FE9706E90 /* NSURLSession+FARequestSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DAEF90CA2F42B49ADBF2F5525AC167E6 /* Pods-FARequest_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AC5D1DDED975A3FF75EA3DE0576E4B /* Pods-FARequest_Example-dummy.m */; };
+		E5FC2423A58B6A5FADB86DB6D618DBB9 /* FARequest-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A051ED03DF7507082EF494C2450131 /* FARequest-dummy.m */; };
+		EBED6241CDEE506643A033823F5B401E /* FADownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 6596B373B42A56C7E4C6AC50410586BB /* FADownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB78464238F343DBB312D283DF669C4C /* FARequestMediaFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA54D6A805134F8EA2069975A336221 /* FARequestMediaFile.m */; };
+		FB9F5FE00E93C87C5E051B12E62377EE /* FARequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B07D0288A82F947A2199E7C6D724C03 /* FARequest.m */; };
+		FBAE215C1C03BAD8879FDA4C2E81E4DE /* FARequestConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = BC7943B8E9B2C9B17DC24A81DF815CC1 /* FARequestConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FC341760C1F60B8AE0FB2F484622615D /* FARequestObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 57D4FDF8C046933DC66C21674DA059C8 /* FARequestObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD1767E07BF101B098358A33925E4ED4 /* Pods-FARequest_Example-FARequest_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C75C065FEE832973A7EF6DB7343C7D /* Pods-FARequest_Example-FARequest_Tests-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		41789F0DE8DBE73C546559A23829959B /* PBXContainerItemProxy */ = {
+		7EF0AF205331A1DA18EECF9CBEB471E2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1CE07EE372DE93883C47491D76890E1D;
+			remoteGlobalIDString = 223754380A55D909866A6776C27AFAD0;
 			remoteInfo = FARequest;
 		};
-		EE171462B404AE38391AC21B7417C95C /* PBXContainerItemProxy */ = {
+		99852D785853398BA0911E61354C481C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1CE07EE372DE93883C47491D76890E1D;
+			remoteGlobalIDString = 223754380A55D909866A6776C27AFAD0;
 			remoteInfo = FARequest;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		11293A5D7C5478995C37314FAA21497C /* Pods-FARequest_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FARequest_Example-frameworks.sh"; sourceTree = "<group>"; };
-		13E428F7AAB569CF5E3406DDBA809241 /* NSArray+FAArray.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSArray+FAArray.h"; sourceTree = "<group>"; };
-		168ADE0F1390C3C4CA43BD87C49A3762 /* NSDate+FADate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FADate.m"; sourceTree = "<group>"; };
-		232EC061E4D30E79C3E17E01C4E8792D /* Pods_FARequest_Example_FARequest_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FARequest_Example_FARequest_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		28ED3FC2E6941598295415BACC5E20F7 /* FARequest-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FARequest-dummy.m"; sourceTree = "<group>"; };
-		2EA10AEB99B0539ACF8207EF9A1909D4 /* Pods-FARequest_Example-FARequest_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FARequest_Example-FARequest_Tests-umbrella.h"; sourceTree = "<group>"; };
-		2F7213EC86A94C0F45863D61B4C2B2E3 /* Pods-FARequest_Example-FARequest_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FARequest_Example-FARequest_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		3562CA293E1C9162D218813BC3B0BBEB /* FARequest-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FARequest-umbrella.h"; sourceTree = "<group>"; };
-		39DFA5E7672E40FD5D1155BF88F874CB /* NSDictionary+FADictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+FADictionary.h"; sourceTree = "<group>"; };
-		3E0BE62B6AC66AEC7597E49C2010DEBE /* Pods-FARequest_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FARequest_Example-dummy.m"; sourceTree = "<group>"; };
-		40EFC843D25F92C067C4DDB0F76B63EA /* Pods-FARequest_Example-FARequest_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FARequest_Example-FARequest_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4A445504AA29C47911954C55C0002A7E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4E003E07599ADD53CEAFE95DE1EAAAB1 /* Pods-FARequest_Example-FARequest_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FARequest_Example-FARequest_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		56746D1FF087F1FA2469FF3D103FC6AE /* NSDate+FADate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSDate+FADate.h"; sourceTree = "<group>"; };
-		5725B4A102C167E0443ABDF9AFAE854F /* FARequest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FARequest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C6BDFF537B8481F986178FB91F11988 /* FARequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FARequest.h; sourceTree = "<group>"; };
-		73010FF26FEB1B7AEA88EFAE2AA9DA9B /* NSDictionary+FADictionary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+FADictionary.m"; sourceTree = "<group>"; };
-		76D15669E16CC8EF8E2FB47D0A26686D /* UILabel+FALabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UILabel+FALabel.m"; sourceTree = "<group>"; };
-		8158B036382E2C5BA8C56C63D895CDA9 /* Reachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		875F9E00C8F6FDC4182F04DF2F4CD048 /* Pods-FARequest_Example-FARequest_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FARequest_Example-FARequest_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		87C032BEDD6103B5E02AEFAF255651B5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		88AAE28768911FF070DFDED2C93910FD /* Pods-FARequest_Example-FARequest_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FARequest_Example-FARequest_Tests-resources.sh"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A2389A815E0767BDECD7975DA6053460 /* FARequest.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FARequest.modulemap; sourceTree = "<group>"; };
-		A875881DC39E360358529696C6D289C9 /* Pods-FARequest_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FARequest_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		AF5D40036FE3BCCCBE40760CA2FD3674 /* Pods-FARequest_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-FARequest_Example.modulemap"; sourceTree = "<group>"; };
-		AF74AC6C43E5E890321F2971841B9B0F /* FARequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FARequest.m; sourceTree = "<group>"; };
-		B391F7CE3F4BF60C073F2DEA02856446 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BACE40616A226039F2A4F43980B5854B /* FARequest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FARequest.xcconfig; sourceTree = "<group>"; };
-		C2D27DAF7C56AE8F863E2513C71682F4 /* FADownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FADownloader.h; sourceTree = "<group>"; };
-		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D0927635AB818B23D6E22685154F324D /* UILabel+FALabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UILabel+FALabel.h"; sourceTree = "<group>"; };
-		D66A196BE8A2730A790EFD78570A6DD1 /* Pods-FARequest_Example-FARequest_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-FARequest_Example-FARequest_Tests.modulemap"; sourceTree = "<group>"; };
-		D83E44502FADD2DD0E6C4C99627A58D0 /* FADownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FADownloader.m; sourceTree = "<group>"; };
-		D85B5038879926E5E2E1CBE789B61ABF /* Pods-FARequest_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FARequest_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		D87D504B13E0AD822AF71F587FDB43EA /* Pods_FARequest_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FARequest_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D953271523EAAA59D99B197745562FDA /* Pods-FARequest_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FARequest_Example.release.xcconfig"; sourceTree = "<group>"; };
-		DB94DD93BB818223637AED2624BEAEE6 /* Pods-FARequest_Example-FARequest_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FARequest_Example-FARequest_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		E55718F6479A62125302E5A02AC70BFB /* Reachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		EB04CAA3996F30FF33482AD1209329B4 /* Pods-FARequest_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FARequest_Example-resources.sh"; sourceTree = "<group>"; };
-		EC855C249341C6AFC997F8E7A51E2937 /* Pods-FARequest_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FARequest_Example-umbrella.h"; sourceTree = "<group>"; };
-		EC8D5428C17CEF366073B13563010ABB /* Pods-FARequest_Example-FARequest_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FARequest_Example-FARequest_Tests-dummy.m"; sourceTree = "<group>"; };
-		EDB495AECB9789BE83777AAD1F3824FB /* Pods-FARequest_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FARequest_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		F592DBE949F04256AED78372072EFD4A /* FARequest-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FARequest-prefix.pch"; sourceTree = "<group>"; };
-		F81EEA63196D23B6DE55A880063BC29B /* NSArray+FAArray.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FAArray.m"; sourceTree = "<group>"; };
+		01AEF2F43618157392337C6E5DE0D080 /* FARequestAuthorization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FARequestAuthorization.h; sourceTree = "<group>"; };
+		03B4D2E1CCF6C367275B38852879434D /* FARequest-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FARequest-prefix.pch"; sourceTree = "<group>"; };
+		03BD9F05B03D869DD6ECC5EA933F778A /* FADownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FADownloader.m; path = FARequest/Classes/FADownloader.m; sourceTree = "<group>"; };
+		0FE6D99F23F71496C6D5DB081BE7E954 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		17F65FCFE18E2D39D03B3052DA931413 /* Pods-FARequest_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FARequest_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		196C32BA557CBAD424B1CB8F757B6A91 /* Pods-FARequest_Example-FARequest_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FARequest_Example-FARequest_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1D7F8C472AC69D4717B0483F8B86D428 /* FAQueueRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAQueueRequest.h; path = FARequest/Classes/FAQueueRequest.h; sourceTree = "<group>"; };
+		1E1BA4212A4C6A1598C1A8A46E0073CB /* FARequestHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FARequestHelper.m; sourceTree = "<group>"; };
+		232EC061E4D30E79C3E17E01C4E8792D /* Pods_FARequest_Example_FARequest_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FARequest_Example_FARequest_Tests.framework; path = "Pods-FARequest_Example-FARequest_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		37D6B2F3B29BE11A8170D63FE9706E90 /* NSURLSession+FARequestSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+FARequestSession.h"; sourceTree = "<group>"; };
+		38F2F8C612820C745B1F0534D1F2E830 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C49C241028A7E808F79F8DFC5CDC8AB /* FARequestHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FARequestHelper.h; sourceTree = "<group>"; };
+		4E1E0E3893CCE390915EBD84F2C0D768 /* NSURLSession+FARequestSession.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+FARequestSession.m"; sourceTree = "<group>"; };
+		5118C356875C8266F00B893879CB889B /* Pods-FARequest_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FARequest_Example-umbrella.h"; sourceTree = "<group>"; };
+		512F16831934E4F86431D66150AF656B /* FARequest-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FARequest-umbrella.h"; sourceTree = "<group>"; };
+		5725B4A102C167E0443ABDF9AFAE854F /* FARequest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FARequest.framework; path = FARequest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57D4FDF8C046933DC66C21674DA059C8 /* FARequestObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FARequestObject.h; sourceTree = "<group>"; };
+		5DB7B435309201136EEBFF6589E96F41 /* FARequestMediaFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FARequestMediaFile.h; sourceTree = "<group>"; };
+		612F90F3EEFFFAF8B9F9012B4C6ACE20 /* Pods-FARequest_Example-FARequest_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FARequest_Example-FARequest_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		6596B373B42A56C7E4C6AC50410586BB /* FADownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FADownloader.h; path = FARequest/Classes/FADownloader.h; sourceTree = "<group>"; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6E121BA37DC90642E9B082A90BCAF65F /* Pods-FARequest_Example-FARequest_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FARequest_Example-FARequest_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		6FA54D6A805134F8EA2069975A336221 /* FARequestMediaFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FARequestMediaFile.m; sourceTree = "<group>"; };
+		71717CF8C84D8DA5735A7B861A4F106E /* Pods-FARequest_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FARequest_Example-frameworks.sh"; sourceTree = "<group>"; };
+		71EC2D070493E370075F6CDC2D1F6EDA /* FARequest.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = FARequest.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		74DCAB3A2EB09F74B967648E374DF6F4 /* Pods-FARequest_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FARequest_Example.release.xcconfig"; sourceTree = "<group>"; };
+		7B312DD652492FB431DBC7130A61B335 /* Pods-FARequest_Example-FARequest_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FARequest_Example-FARequest_Tests-umbrella.h"; sourceTree = "<group>"; };
+		7C105EAEC808A51D72547302D83AA8BA /* Pods-FARequest_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FARequest_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		8092CE0EE4B8BF943E9A9E2AA581394B /* FAResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FAResponse.m; sourceTree = "<group>"; };
+		85BDDE24C064952E7F556257547941C9 /* FARequestObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FARequestObject.m; sourceTree = "<group>"; };
+		93358A7892CB326B7E445A91D549D854 /* Pods-FARequest_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FARequest_Example-resources.sh"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		953F03083C9FD8D2FA38F10612D46499 /* Pods-FARequest_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FARequest_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9824A82F320943D85BC1713B5C46941D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		9B07D0288A82F947A2199E7C6D724C03 /* FARequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FARequest.m; path = FARequest/Classes/FARequest.m; sourceTree = "<group>"; };
+		A3D04180AC8A028E873E374DFD4CA85F /* FAReachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FAReachability.m; sourceTree = "<group>"; };
+		A5A5A8EBB4915E0E6E70013572AB4545 /* FARequest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FARequest.xcconfig; sourceTree = "<group>"; };
+		A5DE56D1CCF552E0E915948E65D9C065 /* Pods-FARequest_Example-FARequest_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FARequest_Example-FARequest_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		A95B1F1CE66E352F72F1EAD9E6263F4A /* FARequestConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FARequestConfiguration.m; sourceTree = "<group>"; };
+		B0BC5F55DA8F466406F7301D03927132 /* Pods-FARequest_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FARequest_Example.modulemap"; sourceTree = "<group>"; };
+		B1CE1299012C763F8BE8ABCBB0F26808 /* Pods-FARequest_Example-FARequest_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FARequest_Example-FARequest_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		B7A051ED03DF7507082EF494C2450131 /* FARequest-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FARequest-dummy.m"; sourceTree = "<group>"; };
+		BC7943B8E9B2C9B17DC24A81DF815CC1 /* FARequestConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FARequestConfiguration.h; sourceTree = "<group>"; };
+		C4568791A3931AD525867563432B80EF /* FARequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FARequest.h; path = FARequest/Classes/FARequest.h; sourceTree = "<group>"; };
+		CD46EF4630261BF600A2D1CFDFD814A4 /* FARequest.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FARequest.modulemap; sourceTree = "<group>"; };
+		CF56A701D2F4596057DA29E294FBF2CB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4AC5D1DDED975A3FF75EA3DE0576E4B /* Pods-FARequest_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FARequest_Example-dummy.m"; sourceTree = "<group>"; };
+		D7E7A26E5F0495EED2DCB4928A1AA0B8 /* Pods-FARequest_Example-FARequest_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FARequest_Example-FARequest_Tests-resources.sh"; sourceTree = "<group>"; };
+		D87D504B13E0AD822AF71F587FDB43EA /* Pods_FARequest_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FARequest_Example.framework; path = "Pods-FARequest_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB26BB43FAFC1CF60F9AEF080609904C /* FAReachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FAReachability.h; sourceTree = "<group>"; };
+		E3BBD604F5F62FAC4F9A9DD249F0E647 /* FAResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FAResponse.h; sourceTree = "<group>"; };
+		E58BFA66517D36057AEEB4133A07E4DD /* FARequestAuthorization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FARequestAuthorization.m; sourceTree = "<group>"; };
+		E89FE98DDD2FA7467FD22C6B64ECD1E8 /* Pods-FARequest_Example-FARequest_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FARequest_Example-FARequest_Tests.modulemap"; sourceTree = "<group>"; };
+		F5C75C065FEE832973A7EF6DB7343C7D /* Pods-FARequest_Example-FARequest_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FARequest_Example-FARequest_Tests-dummy.m"; sourceTree = "<group>"; };
+		F8D4D85D89DAADD3A83B6A03901F01FB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA524CFEC485AE4A9126058DEA73A3BC /* FAQueueRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FAQueueRequest.m; path = FARequest/Classes/FAQueueRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6B7963BFDD22DEE1A5FB53352F8F2657 /* Frameworks */ = {
+		6E24B1CD6AC3F087BE841C2ABAAD9D8F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7600C2077DC34C7CC092B150ACF59F96 /* Foundation.framework in Frameworks */,
+				2C5D1D3727CE662CBE0B49EC30B7B365 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8397872AE3197C99C12B67F69107ACC6 /* Frameworks */ = {
+		8C4A0733CA1955A2077DF29FB54611E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60AEE2228F5E8F858DD7D63F61376D2A /* Foundation.framework in Frameworks */,
+				6D6C9261394EF0AE846933EA7B5DFD30 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F4A721A32AD0F7CA3A4CDF9544F52A0F /* Frameworks */ = {
+		EAC08B870EFFF894E0CAF1C2DB69FCDB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				933ED1162DCA0479876EF8D9DE8C2CB4 /* Foundation.framework in Frameworks */,
+				B8886514B61122227D617BC1BC0AE0B6 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		16DCB1F0756E2000A28472DEBB6B174E /* Development Pods */ = {
+		00477008DFD03B6840B368669126972E /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				87B8F2456D4395812CB3829F4B371B23 /* FARequest */,
+				DB26BB43FAFC1CF60F9AEF080609904C /* FAReachability.h */,
+				A3D04180AC8A028E873E374DFD4CA85F /* FAReachability.m */,
+				3C49C241028A7E808F79F8DFC5CDC8AB /* FARequestHelper.h */,
+				1E1BA4212A4C6A1598C1A8A46E0073CB /* FARequestHelper.m */,
 			);
-			name = "Development Pods";
+			name = Helper;
+			path = FARequest/Classes/Helper;
 			sourceTree = "<group>";
 		};
-		385EE2C56CEE04196006F23C52874B02 /* Pods-FARequest_Example-FARequest_Tests */ = {
+		47DA15DFBD86256EBA32A54C2B6C9157 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				87C032BEDD6103B5E02AEFAF255651B5 /* Info.plist */,
-				D66A196BE8A2730A790EFD78570A6DD1 /* Pods-FARequest_Example-FARequest_Tests.modulemap */,
-				40EFC843D25F92C067C4DDB0F76B63EA /* Pods-FARequest_Example-FARequest_Tests-acknowledgements.markdown */,
-				DB94DD93BB818223637AED2624BEAEE6 /* Pods-FARequest_Example-FARequest_Tests-acknowledgements.plist */,
-				EC8D5428C17CEF366073B13563010ABB /* Pods-FARequest_Example-FARequest_Tests-dummy.m */,
-				875F9E00C8F6FDC4182F04DF2F4CD048 /* Pods-FARequest_Example-FARequest_Tests-frameworks.sh */,
-				88AAE28768911FF070DFDED2C93910FD /* Pods-FARequest_Example-FARequest_Tests-resources.sh */,
-				2EA10AEB99B0539ACF8207EF9A1909D4 /* Pods-FARequest_Example-FARequest_Tests-umbrella.h */,
-				2F7213EC86A94C0F45863D61B4C2B2E3 /* Pods-FARequest_Example-FARequest_Tests.debug.xcconfig */,
-				4E003E07599ADD53CEAFE95DE1EAAAB1 /* Pods-FARequest_Example-FARequest_Tests.release.xcconfig */,
+				71EC2D070493E370075F6CDC2D1F6EDA /* FARequest.podspec */,
+				9824A82F320943D85BC1713B5C46941D /* LICENSE */,
+				0FE6D99F23F71496C6D5DB081BE7E954 /* README.md */,
 			);
-			name = "Pods-FARequest_Example-FARequest_Tests";
-			path = "Target Support Files/Pods-FARequest_Example-FARequest_Tests";
-			sourceTree = "<group>";
-		};
-		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		79905694F4AF81D731E6AD838A9AAB3A /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				A2389A815E0767BDECD7975DA6053460 /* FARequest.modulemap */,
-				BACE40616A226039F2A4F43980B5854B /* FARequest.xcconfig */,
-				28ED3FC2E6941598295415BACC5E20F7 /* FARequest-dummy.m */,
-				F592DBE949F04256AED78372072EFD4A /* FARequest-prefix.pch */,
-				3562CA293E1C9162D218813BC3B0BBEB /* FARequest-umbrella.h */,
-				B391F7CE3F4BF60C073F2DEA02856446 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/FARequest";
-			sourceTree = "<group>";
-		};
-		7C9E0632D278ED75304FF66BE162C8E7 /* FARequest */ = {
-			isa = PBXGroup;
-			children = (
-				9610A0686CC245DD3B1533A65DF8D36D /* Classes */,
-			);
-			path = FARequest;
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				16DCB1F0756E2000A28472DEBB6B174E /* Development Pods */,
+				CDDDE6EC70FB82B361FA1313A99A2052 /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				CCBD8B906F4351857FE5A907FA24CB52 /* Products */,
 				B9D54F7D5B2D166557105FA01CF1334C /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		87B8F2456D4395812CB3829F4B371B23 /* FARequest */ = {
+		813A1DA8C8011809BD1767B83F14364C /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				7C9E0632D278ED75304FF66BE162C8E7 /* FARequest */,
-				79905694F4AF81D731E6AD838A9AAB3A /* Support Files */,
+				CD46EF4630261BF600A2D1CFDFD814A4 /* FARequest.modulemap */,
+				A5A5A8EBB4915E0E6E70013572AB4545 /* FARequest.xcconfig */,
+				B7A051ED03DF7507082EF494C2450131 /* FARequest-dummy.m */,
+				03B4D2E1CCF6C367275B38852879434D /* FARequest-prefix.pch */,
+				512F16831934E4F86431D66150AF656B /* FARequest-umbrella.h */,
+				F8D4D85D89DAADD3A83B6A03901F01FB /* Info.plist */,
 			);
-			name = FARequest;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		9610A0686CC245DD3B1533A65DF8D36D /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				C2D27DAF7C56AE8F863E2513C71682F4 /* FADownloader.h */,
-				D83E44502FADD2DD0E6C4C99627A58D0 /* FADownloader.m */,
-				5C6BDFF537B8481F986178FB91F11988 /* FARequest.h */,
-				AF74AC6C43E5E890321F2971841B9B0F /* FARequest.m */,
-				13E428F7AAB569CF5E3406DDBA809241 /* NSArray+FAArray.h */,
-				F81EEA63196D23B6DE55A880063BC29B /* NSArray+FAArray.m */,
-				56746D1FF087F1FA2469FF3D103FC6AE /* NSDate+FADate.h */,
-				168ADE0F1390C3C4CA43BD87C49A3762 /* NSDate+FADate.m */,
-				39DFA5E7672E40FD5D1155BF88F874CB /* NSDictionary+FADictionary.h */,
-				73010FF26FEB1B7AEA88EFAE2AA9DA9B /* NSDictionary+FADictionary.m */,
-				E55718F6479A62125302E5A02AC70BFB /* Reachability.h */,
-				8158B036382E2C5BA8C56C63D895CDA9 /* Reachability.m */,
-				D0927635AB818B23D6E22685154F324D /* UILabel+FALabel.h */,
-				76D15669E16CC8EF8E2FB47D0A26686D /* UILabel+FALabel.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		ADE65D9CE7D8050B6F53369D777A237F /* Pods-FARequest_Example */ = {
-			isa = PBXGroup;
-			children = (
-				4A445504AA29C47911954C55C0002A7E /* Info.plist */,
-				AF5D40036FE3BCCCBE40760CA2FD3674 /* Pods-FARequest_Example.modulemap */,
-				A875881DC39E360358529696C6D289C9 /* Pods-FARequest_Example-acknowledgements.markdown */,
-				EDB495AECB9789BE83777AAD1F3824FB /* Pods-FARequest_Example-acknowledgements.plist */,
-				3E0BE62B6AC66AEC7597E49C2010DEBE /* Pods-FARequest_Example-dummy.m */,
-				11293A5D7C5478995C37314FAA21497C /* Pods-FARequest_Example-frameworks.sh */,
-				EB04CAA3996F30FF33482AD1209329B4 /* Pods-FARequest_Example-resources.sh */,
-				EC855C249341C6AFC997F8E7A51E2937 /* Pods-FARequest_Example-umbrella.h */,
-				D85B5038879926E5E2E1CBE789B61ABF /* Pods-FARequest_Example.debug.xcconfig */,
-				D953271523EAAA59D99B197745562FDA /* Pods-FARequest_Example.release.xcconfig */,
-			);
-			name = "Pods-FARequest_Example";
-			path = "Target Support Files/Pods-FARequest_Example";
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/FARequest";
 			sourceTree = "<group>";
 		};
 		B9D54F7D5B2D166557105FA01CF1334C /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				ADE65D9CE7D8050B6F53369D777A237F /* Pods-FARequest_Example */,
-				385EE2C56CEE04196006F23C52874B02 /* Pods-FARequest_Example-FARequest_Tests */,
+				D0961955EF155B78367175E48D00630C /* Pods-FARequest_Example */,
+				E1BB7E8A0034256FAB91693CDC9D875B /* Pods-FARequest_Example-FARequest_Tests */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
@@ -253,7 +203,7 @@
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -268,50 +218,153 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		CDDDE6EC70FB82B361FA1313A99A2052 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E2A408B0C81ED21C8420738DBD306ED3 /* FARequest */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		CF6F365A3CB8005FBB99D6798657212C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				01AEF2F43618157392337C6E5DE0D080 /* FARequestAuthorization.h */,
+				E58BFA66517D36057AEEB4133A07E4DD /* FARequestAuthorization.m */,
+				BC7943B8E9B2C9B17DC24A81DF815CC1 /* FARequestConfiguration.h */,
+				A95B1F1CE66E352F72F1EAD9E6263F4A /* FARequestConfiguration.m */,
+				5DB7B435309201136EEBFF6589E96F41 /* FARequestMediaFile.h */,
+				6FA54D6A805134F8EA2069975A336221 /* FARequestMediaFile.m */,
+				57D4FDF8C046933DC66C21674DA059C8 /* FARequestObject.h */,
+				85BDDE24C064952E7F556257547941C9 /* FARequestObject.m */,
+				E3BBD604F5F62FAC4F9A9DD249F0E647 /* FAResponse.h */,
+				8092CE0EE4B8BF943E9A9E2AA581394B /* FAResponse.m */,
+			);
+			name = Model;
+			path = FARequest/Classes/Model;
+			sourceTree = "<group>";
+		};
+		D0961955EF155B78367175E48D00630C /* Pods-FARequest_Example */ = {
+			isa = PBXGroup;
+			children = (
+				CF56A701D2F4596057DA29E294FBF2CB /* Info.plist */,
+				B0BC5F55DA8F466406F7301D03927132 /* Pods-FARequest_Example.modulemap */,
+				953F03083C9FD8D2FA38F10612D46499 /* Pods-FARequest_Example-acknowledgements.markdown */,
+				7C105EAEC808A51D72547302D83AA8BA /* Pods-FARequest_Example-acknowledgements.plist */,
+				D4AC5D1DDED975A3FF75EA3DE0576E4B /* Pods-FARequest_Example-dummy.m */,
+				71717CF8C84D8DA5735A7B861A4F106E /* Pods-FARequest_Example-frameworks.sh */,
+				93358A7892CB326B7E445A91D549D854 /* Pods-FARequest_Example-resources.sh */,
+				5118C356875C8266F00B893879CB889B /* Pods-FARequest_Example-umbrella.h */,
+				17F65FCFE18E2D39D03B3052DA931413 /* Pods-FARequest_Example.debug.xcconfig */,
+				74DCAB3A2EB09F74B967648E374DF6F4 /* Pods-FARequest_Example.release.xcconfig */,
+			);
+			name = "Pods-FARequest_Example";
+			path = "Target Support Files/Pods-FARequest_Example";
+			sourceTree = "<group>";
+		};
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		D83EE57D269D8D4ABEAE8813D39FEB8C /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				37D6B2F3B29BE11A8170D63FE9706E90 /* NSURLSession+FARequestSession.h */,
+				4E1E0E3893CCE390915EBD84F2C0D768 /* NSURLSession+FARequestSession.m */,
+			);
+			name = Category;
+			path = FARequest/Classes/Category;
+			sourceTree = "<group>";
+		};
+		E1BB7E8A0034256FAB91693CDC9D875B /* Pods-FARequest_Example-FARequest_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				38F2F8C612820C745B1F0534D1F2E830 /* Info.plist */,
+				E89FE98DDD2FA7467FD22C6B64ECD1E8 /* Pods-FARequest_Example-FARequest_Tests.modulemap */,
+				196C32BA557CBAD424B1CB8F757B6A91 /* Pods-FARequest_Example-FARequest_Tests-acknowledgements.markdown */,
+				B1CE1299012C763F8BE8ABCBB0F26808 /* Pods-FARequest_Example-FARequest_Tests-acknowledgements.plist */,
+				F5C75C065FEE832973A7EF6DB7343C7D /* Pods-FARequest_Example-FARequest_Tests-dummy.m */,
+				6E121BA37DC90642E9B082A90BCAF65F /* Pods-FARequest_Example-FARequest_Tests-frameworks.sh */,
+				D7E7A26E5F0495EED2DCB4928A1AA0B8 /* Pods-FARequest_Example-FARequest_Tests-resources.sh */,
+				7B312DD652492FB431DBC7130A61B335 /* Pods-FARequest_Example-FARequest_Tests-umbrella.h */,
+				A5DE56D1CCF552E0E915948E65D9C065 /* Pods-FARequest_Example-FARequest_Tests.debug.xcconfig */,
+				612F90F3EEFFFAF8B9F9012B4C6ACE20 /* Pods-FARequest_Example-FARequest_Tests.release.xcconfig */,
+			);
+			name = "Pods-FARequest_Example-FARequest_Tests";
+			path = "Target Support Files/Pods-FARequest_Example-FARequest_Tests";
+			sourceTree = "<group>";
+		};
+		E2A408B0C81ED21C8420738DBD306ED3 /* FARequest */ = {
+			isa = PBXGroup;
+			children = (
+				6596B373B42A56C7E4C6AC50410586BB /* FADownloader.h */,
+				03BD9F05B03D869DD6ECC5EA933F778A /* FADownloader.m */,
+				1D7F8C472AC69D4717B0483F8B86D428 /* FAQueueRequest.h */,
+				FA524CFEC485AE4A9126058DEA73A3BC /* FAQueueRequest.m */,
+				C4568791A3931AD525867563432B80EF /* FARequest.h */,
+				9B07D0288A82F947A2199E7C6D724C03 /* FARequest.m */,
+				D83EE57D269D8D4ABEAE8813D39FEB8C /* Category */,
+				00477008DFD03B6840B368669126972E /* Helper */,
+				CF6F365A3CB8005FBB99D6798657212C /* Model */,
+				47DA15DFBD86256EBA32A54C2B6C9157 /* Pod */,
+				813A1DA8C8011809BD1767B83F14364C /* Support Files */,
+			);
+			name = FARequest;
+			path = ../..;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1223D338987813040DE7403D9E4151CA /* Headers */ = {
+		24AD588E919DC632D49D379BD67E6EFB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E0B423A4FE43534D9B5B90634FF1A38 /* Pods-FARequest_Example-umbrella.h in Headers */,
+				B55F2785F04601F280B0628D322C055F /* Pods-FARequest_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C1AAD67AF21236E4054E878414C07844 /* Headers */ = {
+		AA79014449D7D29E72363CB8C6E1835F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AC58C4CE8F09B77B784BFA03B3C1359 /* Pods-FARequest_Example-FARequest_Tests-umbrella.h in Headers */,
+				C33906C05E7E79D0283B23C0BA7E93D7 /* Pods-FARequest_Example-FARequest_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D5F328E0687BE07C4AB69962CBB97D93 /* Headers */ = {
+		BF8C0B9BDC5F6C33D79B51FA250E3896 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64B1A11C2A872CDF46FF4C21A3907EC8 /* FADownloader.h in Headers */,
-				F124D921646583B9CCFB339183F5DAA1 /* FARequest-umbrella.h in Headers */,
-				24A5A59E4231C6FC345215FC064F6FA0 /* FARequest.h in Headers */,
-				71EB55AB4D22922F797A739963127E30 /* NSArray+FAArray.h in Headers */,
-				5FBDAEACB3B671AE3B2D1F094CB83BEE /* NSDate+FADate.h in Headers */,
-				292F4B72B01E9CC80CDB28D03CFBE93A /* NSDictionary+FADictionary.h in Headers */,
-				19BDC7748D8C463C865CC45FB391AA3A /* Reachability.h in Headers */,
-				FCE99480A04B59AA2575E71A8B7FC9A4 /* UILabel+FALabel.h in Headers */,
+				EBED6241CDEE506643A033823F5B401E /* FADownloader.h in Headers */,
+				0253D31E72E43C7C8D191B4278624250 /* FAQueueRequest.h in Headers */,
+				746B6303E8D1D7F4349772E321BA6009 /* FAReachability.h in Headers */,
+				8D6F215FD5A3175E3D4D1E10897199A7 /* FARequest-umbrella.h in Headers */,
+				B88DE974D273CBED2A4584C665608641 /* FARequest.h in Headers */,
+				9E73058398B860C4AE7C87EA54B159C4 /* FARequestAuthorization.h in Headers */,
+				FBAE215C1C03BAD8879FDA4C2E81E4DE /* FARequestConfiguration.h in Headers */,
+				3D9A58605BA5B72330009CB9E58FAEEF /* FARequestHelper.h in Headers */,
+				4CFEFD839A9896BE6A30FE9F0A00CBE3 /* FARequestMediaFile.h in Headers */,
+				FC341760C1F60B8AE0FB2F484622615D /* FARequestObject.h in Headers */,
+				521EF992A9D2227464C8C7922C81B12E /* FAResponse.h in Headers */,
+				CDC64183A5A4AE1B138B16CEB101A546 /* NSURLSession+FARequestSession.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1CE07EE372DE93883C47491D76890E1D /* FARequest */ = {
+		223754380A55D909866A6776C27AFAD0 /* FARequest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3975831231C72E58A6CDD34F8226E87E /* Build configuration list for PBXNativeTarget "FARequest" */;
+			buildConfigurationList = 6AB44DA29E68E053DFFA72D033BF41F7 /* Build configuration list for PBXNativeTarget "FARequest" */;
 			buildPhases = (
-				C423F7B19E999AE8960D697A82AACBA9 /* Sources */,
-				F4A721A32AD0F7CA3A4CDF9544F52A0F /* Frameworks */,
-				D5F328E0687BE07C4AB69962CBB97D93 /* Headers */,
+				A866AFCA78A6D9B8FFA61814F2FD2A2D /* Sources */,
+				6E24B1CD6AC3F087BE841C2ABAAD9D8F /* Frameworks */,
+				BF8C0B9BDC5F6C33D79B51FA250E3896 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -322,40 +375,40 @@
 			productReference = 5725B4A102C167E0443ABDF9AFAE854F /* FARequest.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		BD482446C81C9100846FFB510D6B29A1 /* Pods-FARequest_Example */ = {
+		8421560BC1D5D122657D22F4AE66CAC3 /* Pods-FARequest_Example-FARequest_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C695203C2C60B6DD716D21205458313F /* Build configuration list for PBXNativeTarget "Pods-FARequest_Example" */;
+			buildConfigurationList = 78945F82DEE67750D35F97E93379724D /* Build configuration list for PBXNativeTarget "Pods-FARequest_Example-FARequest_Tests" */;
 			buildPhases = (
-				2E7A2CDD7A2054C1213CB3F0612298CD /* Sources */,
-				8397872AE3197C99C12B67F69107ACC6 /* Frameworks */,
-				1223D338987813040DE7403D9E4151CA /* Headers */,
+				DC605D9EAE3D25F6D3570FE9660C3DF1 /* Sources */,
+				8C4A0733CA1955A2077DF29FB54611E9 /* Frameworks */,
+				AA79014449D7D29E72363CB8C6E1835F /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				32FE8C62A71D25B47293223D44B8C9BB /* PBXTargetDependency */,
-			);
-			name = "Pods-FARequest_Example";
-			productName = "Pods-FARequest_Example";
-			productReference = D87D504B13E0AD822AF71F587FDB43EA /* Pods_FARequest_Example.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		C866CFBD80CBBC62F7CC165A9D0E59E2 /* Pods-FARequest_Example-FARequest_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0BE8A936393E47305961FBF1A8A7A227 /* Build configuration list for PBXNativeTarget "Pods-FARequest_Example-FARequest_Tests" */;
-			buildPhases = (
-				89C9922C035A9F29D1ABC3A1D7C36578 /* Sources */,
-				6B7963BFDD22DEE1A5FB53352F8F2657 /* Frameworks */,
-				C1AAD67AF21236E4054E878414C07844 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CFC78325F05F12BC0714F8E5D915340A /* PBXTargetDependency */,
+				85C2F0F23D8BEFF987A78669ECDE9BCB /* PBXTargetDependency */,
 			);
 			name = "Pods-FARequest_Example-FARequest_Tests";
 			productName = "Pods-FARequest_Example-FARequest_Tests";
 			productReference = 232EC061E4D30E79C3E17E01C4E8792D /* Pods_FARequest_Example_FARequest_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C205E9C15EB4B51D3791A81C297A41E6 /* Pods-FARequest_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 951CBBDDB863FA7CC21214B566C0DEB9 /* Build configuration list for PBXNativeTarget "Pods-FARequest_Example" */;
+			buildPhases = (
+				655C808CC97C0F38DE10CE514F5673F7 /* Sources */,
+				EAC08B870EFFF894E0CAF1C2DB69FCDB /* Frameworks */,
+				24AD588E919DC632D49D379BD67E6EFB /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA45CE34DD49B61B4C52091EAF40A8F1 /* PBXTargetDependency */,
+			);
+			name = "Pods-FARequest_Example";
+			productName = "Pods-FARequest_Example";
+			productReference = D87D504B13E0AD822AF71F587FDB43EA /* Pods_FARequest_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -364,8 +417,8 @@
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0700;
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -379,86 +432,276 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1CE07EE372DE93883C47491D76890E1D /* FARequest */,
-				BD482446C81C9100846FFB510D6B29A1 /* Pods-FARequest_Example */,
-				C866CFBD80CBBC62F7CC165A9D0E59E2 /* Pods-FARequest_Example-FARequest_Tests */,
+				223754380A55D909866A6776C27AFAD0 /* FARequest */,
+				C205E9C15EB4B51D3791A81C297A41E6 /* Pods-FARequest_Example */,
+				8421560BC1D5D122657D22F4AE66CAC3 /* Pods-FARequest_Example-FARequest_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2E7A2CDD7A2054C1213CB3F0612298CD /* Sources */ = {
+		655C808CC97C0F38DE10CE514F5673F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84501BEB3951536E8950DE1CB2B2831E /* Pods-FARequest_Example-dummy.m in Sources */,
+				DAEF90CA2F42B49ADBF2F5525AC167E6 /* Pods-FARequest_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		89C9922C035A9F29D1ABC3A1D7C36578 /* Sources */ = {
+		A866AFCA78A6D9B8FFA61814F2FD2A2D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E592863800A76BC23120B93BAA8B8308 /* Pods-FARequest_Example-FARequest_Tests-dummy.m in Sources */,
+				78B2374CD45F04096A098312DA47E9F6 /* FADownloader.m in Sources */,
+				3F32C5FFEF93D6B846BA78C8FEC39A5B /* FAQueueRequest.m in Sources */,
+				132C7DC0A8C76229666E13419D59FD69 /* FAReachability.m in Sources */,
+				E5FC2423A58B6A5FADB86DB6D618DBB9 /* FARequest-dummy.m in Sources */,
+				FB9F5FE00E93C87C5E051B12E62377EE /* FARequest.m in Sources */,
+				015BEB157FC4189578DA3219178C389B /* FARequestAuthorization.m in Sources */,
+				0923BF70C7BF3BAA8A201D3C2DFF225E /* FARequestConfiguration.m in Sources */,
+				8B1BD05742D377D404DC8B1B252D4BA6 /* FARequestHelper.m in Sources */,
+				FB78464238F343DBB312D283DF669C4C /* FARequestMediaFile.m in Sources */,
+				B86366700C907C45853BA9D7D5626C66 /* FARequestObject.m in Sources */,
+				40C14F57306D17E31789343B5A04433E /* FAResponse.m in Sources */,
+				4CE81EDF8450359C90757E8869C8100E /* NSURLSession+FARequestSession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C423F7B19E999AE8960D697A82AACBA9 /* Sources */ = {
+		DC605D9EAE3D25F6D3570FE9660C3DF1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DB5051A79EC436CC26EE8A18B49EE8C /* FADownloader.m in Sources */,
-				57D75845EDBA6A772276E67F82DDDA5E /* FARequest-dummy.m in Sources */,
-				902345CE7BE949C66089422F308B6A8C /* FARequest.m in Sources */,
-				5ED09C75A82B8FAA43BA7D51BDECCD7C /* NSArray+FAArray.m in Sources */,
-				D45AC05AF7AD0D50BBF28CCB78DB4686 /* NSDate+FADate.m in Sources */,
-				40E449D0E5907B8D6CF7196FFD9669F9 /* NSDictionary+FADictionary.m in Sources */,
-				FFA69801BA171180A67D9D1C577849AF /* Reachability.m in Sources */,
-				619F4E1587214F59A18EA8BDC06AAA89 /* UILabel+FALabel.m in Sources */,
+				FD1767E07BF101B098358A33925E4ED4 /* Pods-FARequest_Example-FARequest_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		32FE8C62A71D25B47293223D44B8C9BB /* PBXTargetDependency */ = {
+		85C2F0F23D8BEFF987A78669ECDE9BCB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FARequest;
-			target = 1CE07EE372DE93883C47491D76890E1D /* FARequest */;
-			targetProxy = 41789F0DE8DBE73C546559A23829959B /* PBXContainerItemProxy */;
+			target = 223754380A55D909866A6776C27AFAD0 /* FARequest */;
+			targetProxy = 7EF0AF205331A1DA18EECF9CBEB471E2 /* PBXContainerItemProxy */;
 		};
-		CFC78325F05F12BC0714F8E5D915340A /* PBXTargetDependency */ = {
+		AA45CE34DD49B61B4C52091EAF40A8F1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FARequest;
-			target = 1CE07EE372DE93883C47491D76890E1D /* FARequest */;
-			targetProxy = EE171462B404AE38391AC21B7417C95C /* PBXContainerItemProxy */;
+			target = 223754380A55D909866A6776C27AFAD0 /* FARequest */;
+			targetProxy = 99852D785853398BA0911E61354C481C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		7CEEAED8B8EF3757BBC71411E6E10BBA /* Debug */ = {
+		0707581A776B1C30056AC76173A7305D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BACE40616A226039F2A4F43980B5854B /* FARequest.xcconfig */;
+			baseConfigurationReference = A5A5A8EBB4915E0E6E70013572AB4545 /* FARequest.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/FARequest/FARequest-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/FARequest/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FARequest/FARequest.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = FARequest;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		0FBC8ACA145A91B21B0ADEE0D04D5F31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 612F90F3EEFFFAF8B9F9012B4C6ACE20 /* Pods-FARequest_Example-FARequest_Tests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-FARequest_Example-FARequest_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FARequest_Example-FARequest_Tests/Pods-FARequest_Example-FARequest_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_FARequest_Example_FARequest_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		26F954BA177A9A46FFFD4E23ED11D67A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		379808A519A6C0EE614E952F379BF8DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5A5A8EBB4915E0E6E70013572AB4545 /* FARequest.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FARequest/FARequest-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FARequest/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/FARequest/FARequest.modulemap";
+				PRODUCT_NAME = FARequest;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5145D9D9BC96AD207FBEE79708E15788 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74DCAB3A2EB09F74B967648E374DF6F4 /* Pods-FARequest_Example.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-FARequest_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FARequest_Example/Pods-FARequest_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_FARequest_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5C814CA660122BF90C0A433242D0B78C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5DE56D1CCF552E0E915948E65D9C065 /* Pods-FARequest_Example-FARequest_Tests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-FARequest_Example-FARequest_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FARequest_Example-FARequest_Tests/Pods-FARequest_Example-FARequest_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_FARequest_Example_FARequest_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -467,68 +710,25 @@
 			};
 			name = Debug;
 		};
-		8DED8AD26D381A6ACFF202E5217EC498 /* Release */ = {
+		929FA9CB0557156FC0CD71317D336BC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17F65FCFE18E2D39D03B3052DA931413 /* Pods-FARequest_Example.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		9A24E0A9897E01FDD27F7387BFAC004B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D953271523EAAA59D99B197745562FDA /* Pods-FARequest_Example.release.xcconfig */;
-			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-FARequest_Example/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-FARequest_Example/Pods-FARequest_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -540,223 +740,106 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
-		9E1E4E48AF2EAB23169E611BF694090A /* Debug */ = {
+		E2BF6D6731C31DE69900B7B24E6F0445 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_DEBUG=1",
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Debug;
-		};
-		B499B48C79AF55B75A64BED3D5906D8A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E003E07599ADD53CEAFE95DE1EAAAB1 /* Pods-FARequest_Example-FARequest_Tests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-FARequest_Example-FARequest_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FARequest_Example-FARequest_Tests/Pods-FARequest_Example-FARequest_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FARequest_Example_FARequest_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		D050BE6AFDF71BA9054128696E622F37 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F7213EC86A94C0F45863D61B4C2B2E3 /* Pods-FARequest_Example-FARequest_Tests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-FARequest_Example-FARequest_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FARequest_Example-FARequest_Tests/Pods-FARequest_Example-FARequest_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FARequest_Example_FARequest_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		DFB1B934716EA66C28B6BD0F5C9E5028 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BACE40616A226039F2A4F43980B5854B /* FARequest.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FARequest/FARequest-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FARequest/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FARequest/FARequest.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = FARequest;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		E783BB695D7E04151C1220CE9D077876 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D85B5038879926E5E2E1CBE789B61ABF /* Pods-FARequest_Example.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-FARequest_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FARequest_Example/Pods-FARequest_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FARequest_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0BE8A936393E47305961FBF1A8A7A227 /* Build configuration list for PBXNativeTarget "Pods-FARequest_Example-FARequest_Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D050BE6AFDF71BA9054128696E622F37 /* Debug */,
-				B499B48C79AF55B75A64BED3D5906D8A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9E1E4E48AF2EAB23169E611BF694090A /* Debug */,
-				8DED8AD26D381A6ACFF202E5217EC498 /* Release */,
+				E2BF6D6731C31DE69900B7B24E6F0445 /* Debug */,
+				26F954BA177A9A46FFFD4E23ED11D67A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3975831231C72E58A6CDD34F8226E87E /* Build configuration list for PBXNativeTarget "FARequest" */ = {
+		6AB44DA29E68E053DFFA72D033BF41F7 /* Build configuration list for PBXNativeTarget "FARequest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7CEEAED8B8EF3757BBC71411E6E10BBA /* Debug */,
-				DFB1B934716EA66C28B6BD0F5C9E5028 /* Release */,
+				379808A519A6C0EE614E952F379BF8DE /* Debug */,
+				0707581A776B1C30056AC76173A7305D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C695203C2C60B6DD716D21205458313F /* Build configuration list for PBXNativeTarget "Pods-FARequest_Example" */ = {
+		78945F82DEE67750D35F97E93379724D /* Build configuration list for PBXNativeTarget "Pods-FARequest_Example-FARequest_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E783BB695D7E04151C1220CE9D077876 /* Debug */,
-				9A24E0A9897E01FDD27F7387BFAC004B /* Release */,
+				5C814CA660122BF90C0A433242D0B78C /* Debug */,
+				0FBC8ACA145A91B21B0ADEE0D04D5F31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		951CBBDDB863FA7CC21214B566C0DEB9 /* Build configuration list for PBXNativeTarget "Pods-FARequest_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				929FA9CB0557156FC0CD71317D336BC4 /* Debug */,
+				5145D9D9BC96AD207FBEE79708E15788 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

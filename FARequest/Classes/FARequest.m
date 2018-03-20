@@ -1,538 +1,128 @@
 //
 //  FARequest.m
-//  SlideBar
 //
 //  Created by Fadi on 10/8/15.
-//  Copyright (c) 2015 BeeCell. All rights reserved.
+//  Copyright (c) 2015 Fadi. All rights reserved.
 //
 
 #import "FARequest.h"
-#import <CommonCrypto/CommonCryptor.h>
-#import <CommonCrypto/CommonDigest.h>
+#import "NSURLSession+FARequestSession.h"
+@import MobileCoreServices; 
 
 @implementation FARequest
 #pragma mark - internet status
-static Reachability *reachability;
+static FAReachability *reachability;
 
 +(NetworkStatus) networkStatus
 {
     if (!reachability) {
-        reachability = [Reachability reachabilityForInternetConnection];
+        reachability = [FAReachability reachabilityForInternetConnection];
         [reachability startNotifier];
     }
     return [reachability currentReachabilityStatus];
 }
 
-#pragma mark - Authorization
-static NSString *username;
-static NSString *password;
+#pragma mark - Configuration
+static FARequestConfiguration *configuration;
++(FARequestConfiguration *)defaultConfiguration{
+    if (!configuration)
+        configuration = [[FARequestConfiguration alloc]initWithRequestType:FARequestTypeGET];
+    
+    return configuration;
+}
++(void)setDefaultConfiguration:(FARequestConfiguration *)value{
+    configuration = value;
+}
 
-+(void)setUsername:(NSString*)value{username=value;}
-+(NSString*)username{return username;}
-
-+(void)setPassword:(NSString*)value{password=value;}
-+(NSString*)password{return password;}
+#pragma mark - Status Handler
+static NSMutableDictionary<NSNumber*,NSString*> *statusHandler;
++(NSMutableDictionary<NSNumber*,NSString*> *)statusHandler{
+    if (!statusHandler)
+        statusHandler = [NSMutableDictionary new];
+    return statusHandler;
+}
++(NSString*)notificationNameFromKey:(NSNumber*)key{
+    return [statusHandler objectForKey:key] ? [statusHandler objectForKey:key] : @"";
+}
++(void)setStatusHandler:(NSMutableDictionary<NSNumber*,NSString*> *)value{
+    statusHandler = value;
+}
 
 #pragma mark - Use block requests
-
-#pragma mark shortcut request
-
-//Full block request
-+(BOOL)sendRequestWithUrl:(NSURL*)url
-         requestCompleted:(requestCompleted)requestCompleted
++(BOOL)sendWithRequestObject:(FARequestObject *)requestObject
+            RequestCompleted:(requestCompleted)requestCompleted
 {
+    return [self sendWithRequestObject:requestObject
+                RequestProgress:nil
+               RequestCompleted:requestCompleted];
+}
+
++(BOOL)sendWithRequestObject:(FARequestObject *)requestObject
+             RequestProgress:(requestProgress)requestProgress
+            RequestCompleted:(requestCompleted)requestCompleted
+{
+    NSString * parameter = requestObject.parameter;
     
-    return [self sendRequestWithUrl:url
-                            Headers:nil
-                          Parameter:@""
-                              Image:nil
-                        RequestType:FARequestTypeGET
-                            timeOut:120
-                             object:nil
-                    EncodeParameter:NO
-                           useCache:YES
-                   requestCompleted:requestCompleted];
-}
-
-//Full block request With object
-+(BOOL)sendRequestWithUrl:(NSURL*)url
-                   object:(id)object
-         requestCompleted:(requestCompleted)requestCompleted
-{
-    
-    return [self sendRequestWithUrl:url
-                            Headers:nil
-                          Parameter:@""
-                              Image:nil
-                        RequestType:FARequestTypeGET
-                            timeOut:120
-                             object:object
-                    EncodeParameter:NO
-                           useCache:YES
-                   requestCompleted:requestCompleted];
-}
-
-#pragma mark shortcut request with type
-
-//Full block request
-+(BOOL)sendRequestWithUrl:(NSURL*)url
-              RequestType:(FARequestType)Type
-         requestCompleted:(requestCompleted)requestCompleted
-{
-    
-    return [self sendRequestWithUrl:url
-                            Headers:nil
-                          Parameter:@""
-                              Image:nil
-                        RequestType:Type
-                            timeOut:120
-                             object:nil
-                    EncodeParameter:NO
-                           useCache:YES
-                   requestCompleted:requestCompleted];
-}
-
-//Full block request With object
-+(BOOL)sendRequestWithUrl:(NSURL*)url
-                   object:(id)object
-              RequestType:(FARequestType)Type
-         requestCompleted:(requestCompleted)requestCompleted{
-    
-    return [self sendRequestWithUrl:url
-                            Headers:nil
-                          Parameter:@""
-                              Image:nil
-                        RequestType:Type
-                            timeOut:120
-                             object:object
-                    EncodeParameter:NO
-                           useCache:YES
-                   requestCompleted:requestCompleted];
-}
-
-#pragma mark shortcut request with cache
-
-//Full block request
-+(BOOL)sendRequestWithUrl:(NSURL*)url
-              RequestType:(FARequestType)Type
-                 useCache:(BOOL)useCashe
-         requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendRequestWithUrl:url
-                            Headers:nil
-                          Parameter:@""
-                              Image:nil
-                        RequestType:Type
-                            timeOut:120
-                             object:nil
-                    EncodeParameter:NO
-                           useCache:useCashe
-                   requestCompleted:requestCompleted];
-}
-
-//Full block request With object
-+(BOOL)sendRequestWithUrl:(NSURL*)url
-                   object:(id)object
-              RequestType:(FARequestType)Type
-                 useCache:(BOOL)useCashe
-         requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendRequestWithUrl:url
-                            Headers:nil
-                          Parameter:@""
-                              Image:nil
-                        RequestType:Type
-                            timeOut:120
-                             object:object
-                    EncodeParameter:NO
-                           useCache:useCashe
-                   requestCompleted:requestCompleted];
-}
-
-#pragma mark shortcut request without timeOut , Encode , images and header
-//Keys and Values block request
-+(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
-                         KeysAndValues:(NSMutableDictionary *)Data
-                           RequestType:(FARequestType)Type
-                      requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendKeysAndValuesRequestWithUrl:url
-                                         Headers:nil
-                                   KeysAndValues:Data
-                                           Image:nil
-                                     RequestType:Type
-                                         timeOut:120
-                                 EncodeParameter:NO
-                                        useCache:NO
-                                requestCompleted:requestCompleted];
-}
-
-//Keys and Values block request with cache
-+(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
-                         KeysAndValues:(NSMutableDictionary *)Data
-                           RequestType:(FARequestType)Type
-                              useCache:(BOOL)useCashe
-                      requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendKeysAndValuesRequestWithUrl:url
-                                         Headers:nil
-                                   KeysAndValues:Data
-                                           Image:nil
-                                     RequestType:Type
-                                         timeOut:120
-                                 EncodeParameter:NO
-                                        useCache:useCashe
-                                requestCompleted:requestCompleted];
-}
-
-//JSON block request
-+(BOOL)sendJSONRequestWithUrl:(NSURL*)url
-                         JSON:(NSDictionary *)JSON
-                  RequestType:(FARequestType)Type
-             requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendJSONRequestWithUrl:url
-                                Headers:nil
-                                   JSON:JSON
-                                  Image:nil
-                            RequestType:Type
-                                timeOut:120
-                        EncodeParameter:NO
-                               useCache:NO
-                       requestCompleted:requestCompleted];
-}
-
-//JSON block request with cache
-+(BOOL)sendJSONRequestWithUrl:(NSURL*)url
-                         JSON:(NSDictionary *)JSON
-                  RequestType:(FARequestType)Type
-                     useCache:(BOOL)useCashe
-             requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendJSONRequestWithUrl:url
-                                Headers:nil
-                                   JSON:JSON
-                                  Image:nil
-                            RequestType:Type
-                                timeOut:120
-                        EncodeParameter:NO
-                               useCache:useCashe
-                       requestCompleted:requestCompleted];
-}
-
-//Full block request
-+(BOOL)sendParameterRequestWithUrl:(NSURL*)url
-                         Parameter:(NSString *)Param
-                       RequestType:(FARequestType)Type
-                          useCache:(BOOL)useCashe
-                  requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendRequestWithUrl:url
-                            Headers:nil
-                          Parameter:Param
-                              Image:nil
-                        RequestType:Type
-                            timeOut:120
-                             object:nil
-                    EncodeParameter:NO
-                           useCache:useCashe
-                   requestCompleted:requestCompleted];
-}
-
-//Full block request With object
-+(BOOL)sendParameterRequestWithUrl:(NSURL*)url
-                         Parameter:(NSString *)Param
-                            object:(id)object
-                       RequestType:(FARequestType)Type
-                          useCache:(BOOL)useCashe
-                  requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendRequestWithUrl:url
-                            Headers:nil
-                          Parameter:Param
-                              Image:nil
-                        RequestType:Type
-                            timeOut:120
-                             object:object
-                    EncodeParameter:NO
-                           useCache:useCashe
-                   requestCompleted:requestCompleted];
-}
-
-
-#pragma mark shortcut request without timeOut , Encode and images
-//Keys and Values block request
-+(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
-                               Headers:(NSDictionary *)Headers
-                         KeysAndValues:(NSMutableDictionary *)Data
-                           RequestType:(FARequestType)Type
-                              useCache:(BOOL)useCashe
-                      requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendKeysAndValuesRequestWithUrl:url
-                                         Headers:Headers
-                                   KeysAndValues:Data
-                                           Image:nil
-                                     RequestType:Type
-                                         timeOut:120
-                                 EncodeParameter:NO
-                                        useCache:useCashe
-                                requestCompleted:requestCompleted];
-}
-
-//JSON block request
-+(BOOL)sendJSONRequestWithUrl:(NSURL*)url
-                      Headers:(NSDictionary *)Headers
-                         JSON:(NSDictionary *)JSON
-                  RequestType:(FARequestType)Type
-                     useCache:(BOOL)useCashe
-             requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendJSONRequestWithUrl:url
-                                Headers:Headers
-                                   JSON:JSON
-                                  Image:nil
-                            RequestType:Type
-                                timeOut:120
-                        EncodeParameter:NO
-                               useCache:useCashe
-                       requestCompleted:requestCompleted];
-}
-
-//Full block request
-+(BOOL)sendParameterRequestWithUrl:(NSURL*)url
-                           Headers:(NSDictionary *)Headers
-                         Parameter:(NSString *)Param
-                       RequestType:(FARequestType)Type
-                          useCache:(BOOL)useCashe
-                  requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendRequestWithUrl:url
-                            Headers:Headers
-                          Parameter:Param
-                              Image:nil
-                        RequestType:Type
-                            timeOut:120
-                             object:nil
-                    EncodeParameter:NO
-                           useCache:useCashe
-                   requestCompleted:requestCompleted];
-}
-
-//Full block request With object
-+(BOOL)sendParameterRequestWithUrl:(NSURL*)url
-                           Headers:(NSDictionary *)Headers
-                         Parameter:(NSString *)Param
-                            object:(id)object
-                       RequestType:(FARequestType)Type
-                          useCache:(BOOL)useCashe
-                  requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendRequestWithUrl:url
-                            Headers:Headers
-                          Parameter:Param
-                              Image:nil
-                        RequestType:Type
-                            timeOut:120
-                             object:object
-                    EncodeParameter:NO
-                           useCache:useCashe
-                   requestCompleted:requestCompleted];
-}
-
-#pragma mark shortcut request without timeOut and Encode
-//Keys and Values block request
-+(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
-                               Headers:(NSDictionary *)Headers
-                         KeysAndValues:(NSMutableDictionary *)Data
-                                 Image:(NSMutableArray <UIImage *>*)images
-                           RequestType:(FARequestType)Type
-                              useCache:(BOOL)useCashe
-                      requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendKeysAndValuesRequestWithUrl:url
-                                         Headers:Headers
-                                   KeysAndValues:Data
-                                           Image:images
-                                     RequestType:Type
-                                         timeOut:120
-                                 EncodeParameter:NO
-                                        useCache:useCashe
-                                requestCompleted:requestCompleted];
-}
-
-//JSON block request
-+(BOOL)sendJSONRequestWithUrl:(NSURL*)url
-                      Headers:(NSDictionary *)Headers
-                         JSON:(NSDictionary *)JSON
-                        Image:(NSMutableArray <UIImage *>*)images
-                  RequestType:(FARequestType)Type
-                     useCache:(BOOL)useCashe
-             requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendJSONRequestWithUrl:url
-                                Headers:Headers
-                                   JSON:JSON
-                                  Image:images
-                            RequestType:Type
-                                timeOut:120
-                        EncodeParameter:NO
-                               useCache:useCashe
-                       requestCompleted:requestCompleted];
-}
-
-//Full block request
-+(BOOL)sendParameterRequestWithUrl:(NSURL*)url
-                           Headers:(NSDictionary *)Headers
-                         Parameter:(NSString *)Param
-                             Image:(NSMutableArray <UIImage *>*)images
-                       RequestType:(FARequestType)Type
-                          useCache:(BOOL)useCashe
-                  requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendRequestWithUrl:url
-                            Headers:Headers
-                          Parameter:Param
-                              Image:images
-                        RequestType:Type
-                            timeOut:120
-                             object:nil
-                    EncodeParameter:NO
-                           useCache:useCashe
-                   requestCompleted:requestCompleted];
-}
-
-//Full block request With object
-+(BOOL)sendParameterRequestWithUrl:(NSURL*)url
-                           Headers:(NSDictionary *)Headers
-                         Parameter:(NSString *)Param
-                             Image:(NSMutableArray <UIImage *>*)images
-                            object:(id)object
-                       RequestType:(FARequestType)Type
-                          useCache:(BOOL)useCashe
-                  requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendRequestWithUrl:url
-                            Headers:Headers
-                          Parameter:Param
-                              Image:images
-                        RequestType:Type
-                            timeOut:120
-                             object:object
-                    EncodeParameter:NO
-                           useCache:useCashe
-                   requestCompleted:requestCompleted];
-}
-
-#pragma mark full request
-
-//Keys and Values block request
-+(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
-                               Headers:(NSDictionary *)Headers
-                         KeysAndValues:(NSMutableDictionary *)Data
-                                 Image:(NSMutableArray <UIImage *>*)images
-                           RequestType:(FARequestType)Type
-                               timeOut:(float)timeOut
-                       EncodeParameter:(BOOL)Encoding
-                              useCache:(BOOL)useCashe
-                      requestCompleted:(requestCompleted)requestCompleted
-{
-    NSString *Parameter = @"";
-    if (Data) {
-        for (NSString* key in Data.allKeys) {
-            Parameter = [Parameter stringByAppendingString:[NSString stringWithFormat:@"%@=%@&",key,[Data objectForKey:key]]];
-        }
-        Parameter = Parameter ? [Parameter substringToIndex:Parameter.length-1] : @"";
+    if (!requestObject.url){
+        NSError *error = [NSError errorWithDomain:@"NSURL" code:-1 userInfo:@{@"Error":@"URL is null"}];
+        requestCompleted([[FAResponse alloc]initWithResult:nil
+                                                    Object:requestObject.configuration.object
+                                               IsFromCache:NO
+                                                       URL:requestObject.url
+                                              ResponseCode:-1
+                                            ResponseHeader:[NSDictionary new]
+                                                     Error:error]);
+        return YES;
     }
-    return [self sendRequestWithUrl:url
-                            Headers:Headers
-                          Parameter:Parameter
-                              Image:images
-                        RequestType:Type
-                            timeOut:timeOut
-                             object:nil
-                    EncodeParameter:Encoding
-                           useCache:useCashe
-                   requestCompleted:requestCompleted];
-}
-
-//JSON block request
-+(BOOL)sendJSONRequestWithUrl:(NSURL*)url
-                      Headers:(NSDictionary *)Headers
-                         JSON:(NSDictionary *)JSON
-                        Image:(NSMutableArray <UIImage *>*)images
-                  RequestType:(FARequestType)Type
-                      timeOut:(float)timeOut
-              EncodeParameter:(BOOL)Encoding
-                     useCache:(BOOL)useCashe
-             requestCompleted:(requestCompleted)requestCompleted
-{
-    return [self sendRequestWithUrl:url
-                            Headers:Headers
-                          Parameter:[self GetJSON:JSON]
-                              Image:images
-                        RequestType:Type
-                            timeOut:timeOut
-                             object:nil
-                    EncodeParameter:Encoding
-                           useCache:useCashe
-                   requestCompleted:requestCompleted];
-}
-
-//Full block request
-+(BOOL)sendRequestWithUrl:(NSURL*)url
-                  Headers:(NSDictionary *)Headers
-                Parameter:(NSString *)Param
-                    Image:(NSMutableArray <UIImage *>*)images
-              RequestType:(FARequestType)Type
-                  timeOut:(float)timeOut
-                   object:(id)object
-          EncodeParameter:(BOOL)Encoding
-                 useCache:(BOOL)useCashe
-         requestCompleted:(requestCompleted)requestCompleted
-{
+    
     //read from cache
     //__block BOOL hasCache = NO;
     __block NSData * cacheResponse;
-    if (useCashe) {
-    // Use GCD's background queue
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        // Generate the file path
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString *request = [self getHashWithString:[NSString stringWithFormat:@"%@%@%@",[url absoluteString],Param,Headers ? [self GetJSON:Headers] : @""]];
-        NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"FACache/%@",request]];
-        
-        if(![[NSFileManager defaultManager] fileExistsAtPath:[NSString stringWithFormat:@"%@/FACache",documentsDirectory]]) {
-            NSError * error = nil;
-            [[NSFileManager defaultManager] createDirectoryAtPath:[NSString stringWithFormat:@"%@/FACache",documentsDirectory]
-                                      withIntermediateDirectories:YES
-                                                       attributes:nil
-                                                            error:&error];
-            if (error != nil) {
-                NSLog(@"error creating directory: %@", error);
-                //..
+    if (requestObject.configuration.useCashe) {
+        // Use GCD's background queue
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            // Generate the file path
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+            NSString *documentsDirectory = [paths objectAtIndex:0];
+            NSString *request = [FARequestHelper getHashWithString:[NSString stringWithFormat:@"%@%@%@",[requestObject.url absoluteString],parameter,requestObject.configuration.header ? [FARequestHelper GetJSON:requestObject.configuration.header] : @""]];
+            NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"FACache/%@",request]];
+            
+            if(![[NSFileManager defaultManager] fileExistsAtPath:[NSString stringWithFormat:@"%@/FACache",documentsDirectory]]) {
+                NSError * error = nil;
+                [[NSFileManager defaultManager] createDirectoryAtPath:[NSString stringWithFormat:@"%@/FACache",documentsDirectory]
+                                          withIntermediateDirectories:YES
+                                                           attributes:nil
+                                                                error:&error];
+                if (error != nil) {
+                    NSLog(@"error creating directory: %@", error);
+                    //..
+                }
             }
-        }
-        if([[NSFileManager defaultManager] fileExistsAtPath:dataPath]) {
-            //            hasCache = YES;
-            cacheResponse = [NSData dataWithContentsOfFile:dataPath]; //[[NSFileManager defaultManager] contentsAtPath:dataPath];
-            if (EncryptionKey && ![EncryptionKey isEqualToString:@""]) {
-                cacheResponse = [self DecryptAES:EncryptionKey value:cacheResponse];
-                //                [cacheResponse decryptWithKey:EncryptionKey];
+            if([[NSFileManager defaultManager] fileExistsAtPath:dataPath]) {
+                //            hasCache = YES;
+                cacheResponse = [NSData dataWithContentsOfFile:dataPath]; //[[NSFileManager defaultManager] contentsAtPath:dataPath];
+                if ([FARequestHelper encryptionKey] && ![[FARequestHelper encryptionKey] isEqualToString:@""]) {
+                    cacheResponse = [FARequestHelper DecryptAES:[FARequestHelper encryptionKey] value:cacheResponse];
+                    //                [cacheResponse decryptWithKey:EncryptionKey];
+                }
+                if (cacheResponse) {
+                    //parsing the JSON response
+                    id jsonObject = [NSJSONSerialization
+                                     JSONObjectWithData:cacheResponse
+                                     options:NSJSONReadingAllowFragments
+                                     error:nil];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        requestCompleted([[FAResponse alloc]initWithResult:jsonObject
+                                                                    Object:requestObject.configuration.object
+                                                               IsFromCache:YES
+                                                                       URL:requestObject.url
+                                                              ResponseCode:200
+                                                            ResponseHeader:[NSDictionary new]
+                                                                     Error:nil]);
+                    });
+                }
             }
-            if (cacheResponse) {
-                //parsing the JSON response
-                id jsonObject = [NSJSONSerialization
-                                 JSONObjectWithData:cacheResponse
-                                 options:NSJSONReadingAllowFragments
-                                 error:nil];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    requestCompleted(jsonObject,200 ,object,YES);
-                });
-            }
-        }
-    });
+        });
         
     }
     
@@ -545,9 +135,9 @@ static NSString *password;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     //create a mutable HTTP request
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:timeOut];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:requestObject.url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:requestObject.configuration.timeOut];
     //sets the receiver’s HTTP request method
-    switch (Type) {
+    switch (requestObject.configuration.requestType) {
         case FARequestTypeGET:
             [urlRequest setHTTPMethod:@"GET"];
             [urlRequest addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -555,11 +145,11 @@ static NSString *password;
         case FARequestTypePOST:
         {
             [urlRequest setHTTPMethod:@"POST"];
-            NSData *data = [Param dataUsingEncoding:NSUTF8StringEncoding];
+            NSData *data = [parameter dataUsingEncoding:NSUTF8StringEncoding];
             NSError *error;
             if ([NSJSONSerialization JSONObjectWithData:data
                                                 options:kNilOptions
-                                                  error:&error] == nil || [Param isEqualToString:@""])
+                                                  error:&error] == nil || [parameter isEqualToString:@""])
             {
                 // not JSON
                 [urlRequest addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -584,109 +174,50 @@ static NSString *password;
     }
     
     //Authorization
-    if (username && ![username isEqualToString:@""]) {
-        NSString *authStr = [NSString stringWithFormat:@"%@:%@", username, password];
+    if (requestObject.configuration.authorization) {
+        NSString *authStr = [NSString stringWithFormat:@"%@:%@", requestObject.configuration.authorization.user, requestObject.configuration.authorization.password];
         NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
         NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed]];
         [urlRequest setValue:authValue forHTTPHeaderField:@"Authorization"];
     }
     
     //set headers
-    if(Headers)
-        for (NSString *header in Headers.allKeys) {
-            [urlRequest addValue:[Headers objectForKey:header] forHTTPHeaderField:header];
+    if(requestObject.configuration.header)
+        for (NSString *header in requestObject.configuration.header.allKeys) {
+            [urlRequest addValue:[requestObject.configuration.header objectForKey:header] forHTTPHeaderField:header];
         }
     
     //param fix spaces
-    Param = [Param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    parameter = [parameter stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     //init body
     id body;
     
     //check if there is images to send or not
-    if (images) {
+    if (requestObject.mediaFiles && requestObject.mediaFiles.count) {
+        
+        // set content type
+        NSString *boundary = [self generateBoundaryString];
+        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+        [urlRequest setValue:contentType forHTTPHeaderField: @"Content-Type"];
+        
         // Build the request body
-        NSString *boundary = @"SportuondoFormBoundary";
-        NSMutableData *body = [NSMutableData data];
+        body = [self multiPartWithParameter:parameter Boundary:boundary Files:requestObject.mediaFiles];
+
+        //sets the request body of the receiver to the specified data.
+        [urlRequest setHTTPBody:body];
         
-        //fill params
-        NSArray *params = [Param componentsSeparatedByString:@"&"];
-        for (NSString* item in params) {
-            NSArray *keyValue = [item componentsSeparatedByString:@"="];
-            if (keyValue.count >= 2) {
-                // Body part for "key" parameter. This is a string.
-                [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-                [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", keyValue[0]] dataUsingEncoding:NSUTF8StringEncoding]];
-                [body appendData:[[NSString stringWithFormat:@"%@\r\n", keyValue[1]] dataUsingEncoding:NSUTF8StringEncoding]];
-            }
-        }
-        
-        //fill images
-        for (UIImage *image in images) {
-            // Body part for the attachament. This is an image.
-            NSData *imageData = UIImageJPEGRepresentation(image, 1);
-            
-            if (imageData) {
-                [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-                [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@.jpg\"\r\n",
-                                   object ? object : @"image",
-                                   object ? object : @"image"] dataUsingEncoding:NSUTF8StringEncoding]];
-                [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-                [body appendData:imageData];
-                [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-            }
-        }
-        
-        [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        
-        
-        //        // Init the URLRequest
-        //        NSString *boundary = @"---------------------------14737809831466499882746641449";
-        //        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
-        //        [urlRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
-        //
-        //        body = [NSMutableData data];
-        //
-        //        //chaeck if there is param
-        //        if (Param && ![Param isEqualToString:@""]) {
-        //            //Encode
-        //            if(Encoding)
-        //                Param = [self URLEncodeStringFromString:Param];
-        //
-        //            if (![Param hasSuffix:@"&"]) {
-        //                Param = [Param stringByAppendingString:@"&"];
-        //            }
-        //
-        //            [body appendData:[Param dataUsingEncoding:NSUTF8StringEncoding]];
-        //        }
-        //
-        //
-        //        for (UIImage *image in images) {
-        //            NSData *imageData = UIImageJPEGRepresentation(image, 1);
-        //
-        //            NSString *filename = @"filename";
-        //            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        //            [body appendData:[[NSString stringWithString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"file\"; file=\"%@.jpg\"\r\n", filename]] dataUsingEncoding:NSUTF8StringEncoding]];
-        //            [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-        //            [body appendData:[NSData dataWithData:imageData]];
-        //            [body appendData:[[NSString stringWithFormat:@"\r\n--%@--",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        //
-        //        }
-        //        [body appendData:[[NSString stringWithFormat:@"\r\n--%@--",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        //
-        //        //set lenght
-        //        [urlRequest addValue:[NSString stringWithFormat:@"%i", (int)[body length]] forHTTPHeaderField:@"Content-Length"];
-        //
-        //        //sets the request body of the receiver to the specified data.
-        //        [urlRequest setHTTPBody:body];
+        //set lenght
+        [urlRequest addValue:[NSString stringWithFormat:@"%i", (int)[body length]] forHTTPHeaderField:@"Content-Length"];
+
     } else {
-        
+    
         //Encode
-        if(Encoding)
-            Param = [self URLEncodeStringFromString:Param];
+        if(requestObject.configuration.encoding)
+            parameter = [FARequestHelper URLEncodeStringFromString:parameter];
         
         //create string for parameters that we need to send in the HTTP POST body
-        body =  [NSString stringWithFormat:@"%@", Param];
+        body =  [NSString stringWithFormat:@"%@", parameter];
         
         //set lenght
         [urlRequest addValue:[NSString stringWithFormat:@"%d", (int)[body length]] forHTTPHeaderField:@"Content-Length"];
@@ -695,678 +226,522 @@ static NSString *password;
         //sets the request body of the receiver to the specified data.
         [urlRequest setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
     }
-    
+
     
     NSURLSession *session = [NSURLSession sharedSession];
     
-    if (Headers) {
+    if (requestObject.configuration.header) {
         // Setup the session
         NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        sessionConfiguration.HTTPAdditionalHeaders = Headers;
+        sessionConfiguration.HTTPAdditionalHeaders = requestObject.configuration.header;
         
         // Create the session
         // We can use the delegate to track upload progress
         session = [NSURLSession sessionWithConfiguration:sessionConfiguration delegate:FARequest.self delegateQueue:nil];
     }
     
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:urlRequest
-                                            completionHandler:
-                                  ^(NSData *data, NSURLResponse *response, NSError *error) {
-                                      NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-                                      //         NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
-                                      dispatch_async(dispatch_get_main_queue(), ^{
-                                          
-                                          NSError *errorParsing = nil;
-                                          if (data) {
-                                              //parsing the JSON response
-                                              id jsonObject = [NSJSONSerialization
-                                                               JSONObjectWithData:data
-                                                               options:NSJSONReadingAllowFragments
-                                                               error:&errorParsing];
-                                              //check if there is cache
-                                              BOOL sendBlock=YES;
-                                              NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                                              if (cacheResponse) {
-                                                  NSString *cacheResponseString = [[NSString alloc] initWithData:cacheResponse encoding:NSUTF8StringEncoding];
-                                                  if ([responseString isEqualToString:cacheResponseString]) {
-                                                      sendBlock=NO;
-                                                  }
-                                                  else
-                                                  {
-                                                      //if cache date not same of response one 
-                                                      [self cachThisRequest:[NSString stringWithFormat:@"%@%@%@",[url absoluteString],Param,Headers ? [self GetJSON:Headers] : @""] Data:responseString];
-                                                  }
-                                              }
-                                              else if (Type == FARequestTypeGET)
-                                              {
-                                                  // cache data for GET request only
-                                                  [self cachThisRequest:[NSString stringWithFormat:@"%@%@%@",[url absoluteString],Param,Headers ? [self GetJSON:Headers] : @""] Data:responseString];
-                                              }
-                                              
-                                              if(sendBlock)
-                                              {
-                                                  if (jsonObject) {
-                                                      requestCompleted(jsonObject,(int)[httpResponse statusCode] ,object , NO);
-                                                      
-                                                      //send Notification center
-                                                      if (object) {
-                                                          [[NSNotificationCenter defaultCenter]
-                                                           postNotificationName:@"FARequestCompleted"
-                                                           object:self
-                                                           userInfo:@{@"result":jsonObject,
-                                                                      @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                                                      @"object":object,
-                                                                      @"hasCach":[NSNumber numberWithBool:NO]}];
-                                                      } else {
-                                                          [[NSNotificationCenter defaultCenter]
-                                                           postNotificationName:@"FARequestCompleted"
-                                                           object:self
-                                                           userInfo:@{@"result":jsonObject,
-                                                                      @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                                                      @"hasCach":[NSNumber numberWithBool:NO]}];
-                                                      }
-                                                      
-                                                      
-                                                      
-                                                  } else {
-                                                      requestCompleted([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],(int)[httpResponse statusCode] , object , NO);
-                                                      
-                                                      //send Notification center
-                                                      if (object) {
-                                                          [[NSNotificationCenter defaultCenter]
-                                                           postNotificationName:@"FARequestCompleted"
-                                                           object:self
-                                                           userInfo:@{@"result":[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],
-                                                                      @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                                                      @"object":object,
-                                                                      @"hasCach":[NSNumber numberWithBool:NO]}];
-                                                      } else {
-                                                          [[NSNotificationCenter defaultCenter]
-                                                           postNotificationName:@"FARequestCompleted"
-                                                           object:self
-                                                           userInfo:@{@"result":[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding],
-                                                                      @"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                                                      @"hasCach":[NSNumber numberWithBool:NO]}];
-                                                      }
-                                                  }
-                                              }
-                                          }
-                                          else
-                                          {
-                                              requestCompleted(nil,(int)[httpResponse statusCode] , object , NO);
-                                              
-                                              //send Notification center
-                                              if (object) {
-                                                  [[NSNotificationCenter defaultCenter]
-                                                   postNotificationName:@"FARequestCompleted"
-                                                   object:self
-                                                   userInfo:@{@"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                                              @"object":object,
-                                                              @"hasCach":[NSNumber numberWithBool:NO]}];
-                                              } else {
-                                                  [[NSNotificationCenter defaultCenter]
-                                                   postNotificationName:@"FARequestCompleted"
-                                                   object:self
-                                                   userInfo:@{@"responseCode":[NSNumber numberWithInteger:[httpResponse statusCode]],
-                                                              @"hasCach":[NSNumber numberWithBool:NO]}];
-                                              }
-                                              
-                                          }
-                                          //hide loading progress bar
-                                          [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                                          
-                                      });
-                                  }];
-    
-    [task resume];
+    if (requestObject.mediaFiles && requestObject.mediaFiles.count) {
+        NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        session = [NSURLSession sessionWithConfiguration:sessionConfiguration delegate:FARequest.self delegateQueue:nil];
+        session.completed = requestCompleted;
+        session.progress = requestProgress;
+        session.requestObject = requestObject;
+        NSURLSessionDataTask *task = [session uploadTaskWithRequest:urlRequest fromData:body];
+        [task resume];
+    }
+    else{
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:urlRequest
+                                                completionHandler:
+                                      ^(NSData *data, NSURLResponse *response, NSError *error) {
+                                          [self responseWithRequest:urlRequest
+                                                               Data:data
+                                                           Response:response
+                                                              Error:error
+                                                              Cache:cacheResponse
+                                                      RequestObject:requestObject
+                                                   RequestCompleted:requestCompleted
+                                                          Parameter:parameter];
+                                      }];
+        
+        [task resume];
+    }
+
     return YES;
 }
 
-#pragma mark - Use delegat request
-
-#pragma mark init
-
-- (instancetype)initWithParent:(UIViewController *)view Tag:(int)tag
+#pragma mark response
++(void)responseWithRequest:(NSMutableURLRequest*)urlRequest
+                      Data:(NSData *)data
+                  Response:(NSURLResponse *)response
+                     Error:(NSError *)error
+                     Cache:(NSData *) cacheResponse
+             RequestObject:(FARequestObject *)requestObject
+          RequestCompleted:(requestCompleted)requestCompleted
+                 Parameter:(NSString *) parameter
 {
-    self = [super init];
-    if (self) {
-        self.delegate = view;
-        self.tag = tag;
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+    //         NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //hide loading progress bar
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        
+        // init
+        NSError *errorParsing = nil;
+        FAResponse * responseObject = [FAResponse new];
+        
+        // check if there is data
+        if (data) {
+            //parsing the JSON response
+            id jsonObject = [NSJSONSerialization
+                             JSONObjectWithData:data
+                             options:NSJSONReadingAllowFragments
+                             error:&errorParsing];
+            //check if there is cache
+            NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            if (cacheResponse) {
+                NSString *cacheResponseString = [[NSString alloc] initWithData:cacheResponse encoding:NSUTF8StringEncoding];
+                if ([responseString isEqualToString:cacheResponseString]) {
+                    // return function to do not send same data
+                    return ;
+                }
+                else
+                {
+                    //if cache date not same of response one
+                    [FARequestHelper cachThisRequest:[NSString stringWithFormat:@"%@%@%@",[requestObject.url absoluteString],parameter,requestObject.configuration.header ? [FARequestHelper GetJSON:requestObject.configuration.header] : @""] Data:responseString];
+                }
+            }
+            else if (requestObject.configuration.requestType == FARequestTypeGET)
+            {
+                // cache data for GET request only
+                [FARequestHelper cachThisRequest:[NSString stringWithFormat:@"%@%@%@",[requestObject.url absoluteString],parameter,requestObject.configuration.header ? [FARequestHelper GetJSON:requestObject.configuration.header] : @""] Data:responseString];
+            }
+            
+            // send if cache data not equal with new data
+            if (jsonObject) { // is JSON format
+                responseObject = [[FAResponse alloc]initWithResult:jsonObject
+                                                            Object:requestObject.configuration.object
+                                                       IsFromCache:NO
+                                                               URL:requestObject.url
+                                                      ResponseCode:(int)[httpResponse statusCode]
+                                                    ResponseHeader:[httpResponse allHeaderFields]
+                                                             Error:error];
+                requestCompleted(responseObject);
+                
+            } else { // return string if not JSON format
+                responseObject = [[FAResponse alloc]initWithResult:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]
+                                                            Object:requestObject.configuration.object
+                                                       IsFromCache:NO
+                                                               URL:requestObject.url
+                                                      ResponseCode:(int)[httpResponse statusCode]
+                                                    ResponseHeader:[httpResponse allHeaderFields]
+                                                             Error:error];
+                requestCompleted(responseObject);
+            }
+        }
+        else // if response data is nil
+        {
+            responseObject = [[FAResponse alloc]initWithResult:nil
+                                                        Object:requestObject.configuration.object
+                                                   IsFromCache:NO
+                                                           URL:requestObject.url
+                                                  ResponseCode:(int)[httpResponse statusCode]
+                                                ResponseHeader:[httpResponse allHeaderFields]
+                                                         Error:error];
+            requestCompleted(responseObject);
+        }
+        
+        //send Notification center
+        if (requestObject.notificationKey) {
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:requestObject.notificationKey
+             object:self
+             userInfo:@{FARequestNotificationRequest:requestObject,
+                        FARequestNotificationResponse:responseObject,
+                        FARequestNotificationRequestCompleted:requestCompleted}];
+        }
+        
+        //Status handler
+        NSString *statusKey = [statusHandler objectForKey:[NSNumber numberWithInt:(int)[httpResponse statusCode]]];
+        if (statusKey) {
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:statusKey
+             object:self
+             userInfo:@{FARequestNotificationRequest:requestObject,
+                        FARequestNotificationResponse:responseObject,
+                        FARequestNotificationRequestCompleted:requestCompleted}];
+        }
+        
+    });
+}
+
+#pragma mark multiPart
++(NSMutableData *)multiPartWithParameter:(NSString*)parameter Boundary:(NSString*)boundary Files:(NSArray<FARequestMediaFile*>*)files{
+    NSMutableData* data = [NSMutableData new];
+    
+    // add params (all params are strings)
+    NSArray *params = [parameter componentsSeparatedByString:@"&"];
+    for (NSString* item in params) {
+        NSArray *keyValue = [item componentsSeparatedByString:@"="];
+        if (keyValue.count >= 2) {
+            // Body part for "key" parameter. This is a string.
+            [data appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+            [data appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", keyValue[0]] dataUsingEncoding:NSUTF8StringEncoding]];
+            [data appendData:[[NSString stringWithFormat:@"%@\r\n", keyValue[1]] dataUsingEncoding:NSUTF8StringEncoding]];
+        }
     }
-    return self;
-}
-
-#pragma mark requests
-#pragma mark shortcut request
-//Full block request
--(BOOL)sendRequestWithUrl:(NSURL*)url
-              RequestType:(FARequestType)Type
-{
-    return [self sendRequestWithUrl:url
-                            Headers:nil
-                          Parameter:@""
-                              Image:nil
-                        RequestType:Type
-                            timeOut:120
-                    EncodeParameter:NO];
-}
-
-#pragma mark shortcut request without timeOut , Encode and images
-//Keys and Values block request
--(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
-                               Headers:(NSDictionary *)Headers
-                         KeysAndValues:(NSMutableDictionary *)Data
-                           RequestType:(FARequestType)Type
-{
-    return [self sendKeysAndValuesRequestWithUrl:url
-                                         Headers:Headers
-                                   KeysAndValues:Data
-                                           Image:nil
-                                     RequestType:Type
-                                         timeOut:120
-                                 EncodeParameter:NO];
-}
-
-//JSON block request
--(BOOL)sendJSONRequestWithUrl:(NSURL*)url
-                      Headers:(NSDictionary *)Headers
-                         JSON:(NSDictionary *)JSON
-                  RequestType:(FARequestType)Type
-{
-    return [self sendJSONRequestWithUrl:url
-                                Headers:Headers
-                                   JSON:JSON
-                                  Image:nil
-                            RequestType:Type
-                                timeOut:120
-                        EncodeParameter:NO];
-}
-
-//Full block request
--(BOOL)sendParameterRequestWithUrl:(NSURL*)url
-                           Headers:(NSDictionary *)Headers
-                         Parameter:(NSString *)Param
-                       RequestType:(FARequestType)Type
-{
-    return [self sendRequestWithUrl:url
-                            Headers:Headers
-                          Parameter:Param
-                              Image:nil
-                        RequestType:Type
-                            timeOut:120
-                    EncodeParameter:NO];
-}
-
-#pragma mark shortcut request without timeOut and Encode
-//Keys and Values block request
--(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
-                               Headers:(NSDictionary *)Headers
-                         KeysAndValues:(NSMutableDictionary *)Data
-                                 Image:(NSMutableArray <UIImage *>*)images
-                           RequestType:(FARequestType)Type
-{
-    return [self sendKeysAndValuesRequestWithUrl:url
-                                         Headers:Headers
-                                   KeysAndValues:Data
-                                           Image:images
-                                     RequestType:Type
-                                         timeOut:120
-                                 EncodeParameter:NO];
-}
-
-//JSON block request
--(BOOL)sendJSONRequestWithUrl:(NSURL*)url
-                      Headers:(NSDictionary *)Headers
-                         JSON:(NSDictionary *)JSON
-                        Image:(NSMutableArray <UIImage *>*)images
-                  RequestType:(FARequestType)Type
-{
-    return [self sendJSONRequestWithUrl:url
-                                Headers:Headers
-                                   JSON:JSON
-                                  Image:images
-                            RequestType:Type
-                                timeOut:120
-                        EncodeParameter:NO];
-}
-
-//Full block request
--(BOOL)sendParameterRequestWithUrl:(NSURL*)url
-                           Headers:(NSDictionary *)Headers
-                         Parameter:(NSString *)Param
-                             Image:(NSMutableArray <UIImage *>*)images
-                       RequestType:(FARequestType)Type
-{
-    return [self sendRequestWithUrl:url
-                            Headers:Headers
-                          Parameter:Param
-                              Image:images
-                        RequestType:Type
-                            timeOut:120
-                    EncodeParameter:NO];
-}
-
-#pragma mark full request
-
-//Keys and Values block request
--(BOOL)sendKeysAndValuesRequestWithUrl:(NSURL*)url
-                               Headers:(NSDictionary *)Headers
-                         KeysAndValues:(NSMutableDictionary *)Data
-                                 Image:(NSMutableArray <UIImage *>*)images
-                           RequestType:(FARequestType)Type
-                               timeOut:(float)timeOut
-                       EncodeParameter:(BOOL)Encoding
-{
-    NSString *Parameter ;
-    for (NSString* key in Data.allKeys) {
-        Parameter = [NSString stringWithFormat:@"%@=%@&",key,[Data objectForKey:key]];
+    
+    // add images data
+    for (FARequestMediaFile *file in files) {
+        NSString *filename  = file.filename;
+        NSData   *filedata  = file.file ? file.file : (file.image? UIImageJPEGRepresentation(file.image,1) : nil);
+        if (!filedata && (!file.filePath || [file.filePath isEqualToString:@""]))
+            continue; // skip file if not exist
+        
+        NSString *mimetype  = file.image?  FARequestMediaTypeJPEG : (file.mimetype ? file.mimetype : filedata ? [self mimeTypeForData:filedata] : @"");
+        if (file.filePath) {
+            filename  = [file.filePath lastPathComponent];
+            filedata  = [NSData dataWithContentsOfURL:[NSURL URLWithString:file.filePath]];
+            mimetype  = [self mimeTypeForPath:file.filePath];
+        }
+        
+        [data appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [data appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", file.name, filename] dataUsingEncoding:NSUTF8StringEncoding]];
+        [data appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", mimetype] dataUsingEncoding:NSUTF8StringEncoding]];
+        [data appendData:filedata];
+        [data appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     }
-    Parameter = Parameter ? [Parameter substringToIndex:Parameter.length-1] : @"";
-    return [self sendRequestWithUrl:url
-                            Headers:Headers
-                          Parameter:Parameter
-                              Image:images
-                        RequestType:Type
-                            timeOut:timeOut
-                    EncodeParameter:Encoding];
+    
+    [data appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    return data;
 }
 
-//JSON block request
--(BOOL)sendJSONRequestWithUrl:(NSURL*)url
-                      Headers:(NSDictionary *)Headers
-                         JSON:(NSDictionary *)JSON
-                        Image:(NSMutableArray <UIImage *>*)images
-                  RequestType:(FARequestType)Type
-                      timeOut:(float)timeOut
-              EncodeParameter:(BOOL)Encoding
-{
-    return [self sendRequestWithUrl:url
-                            Headers:Headers
-                          Parameter:[FARequest GetJSON:JSON]
-                              Image:images
-                        RequestType:Type
-                            timeOut:timeOut
-                    EncodeParameter:Encoding];
++ (NSString *)generateBoundaryString {
+    return [NSString stringWithFormat:@"Boundary-%@", [[NSUUID UUID] UUIDString]];
 }
 
-//Full block request
--(BOOL)sendRequestWithUrl:(NSURL*)url
-                  Headers:(NSDictionary *)Headers
-                Parameter:(NSString *)Param
-                    Image:(NSMutableArray <UIImage *>*)images
-              RequestType:(FARequestType)Type
-                  timeOut:(float)timeOut
-          EncodeParameter:(BOOL)Encoding
++ (NSString *)mimeTypeForPath:(NSString *)path {
+    // get a mime type for an extension using MobileCoreServices.framework
+    
+    CFStringRef extension = (__bridge CFStringRef)[path pathExtension];
+    CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, extension, NULL);
+    assert(UTI != NULL);
+    
+    NSString *mimetype = CFBridgingRelease(UTTypeCopyPreferredTagWithClass(UTI, kUTTagClassMIMEType));
+    assert(mimetype != NULL);
+    
+    CFRelease(UTI);
+    
+    return mimetype;
+}
+
++ (NSString *)mimeTypeForData:(NSData *)data {
+    uint8_t c;
+    [data getBytes:&c length:1];
+    
+    switch (c) {
+        case 0xFF:
+            return FARequestMediaTypeJPEG;
+            break;
+        case 0x89:
+            return FARequestMediaTypePNG;
+            break;
+        case 0x47:
+            return FARequestMediaTypeGIF;
+            break;
+        case 0x42:
+            return FARequestMediaTypeBMP;
+            break;
+        case 0x49:
+        case 0x4D:
+            return FARequestMediaTypeTIFF;
+            break;
+        case 0x25:
+            return FARequestMediaTypePDF;
+            break;
+        case 0xD0:
+            return FARequestMediaTypeVND;
+            break;
+        case 0x80:
+            return FARequestMediaTypeMP4;
+        case 0x46:
+            return FARequestMediaTypePLAIN;
+            break;
+        default:
+            return FARequestMediaTypeOCTET_STREAM;
+    }
+    return nil;
+}
+
+#pragma mark upload progress
++ (void)URLSession:(NSURLSession *)session
+              task:(NSURLSessionTask *)task
+   didSendBodyData:(int64_t)bytesSent
+    totalBytesSent:(int64_t)totalBytesSent
+totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
 {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // update in main thread
+        float progress = (float)totalBytesSent / (float)totalBytesExpectedToSend;
+        if (session.progress) {
+            session.progress(progress);
+        }
+    });
+}
+
++ (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
+    
+    [self responseWithRequest:dataTask.originalRequest
+                         Data:data
+                     Response:dataTask.response
+                        Error:nil
+                        Cache:nil
+                RequestObject:session.requestObject
+             RequestCompleted:session.completed
+                    Parameter:session.requestObject.parameter];
+}
+
++ (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)dataTask didCompleteWithError:(NSError *)error {
+    
+    if (error) {
+        [self responseWithRequest:dataTask.originalRequest
+                             Data:nil
+                         Response:dataTask.response
+                            Error:error
+                            Cache:nil
+                    RequestObject:session.requestObject
+                 RequestCompleted:session.completed
+                        Parameter:session.requestObject.parameter];
+    }
+
+}
+
+#pragma mark - get request (Download)
+
++(BOOL)getWithRequestObject:(FARequestObject *)requestObject
+           RequestCompleted:(requestCompleted)requestCompleted{
+    return [self getWithRequestObject:requestObject
+                      RequestProgress:nil
+                     RequestCompleted:requestCompleted];
+}
+
++(BOOL)getWithRequestObject:(FARequestObject *)requestObject
+            RequestProgress:(requestProgress)requestProgress
+           RequestCompleted:(requestCompleted)requestCompleted{
+    
+    if (!requestObject.url){
+        NSError *error = [NSError errorWithDomain:@"NSURL" code:-1 userInfo:@{@"Error":@"URL is null"}];
+        requestCompleted([[FAResponse alloc]initWithResult:nil
+                                                    Object:requestObject.configuration.object
+                                               IsFromCache:NO
+                                                       URL:requestObject.url
+                                              ResponseCode:-1
+                                            ResponseHeader:[NSDictionary new]
+                                                     Error:error]);
+        return YES;
+    }
+    
+    // check if file exist if no need to override
+    if (!requestObject.overWrite){
+        NSError *error;
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        //create dir if not exist
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *path = [paths firstObject];
+        path = [path stringByAppendingPathComponent:requestObject.saveInFolder];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:path])
+            [fileManager createDirectoryAtPath:path
+                   withIntermediateDirectories:NO
+                                    attributes:nil
+                                         error:&error];
+        
+        
+        if ([fileManager fileExistsAtPath:[requestObject filePath]]) {
+            if (requestProgress) {
+                requestProgress(1.0);
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // update in main thread
+                requestCompleted([[FAResponse alloc] initWithResult:[requestObject filePath]
+                                                             Object:nil
+                                                        IsFromCache:NO
+                                                                URL:requestObject.url
+                                                       ResponseCode:FAResponseStatusOK
+                                                     ResponseHeader:nil
+                                                              Error:nil]);
+            });
+
+            return YES;
+        }
+    }
+    
     //check internet connection before request
-    if (![FARequest isNetworkAvailable]) {
+    if ([FARequest networkStatus] == NotReachable) {
         return NO;
     }
     
     //show loading progress bar
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    //create a mutable HTTP request
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:timeOut];
-    //sets the receiver’s HTTP request method
-    switch (Type) {
-        case FARequestTypeGET:
-            [urlRequest setHTTPMethod:@"GET"];
-            [urlRequest addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-            break;
-        case FARequestTypePOST:
-        {
-            [urlRequest setHTTPMethod:@"POST"];
-            NSData *data = [Param dataUsingEncoding:NSUTF8StringEncoding];
-            NSError *error;
-            if ([NSJSONSerialization JSONObjectWithData:data
-                                                options:kNilOptions
-                                                  error:&error] == nil || [Param isEqualToString:@""])
-            {
-                // not JSON
-                [urlRequest addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-            }
-            else
-                [urlRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        }
-            break;
-        case FARequestTypePATCH:
-            [urlRequest setHTTPMethod:@"PATCH"];
-            [urlRequest addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-            break;
-        case FARequestTypeDELETE:
-            [urlRequest setHTTPMethod:@"DELETE"];
-            break;
-        case FARequestTypePUT:
-            [urlRequest setHTTPMethod:@"PUT"];
-            [urlRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-            break;
-        default:
-            break;
-    }
     
-    //set headers
-    if(Headers)
-        for (NSString *header in Headers.allKeys) {
-            [urlRequest addValue:[Headers objectForKey:header] forHTTPHeaderField:header];
-        }
-    
-    //param fix spaces
-    Param = [Param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    //init body
-    id body;
-    
-    //check if there is images to send or not
-    if (images) {
-        // Init the URLRequest
-        NSString *boundary = @"---------------------------14737809831466499882746641449";
-        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
-        [urlRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
-        
-        body = [NSMutableData data];
-        
-        //chaeck if there is param
-        if (Param && ![Param isEqualToString:@""]) {
-            //Encode
-            if(Encoding)
-                Param = [FARequest URLEncodeStringFromString:Param];
-            
-            if (![Param hasSuffix:@"&"]) {
-                Param = [Param stringByAppendingString:@"&"];
-            }
-            
-            [body appendData:[Param dataUsingEncoding:NSUTF8StringEncoding]];
-        }
-        
-        
-        for (UIImage *image in images) {
-            NSData *imageData = UIImageJPEGRepresentation(image, 1);
-            
-            NSString *filename = @"filename";
-            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[[NSString stringWithString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"file\"; file=\"%@.jpg\"\r\n", filename]] dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[NSData dataWithData:imageData]];
-            [body appendData:[[NSString stringWithFormat:@"\r\n--%@--",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-            
-        }
-        [body appendData:[[NSString stringWithFormat:@"\r\n--%@--",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        
-        //set lenght
-        [urlRequest addValue:[NSString stringWithFormat:@"%d", (int)[body length]] forHTTPHeaderField:@"Content-Length"];
-        
-        //sets the request body of the receiver to the specified data.
-        [urlRequest setHTTPBody:body];
-    } else {
-        
-        //Encode
-        if(Encoding)
-            Param = [FARequest URLEncodeStringFromString:Param];
-        
-        //create string for parameters that we need to send in the HTTP POST body
-        body =  [NSString stringWithFormat:@"%@", Param];
-        
-        //set lenght
-        [urlRequest addValue:[NSString stringWithFormat:@"%d", (int)[body length]] forHTTPHeaderField:@"Content-Length"];
-        
-        
-        //sets the request body of the receiver to the specified data.
-        [urlRequest setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
-    }
+    //session
+    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    sessionConfiguration.HTTPMaximumConnectionsPerHost = 50;
     
     
-    //allocate a new operation queue
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    //Loads the data for a URL request and executes a handler block on an
-    //operation queue when the request completes or fails.
-    [NSURLConnection
-     sendAsynchronousRequest:urlRequest
-     queue:queue
-     completionHandler:^(NSURLResponse *response,
-                         NSData *data,
-                         NSError *error) {
-         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-         //         NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
-         if ((data && [data length] != 0) || error == nil){
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 [self getResponse:data responseCode:(int)[httpResponse statusCode] URL:url];
-             });
-         }
-         else if (error != nil){
-             NSLog(@"error = %@", error);
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 [self getResponse:nil responseCode:(int)[httpResponse statusCode] URL:url];
-             });
-         }
-         else
-         {
-             NSLog(@"error = %@", error);
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 [self getResponse:nil responseCode:(int)[httpResponse statusCode] URL:url];
-             });
-         }
-     }];
+    NSURLSession* session = [NSURLSession sessionWithConfiguration:sessionConfiguration
+                                                 delegate:FARequest.self
+                                            delegateQueue:nil];
     
+    session.completed = requestCompleted;
+    session.progress = requestProgress;
+    session.requestObject = requestObject;
+    
+    //self.downloadTask = [self.session downloadTaskWithURL:[NSURL URLWithString:self.downloadSource]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestObject.url];
+    [request addValue:@"" forHTTPHeaderField:@"Accept-Encoding"];
+    
+    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithRequest:request];
+    
+    // Start the task.
+    [downloadTask resume];
     return YES;
 }
 
+#pragma mark - NSURLSession Delegate method implementation
 
-#pragma mark Response
--(void)getResponse:(NSData *)Data responseCode:(int)responseCode URL:(NSURL*)url
-{
-    //Show Respons Result in Log
-    NSError *error = nil;
++(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location{
     
-    if (Data) {
-        //parsing the JSON response
-        id jsonObject = [NSJSONSerialization
-                         JSONObjectWithData:Data
-                         options:NSJSONReadingAllowFragments
-                         error:&error];
-        if (jsonObject != nil && error == nil){
-            //push delegate
-            [self.delegate requestCompleted:jsonObject responseCode:responseCode Tag:(int)self.tag];
-        }
-        else
-        {
-            [self.delegate requestCompleted:nil responseCode:responseCode Tag:(int)self.tag];
-        }
+    NSError *error;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    //create dir if not exist
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths firstObject];
+    path = [path stringByAppendingPathComponent:session.requestObject.saveInFolder];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path])
+        [fileManager createDirectoryAtPath:path
+               withIntermediateDirectories:NO
+                                attributes:nil
+                                     error:nil];
+    
+    
+    if ([fileManager fileExistsAtPath:[session.requestObject filePath]]) {
+        [fileManager removeItemAtURL:[session.requestObject fileURL] error:nil];
     }
-    else
-        [self.delegate requestCompleted:nil responseCode:responseCode Tag:(int)self.tag];
     
     
-    //hide loading progress bar
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-}
-
-#pragma mark - helper
-
-#pragma mark JSON
-
-+(NSString*)GetJSON:(id)object
-{
-    NSError *writeError = nil;
+    //get fime size
+    NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:[location path] error:&error];
     
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object options:NSJSONWritingPrettyPrinted error:&writeError];
+    NSNumber *fileSizeNumber = [fileAttributes objectForKey:NSFileSize];
+    long long fileSize = [fileSizeNumber longLongValue];
     
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
-    return jsonString;
-}
+    if (fileSize <= 1) { // faild
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // update in main thread
+            //hide loading progress bar
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            
+            session.completed([[FAResponse alloc] initWithResult:downloadTask.response
+                                                          Object:nil
+                                                     IsFromCache:NO
+                                                             URL:location
+                                                    ResponseCode:FAResponseStatusInternal_Server_Error
+                                                  ResponseHeader:nil
+                                                           Error:[NSError errorWithDomain:@"can't save file" code:NSURLErrorCannotWriteToFile userInfo:nil]]);
+        });
 
-#pragma mark Encode
-
-+ (NSString *)URLEncodeStringFromString:(NSString *)string
-{
-    static CFStringRef charset = CFSTR("!@#$%&*()+'\";:=,/?[]");
-    CFStringRef str = (__bridge CFStringRef)string;
-    CFStringEncoding encoding = kCFStringEncodingUTF8;
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, str, NULL, charset, encoding));
-}
-
-#pragma mark check internet connection
-
-+(BOOL)isNetworkAvailable
-{
-    SCNetworkReachabilityFlags flags;
-    SCNetworkReachabilityRef address;
-    address = SCNetworkReachabilityCreateWithName(NULL, "www.google.com" );
-    Boolean success = SCNetworkReachabilityGetFlags(address, &flags);
-    CFRelease(address);
-    
-    bool canReach = success
-    && !(flags & kSCNetworkReachabilityFlagsConnectionRequired)
-    && (flags & kSCNetworkReachabilityFlagsReachable);
-    
-    return canReach;
-}
-
-#pragma mark - caching
-+(BOOL)isCached:(NSURL*)url Headers:(NSDictionary*)Headers
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *request = [self getHashWithString:[NSString stringWithFormat:@"%@%@",[url absoluteString],Headers ? [self GetJSON:Headers] : @""]];
-    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"FACache/%@",request]];
-    
-    if(![[NSFileManager defaultManager] fileExistsAtPath:[NSString stringWithFormat:@"%@/FACache",documentsDirectory]]) {
-        NSError * error = nil;
-        [[NSFileManager defaultManager] createDirectoryAtPath:[NSString stringWithFormat:@"%@/FACache",documentsDirectory]
-                                  withIntermediateDirectories:YES
-                                                   attributes:nil
-                                                        error:&error];
-        if (error != nil) {
-            NSLog(@"error creating directory: %@", error);
-            //..
-        }
+        return;
     }
-    return [[NSFileManager defaultManager] fileExistsAtPath:dataPath];
+    
+    BOOL success = [fileManager copyItemAtURL:location
+                                        toURL:[session.requestObject fileURL]
+                                        error:&error];
+    
+    if (success) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // update in main thread
+            //hide loading progress bar
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            
+            session.completed([[FAResponse alloc] initWithResult:[session.requestObject filePath]
+                                                          Object:nil
+                                                     IsFromCache:NO
+                                                             URL:location
+                                                    ResponseCode:FAResponseStatusOK
+                                                  ResponseHeader:nil
+                                                           Error:nil]);
+        });
+
+        
+    }
+    else{
+        NSLog(@"Unable to copy temp file. Error: %@", [error localizedDescription]);
+    }
 }
 
-+(void)cachThisRequest:(NSString*)request Data:(NSString*)data
-{
-    // Use GCD's background queue
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        // Generate the file path
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"FACache/%@",[self getHashWithString:request]]];
++(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite{
+    
+    
+    if (totalBytesExpectedToWrite == NSURLSessionTransferSizeUnknown) {
+        NSLog(@"Unknown transfer size");
+    }
+    else{
+        // Locate the FileDownloadInfo object among all based on the taskIdentifier property of the task.
+        double downloadProgress = (double)totalBytesWritten / (double)totalBytesExpectedToWrite;
         
-        
-        if(![[NSFileManager defaultManager] fileExistsAtPath:[NSString stringWithFormat:@"%@/FACache",documentsDirectory]]) {
-            NSError * error = nil;
-            [[NSFileManager defaultManager] createDirectoryAtPath:[NSString stringWithFormat:@"%@/FACache",documentsDirectory]
-                                      withIntermediateDirectories:YES
-                                                       attributes:nil
-                                                            error:&error];
-            if (error != nil) {
-                NSLog(@"error creating directory: %@", error);
-                //..
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // update in main thread
+            if (session.progress) {
+                session.progress(downloadProgress);
             }
-        }
-        
-        // Save it into file system
-        if (EncryptionKey && ![EncryptionKey isEqualToString:@""])
-        {
-            NSData* encryption = [self encryptWithKey:EncryptionKey value:data ];
-            [encryption writeToFile:dataPath atomically:YES];
-        }
-        else
-        {
-            [data writeToFile:dataPath atomically:YES];
-        }
-    });
-}
-+(NSString *)getHashWithString:(NSString *)str {
-    const char *cStr = [str UTF8String];
-    unsigned char result[CC_SHA1_DIGEST_LENGTH];
-    CC_SHA1(cStr, strlen(cStr), result);
-    NSString *s = [NSString  stringWithFormat:
-                   @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
-                   result[0], result[1], result[2], result[3], result[4],
-                   result[5], result[6], result[7],
-                   result[8], result[9], result[10], result[11], result[12],
-                   result[13], result[14], result[15],
-                   result[16], result[17], result[18], result[19]
-                   ];
-    
-    return s;
-}
-#pragma mark - encryption
-static NSString *EncryptionKey;
-+(void) setEncryptionKey:(NSString*)key{EncryptionKey = key;}
-
-+ (NSData*) encryptWithKey: (NSString *) key value:(NSString*)value
-{
-    NSData *encrypted = [value dataUsingEncoding:NSUTF8StringEncoding];
-    
-    // 'key' should be 32 bytes for AES256, will be null-padded otherwise
-    char keyPtr[kCCKeySizeAES256+1]; // room for terminator (unused)
-    bzero(keyPtr, sizeof(keyPtr)); // fill with zeroes (for padding)
-    
-    // fetch key data
-    [key getCString:keyPtr maxLength:sizeof(keyPtr) encoding:NSUTF8StringEncoding];
-    
-    NSUInteger dataLength = [encrypted length];
-    
-    //See the doc: For block ciphers, the output size will always be less than or
-    //equal to the input size plus the size of one block.
-    //That's why we need to add the size of one block here
-    size_t bufferSize = dataLength + kCCBlockSizeAES128;
-    void *buffer = malloc(bufferSize);
-    
-    size_t numBytesEncrypted = 0;
-    CCCryptorStatus cryptStatus = CCCrypt(kCCEncrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
-                                          keyPtr, kCCKeySizeAES256,
-                                          NULL /* initialization vector (optional) */,
-                                          [encrypted bytes], dataLength, /* input */
-                                          buffer, bufferSize, /* output */
-                                          &numBytesEncrypted);
-    if (cryptStatus == kCCSuccess) {
-        //the returned NSData takes ownership of the buffer and will free it on deallocation
-        return [NSData dataWithBytesNoCopy:buffer length:numBytesEncrypted];
+        });
     }
     
-    free(buffer); //free the buffer;
-    return nil;
 }
-
-+ (NSData*)DecryptAES: (NSString*)key value:(NSData*)value
-{
-    
-    // 'key' should be 32 bytes for AES256, will be null-padded otherwise
-    char keyPtr[kCCKeySizeAES256+1]; // room for terminator (unused)
-    bzero(keyPtr, sizeof(keyPtr)); // fill with zeroes (for padding)
-    
-    // fetch key data
-    [key getCString:keyPtr maxLength:sizeof(keyPtr) encoding:NSUTF8StringEncoding];
-    
-    NSUInteger dataLength = [value length];
-    
-    //See the doc: For block ciphers, the output size will always be less than or
-    //equal to the input size plus the size of one block.
-    //That's why we need to add the size of one block here
-    size_t bufferSize = dataLength + kCCBlockSizeAES128;
-    void *buffer = malloc(bufferSize);
-    
-    size_t numBytesDecrypted = 0;
-    CCCryptorStatus cryptStatus = CCCrypt(kCCDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
-                                          keyPtr, kCCKeySizeAES256,
-                                          NULL /* initialization vector (optional) */,
-                                          [value bytes], dataLength, /* input */
-                                          buffer, bufferSize, /* output */
-                                          &numBytesDecrypted);
-    
-    if (cryptStatus == kCCSuccess) {
-        //the returned NSData takes ownership of the buffer and will free it on deallocation
-        return [NSData dataWithBytesNoCopy:buffer length:numBytesDecrypted];
-    }
-    
-    free(buffer); //free the buffer;
-    return nil;
-    
-}
-
 @end
+
+//to keep download file in background while app minimized
+
+//-(void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session{
+//    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+//
+//    // Check if all download tasks have been finished.
+//    [self.session getTasksWithCompletionHandler:^(NSArray *dataTasks, NSArray *uploadTasks, NSArray *downloadTasks) {
+//
+//        if ([downloadTasks count] == 0) {
+//            if (appDelegate.backgroundTransferCompletionHandler != nil) {
+//                // Copy locally the completion handler.
+//                void(^completionHandler)() = appDelegate.backgroundTransferCompletionHandler;
+//
+//                // Make nil the backgroundTransferCompletionHandler.
+//                appDelegate.backgroundTransferCompletionHandler = nil;
+//
+//                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//                    // Call the completion handler to tell the system that there are no other background transfers.
+//                    completionHandler();
+//
+//                    // Show a local notification when all downloads are over.
+//                    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+//                    localNotification.alertBody = [NSString stringWithFormat:@"%@ %@",self.fileTitle, @"has been downloaded!"] ;
+//                    [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
+//                }];
+//            }
+//        }
+//    }];
+//}
+
+
+//add this lines to AppDelegate
+//FADownloader
+//-(void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler{
+//
+//    self.backgroundTransferCompletionHandler = completionHandler;
+//
+//}
+//header file
+//@property (nonatomic, copy) void(^backgroundTransferCompletionHandler)();
