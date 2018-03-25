@@ -166,8 +166,20 @@ static NSMutableDictionary<NSNumber*,NSString*> *statusHandler;
             [urlRequest setHTTPMethod:@"DELETE"];
             break;
         case FARequestTypePUT:
+        {
             [urlRequest setHTTPMethod:@"PUT"];
-            [urlRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+            NSData *data = [parameter dataUsingEncoding:NSUTF8StringEncoding];
+            NSError *error;
+            if ([NSJSONSerialization JSONObjectWithData:data
+                                                options:kNilOptions
+                                                  error:&error] == nil || [parameter isEqualToString:@""])
+            {
+                // not JSON
+                [urlRequest addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+            }
+            else
+                [urlRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        }
             break;
         default:
             break;
@@ -187,8 +199,9 @@ static NSMutableDictionary<NSNumber*,NSString*> *statusHandler;
             [urlRequest addValue:[requestObject.configuration.header objectForKey:header] forHTTPHeaderField:header];
         }
     
-    //param fix spaces
-    parameter = [parameter stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //param fix spaces (No need for JSON format)
+    if (![[urlRequest valueForHTTPHeaderField:@"Content-Type"] isEqualToString:@"application/json"])
+        parameter = [parameter stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     //init body
     id body;

@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'FARequest'
-  s.version          = '1.0.0'
-  s.summary          = 'change FARequest structure - add uploader + downloader + queue + status handler + default configration and stop support delegat for now (coming soon) '
+  s.version          = '1.0.1'
+  s.summary          = 'fix JSON param encoder, detect JSON param in PUT request'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?

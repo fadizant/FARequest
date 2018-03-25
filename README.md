@@ -72,6 +72,9 @@ FARequest.setDefaultConfiguration(FARequestConfiguration(requestType: .GET, head
 - (void) successful:(NSNotification *) notification
 {
     if ([[notification name] isEqualToString:[FARequest notificationNameFromKey:@FAResponseStatusOK]]){
+        FARequestObject *request = [notification.userInfo objectForKey:FARequestNotificationRequest];
+        FAResponse *response = [notification.userInfo objectForKey:FARequestNotificationResponse];
+        requestCompleted requestCompleted = [notification.userInfo objectForKey:FARequestNotificationRequestCompleted];
         // your work here
     }
 }
@@ -84,6 +87,9 @@ NotificationCenter.default.addObserver(self, selector: #selector(successful(_:))
 // notification center method
 @objc func successful(_ notification:NSNotification){
         if notification.name == NSNotification.Name(rawValue: FARequest.notificationName(fromKey: FAResponseStatusOK as NSNumber)) {
+            let request = userInfo.object(forKey: FARequestNotificationRequest) as? FARequestObject
+            let response = userInfo.object(forKey: FARequestNotificationResponse) as? FAResponse
+            let requestCompleted = userInfo.object(forKey: FARequestNotificationRequestCompleted) as? requestCompleted
             // your work here
         }
     }
