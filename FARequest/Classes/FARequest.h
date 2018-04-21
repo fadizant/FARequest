@@ -16,6 +16,7 @@
 #import "FARequestHelper.h"
 #import "FAQueueRequest.h"
 #import "FARequestMediaFile.h"
+#import "NSArray+FAItemLoader.h"
 
 #pragma mark - FARequestNotification
 #define FARequestNotification                       @"FARequestCompleted"

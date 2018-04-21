@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'FARequest'
-  s.version          = '1.0.1'
-  s.summary          = 'fix JSON param encoder, detect JSON param in PUT request'
+  s.version          = '1.0.2'
+  s.summary          = 'Add FAItemLoader to handle loading items in tableView'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?

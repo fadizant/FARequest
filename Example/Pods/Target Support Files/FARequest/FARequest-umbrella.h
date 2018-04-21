@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "NSArray+FAItemLoader.h"
 #import "NSURLSession+FARequestSession.h"
 #import "FADownloader.h"
 #import "FAQueueRequest.h"
