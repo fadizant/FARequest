@@ -43,15 +43,15 @@ NSString const *isLoadingKey = @"FAItemLoader.isLoadingKey";
     objc_setAssociatedObject(self, &isLoadingKey, [NSNumber numberWithBool:value], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-#pragma mark - tableView
-NSString const *tableViewKey = @"FAItemLoader.tableViewKey";
+#pragma mark - scrollView
+NSString const *scrollViewKey = @"FAItemLoader.scrollViewKey";
 
--(UITableView*)tableView {
-    return objc_getAssociatedObject(self, &tableViewKey);
+-(UIScrollView*)scrollView {
+    return objc_getAssociatedObject(self, &scrollViewKey);
 }
 
--(void)setTableView:(UITableView*)value {
-    objc_setAssociatedObject(self, &tableViewKey, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+-(void)setScrollView:(UIScrollView*)value {
+    objc_setAssociatedObject(self, &scrollViewKey, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 #pragma mark - refreshControl
@@ -65,48 +65,50 @@ NSString const *refreshControlKey = @"FAItemLoader.refreshControlKey";
     objc_setAssociatedObject(self, &refreshControlKey, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-#pragma mark - refreshTable
-NSString const *refreshTableKey = @"FAItemLoader.refreshTableKey";
+#pragma mark - refreshView
+NSString const *refreshViewKey = @"FAItemLoader.refreshViewKey";
 
--(refreshTable)refresh {
-    return objc_getAssociatedObject(self, &refreshTableKey);
+-(refreshView)refresh {
+    return objc_getAssociatedObject(self, &refreshViewKey);
 }
 
--(void)setRefresh:(refreshTable)value {
-    objc_setAssociatedObject(self, &refreshTableKey, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+-(void)setRefresh:(refreshView)value {
+    objc_setAssociatedObject(self, &refreshViewKey, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 #pragma mark - Add refreshControl to tableView
--(void)tableViewWithRefreshTable:(refreshTable)refresh{
+-(void)scrollViewWithRefreshView:(refreshView)refresh{
     if (!self.refreshControl)
         self.refreshControl = [[UIRefreshControl alloc]init];
-    [self tableViewWithRefreshControl:self.refreshControl refreshControlColor:[UIColor blackColor] tableView:self.tableView refreshTable:refresh];
+    [self scrollViewWithRefreshControl:self.refreshControl refreshControlColor:[UIColor blackColor] scrollView:self.scrollView refreshView:refresh];
 }
 
--(void)tableViewWithRefreshControlColor:(UIColor*)color refreshTable:(refreshTable)refresh{
+-(void)scrollViewWithRefreshControlColor:(UIColor*)color refreshView:(refreshView)refresh{
     if (!self.refreshControl)
         self.refreshControl = [[UIRefreshControl alloc]init];
-    [self tableViewWithRefreshControl:self.refreshControl refreshControlColor:color tableView:self.tableView refreshTable:refresh];
+    [self scrollViewWithRefreshControl:self.refreshControl refreshControlColor:color scrollView:self.scrollView refreshView:refresh];
 }
 
--(void)tableViewWithRefreshControlColor:(UIColor*)color tableView:(UITableView*)tableView refreshTable:(refreshTable)refresh{
+-(void)scrollViewWithRefreshControlColor:(UIColor*)color scrollView:(UIScrollView*)scrollView refreshView:(refreshView)refresh{
     if (!self.refreshControl)
         self.refreshControl = [[UIRefreshControl alloc]init];
-    if (!self.tableView)
-        self.tableView = tableView;
-    [self tableViewWithRefreshControl:self.refreshControl refreshControlColor:color tableView:tableView refreshTable:refresh];
+    if (!self.scrollView)
+        self.scrollView = scrollView;
+    [self scrollViewWithRefreshControl:self.refreshControl refreshControlColor:color scrollView:scrollView refreshView:refresh];
 }
 
--(void)tableViewWithRefreshControl:(UIRefreshControl*)refreshControl refreshControlColor:(UIColor*)color refreshTable:(refreshTable)refresh{
-    [self tableViewWithRefreshControl:refreshControl refreshControlColor:color tableView:self.tableView refreshTable:refresh];
+-(void)scrollViewWithRefreshControl:(UIRefreshControl*)refreshControl refreshControlColor:(UIColor*)color refreshView:(refreshView)refresh{
+    [self scrollViewWithRefreshControl:refreshControl refreshControlColor:color scrollView:self.scrollView refreshView:refresh];
 }
 
--(void)tableViewWithRefreshControl:(UIRefreshControl*)refreshControl refreshControlColor:(UIColor*)color tableView:(UITableView*)tableView refreshTable:(refreshTable)refresh{
+-(void)scrollViewWithRefreshControl:(UIRefreshControl*)refreshControl refreshControlColor:(UIColor*)color scrollView:(UIScrollView*)scrollView refreshView:(refreshView)refresh{
     [refreshControl setTintColor:color];
-    if (!self.tableView)
-        self.tableView = tableView;
-    if(tableView)
-        [tableView addSubview:refreshControl];
+    if (!self.scrollView)
+        self.scrollView = scrollView;
+    if(scrollView){
+        [scrollView addSubview:refreshControl];
+        [scrollView setAlwaysBounceVertical:YES];
+    }
     
     [self setRefresh:refresh];
     [refreshControl addTarget:self action:@selector(startRefreshTable:) forControlEvents:UIControlEventValueChanged];
@@ -122,7 +124,7 @@ NSString const *refreshTableKey = @"FAItemLoader.refreshTableKey";
 
 -(void)beginRefreshing{
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y - self.refreshControl.frame.size.height) animated:YES];
+        [self.scrollView setContentOffset:CGPointMake(0, self.scrollView.contentOffset.y - self.refreshControl.frame.size.height) animated:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [self.refreshControl beginRefreshing];
             [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
@@ -138,8 +140,10 @@ NSString const *refreshTableKey = @"FAItemLoader.refreshTableKey";
     if ([self isKindOfClass:[NSMutableArray class]])
         [((NSMutableArray*)self) removeAllObjects];
     
-    if (self.tableView)
-        [self.tableView reloadData];
+    if (self.scrollView && [self.scrollView isKindOfClass:[UITableView class]])
+        [((UITableView*)self.scrollView) reloadData];
+    else if (self.scrollView && [self.scrollView isKindOfClass:[UICollectionView class]])
+        [((UICollectionView*)self.scrollView) reloadData];
 }
 
 #pragma mark - noItems

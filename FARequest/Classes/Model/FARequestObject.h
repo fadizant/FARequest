@@ -17,6 +17,7 @@
 @property (nonatomic,retain) NSString *notificationKey;
 @property (nonatomic,retain) NSMutableArray<FARequestMediaFile*> *mediaFiles;
 @property (nonatomic,retain) FARequestConfiguration *configuration;
+@property (nonatomic) id completed;
 
 #pragma mark   get (Download)
 

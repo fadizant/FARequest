@@ -12,7 +12,6 @@
 
 @interface NSArray (FAItemLoader)
 
-typedef void (^ refreshTable)(void);
 
 #pragma mark - pageNumber
 -(int)pageNumber;
@@ -29,10 +28,10 @@ typedef void (^ refreshTable)(void);
 
 -(void)setIsLoading:(BOOL)value;
 
-#pragma mark - tableView
--(UITableView*)tableView;
+#pragma mark - scrollView
+-(UIScrollView*)scrollView;
 
--(void)setTableView:(UITableView*)value;
+-(void)setScrollView:(UIScrollView*)value;
 
 #pragma mark - refreshControl
 -(UIRefreshControl*)refreshControl;
@@ -43,16 +42,19 @@ typedef void (^ refreshTable)(void);
 
 -(void)reset;
 
-#pragma mark - Add refreshControl to tableView
--(void)tableViewWithRefreshTable:(refreshTable)refresh;
+#pragma mark - Add refreshControl to scrollView
 
--(void)tableViewWithRefreshControlColor:(UIColor*)color refreshTable:(refreshTable)refresh;
+typedef void (^ refreshView)(void);
 
--(void)tableViewWithRefreshControlColor:(UIColor*)color tableView:(UITableView*)tableView refreshTable:(refreshTable)refresh;
+-(void)scrollViewWithRefreshView:(refreshView)refresh;
 
--(void)tableViewWithRefreshControl:(UIRefreshControl*)refreshControl refreshControlColor:(UIColor*)color refreshTable:(refreshTable)refresh;
+-(void)scrollViewWithRefreshControlColor:(UIColor*)color refreshView:(refreshView)refresh;
 
--(void)tableViewWithRefreshControl:(UIRefreshControl*)refreshControl refreshControlColor:(UIColor*)color tableView:(UITableView*)tableView refreshTable:(refreshTable)refresh;
+-(void)scrollViewWithRefreshControlColor:(UIColor*)color scrollView:(UIScrollView*)scrollView refreshView:(refreshView)refresh;
+
+-(void)scrollViewWithRefreshControl:(UIRefreshControl*)refreshControl refreshControlColor:(UIColor*)color refreshView:(refreshView)refresh;
+
+-(void)scrollViewWithRefreshControl:(UIRefreshControl*)refreshControl refreshControlColor:(UIColor*)color scrollView:(UIScrollView*)scrollView refreshView:(refreshView)refresh;
 
 #pragma mark - noItems
 -(BOOL)noItems;
